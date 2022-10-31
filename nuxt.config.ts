@@ -1,10 +1,11 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-    css: [
-        '@/assets/scss/index.scss'
-    ],
-    modules: [
-        '@nuxtjs/tailwindcss'
-    ],
-    ssr: false
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@pinia/nuxt'
+  ],
+  css: [
+    '@/assets/scss/index.scss'
+  ],
+  ssr: false
 });

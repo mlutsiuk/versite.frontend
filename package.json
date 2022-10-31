@@ -11,5 +11,10 @@
     "@nuxtjs/tailwindcss": "^6.1.1",
     "nuxt": "^3.0.0-rc.12",
     "sass": "^1.55.0"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.3",
+    "js-cookie": "^3.0.1",
+    "pinia": "^2.0.23"
   }
 }
