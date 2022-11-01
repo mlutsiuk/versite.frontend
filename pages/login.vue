@@ -28,6 +28,10 @@
         <div class="my-7 font-normal text-gray-600">або</div>
 
         <LoginWithGoogle />
+
+        <button @click="logout" class="block w-full px-4 h-[40px] font-normal rounded-md bg-indigo-200 mt-2">
+          <span class="text-gray-600">Logout</span>
+        </button>
       </div>
     </div>
 
@@ -47,7 +51,7 @@ const loginForm = reactive({
   password: 'Mlutsiuk&309'
 });
 
-type AccessTokenReponse = {
+type AccessTokenResponse = {
   token_type: string,
   expires_in: number,
   access_token: string
@@ -55,7 +59,7 @@ type AccessTokenReponse = {
 
 async function passwordLogin() {
   // TODO: Validate
-  const { data, error } = await useFetch<AccessTokenReponse>('http://localhost:8080/v1/auth/login/password', {
+  const { data, error } = await useFetch<AccessTokenResponse>('http://localhost:8080/v1/auth/login/password', {
     method: 'POST',
     body: loginForm    // TODO: RequestTypes
   });
@@ -63,7 +67,10 @@ async function passwordLogin() {
   authStore.saveToken(data.value.access_token);
   console.log(authStore.accessToken);
   await authStore.fetchUser();
+}
 
+function logout() {
+  authStore.logout();
 }
 </script>
 
