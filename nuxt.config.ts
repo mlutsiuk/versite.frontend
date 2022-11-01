@@ -14,5 +14,10 @@ export default defineNuxtConfig({
       prefix: 'Md'
     }
   ],
+  runtimeConfig: {
+    public: {
+      apiBase: ''
+    }
+  },
   ssr: false
 });
