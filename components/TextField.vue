@@ -21,6 +21,8 @@
 
 <script setup lang="ts">
 // TODO: Add input type prop
+import { useVModel } from "@vueuse/core";
+
 const props = withDefaults(defineProps<{
   id?: string
   disabled?: boolean,
@@ -40,13 +42,7 @@ const emit = defineEmits<{
 const { uid } = useUid();
 const id = computed(() => props.id || `input-${uid}`);
 
-const content = ref('');
-watch(() => props.modelValue, (newValue) => {
-  content.value = newValue;
-}, { immediate: true });
-watch(content, (newValue) => {
-  emit('update:modelValue', newValue);
-});
+const content = useVModel(props, 'modelValue', emit);
 </script>
 
 <style lang="postcss" scoped>
