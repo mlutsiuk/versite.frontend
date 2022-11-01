@@ -7,5 +7,12 @@ export default defineNuxtConfig({
   css: [
     '@/assets/scss/index.scss'
   ],
+  components: [
+    '~/components',
+    {
+      path: '~/components/Markdown',
+      prefix: 'Md'
+    }
+  ],
   ssr: false
 });
