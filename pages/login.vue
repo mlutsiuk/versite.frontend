@@ -1,0 +1,69 @@
+<template>
+  <div class="flex">
+    <div class="basis-1/2 flex justify-center items-center">
+      <div class="bg-gray-400 text-white w-[350px] text-center py-4 px-4 rounded-md">
+        <h2 class="text-5xl mb-28 font-bold">Versite</h2>
+
+        <div class="text-2xl font-medium mb-11">Login</div>
+
+        {{ loginForm }}
+
+        <TextField
+          v-model="loginForm.email"
+          class="mb-7"
+          placeholder="email"
+          hide-details
+        />
+        <TextField
+          v-model="loginForm.password"
+          class="mb-16"
+          placeholder="password"
+          hide-details
+        />
+
+        <button @click="passwordLogin" class="block w-full px-4 h-[60px] font-normal rounded-md bg-gray-50">
+          <span class="text-gray-600">Увійти</span>
+        </button>
+
+        <div class="my-7 font-normal text-gray-600">або</div>
+
+        <LoginWithGoogle />
+      </div>
+    </div>
+
+    <div class="min-h-screen basis-1/2 bg-gray-200">
+      {{ authStore.user }}
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { useAuthStore } from '~~/store/auth';
+
+const authStore = useAuthStore();
+
+const loginForm = reactive({
+  email: 'maksym.lutsiuk@oa.edu.ua',
+  password: 'Mlutsiuk&309'
+});
+
+type AccessTokenReponse = {
+  token_type: string,
+  expires_in: number,
+  access_token: string
+}
+
+async function passwordLogin() {
+  // TODO: Validate
+  const { data, error } = await useFetch<AccessTokenReponse>('http://localhost:8080/v1/auth/login/password', {
+    method: 'POST',
+    body: loginForm    // TODO: RequestTypes
+  });
+
+  authStore.saveToken(data.value.access_token);
+  console.log(authStore.accessToken);
+  await authStore.fetchUser();
+
+}
+</script>
+
