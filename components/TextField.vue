@@ -37,16 +37,13 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>();
 
-
-
 const { uid } = useUid();
 const id = computed(() => props.id || `input-${uid}`);
-
 
 const content = ref('');
 watch(() => props.modelValue, (newValue) => {
   content.value = newValue;
-});
+}, { immediate: true });
 watch(content, (newValue) => {
   emit('update:modelValue', newValue);
 });
