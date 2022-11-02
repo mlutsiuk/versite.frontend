@@ -11,6 +11,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '~~/store/auth';
 import Cookies from "js-cookie";
+import { useEventListener } from "@vueuse/core";
 
 const authStore = useAuthStore();
 const config = useRuntimeConfig();
@@ -60,11 +61,5 @@ function onMessage(e: MessageEvent) {
     navigateTo('/');
   }
 }
-
-onMounted(() =>{
-  window.addEventListener('message', onMessage, false);
-});
-onBeforeUnmount(() => {
-  window.removeEventListener('message', onMessage);
-});
+useEventListener('message', onMessage);
 </script>
