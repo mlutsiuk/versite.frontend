@@ -12,14 +12,15 @@
 import { useAuthStore } from '~~/store/auth';
 import Cookies from "js-cookie";
 import { useEventListener } from "@vueuse/core";
+import { authRepository } from "~/api";
 
 const authStore = useAuthStore();
 const config = useRuntimeConfig();
 const GOOGLE_CALLBACK_MESSAGE_EVENT = 'versite@auth-google-callback';
 
 async function login() {
-  const { data, error } = await useFetch<{url: string}>('http://localhost:8080/v1/auth/login/google/redirect');
-  openWindow(data.value.url, 'Google Login');
+  const { data } = await authRepository.getGoogleLoginUrl();
+  openWindow(data.value.data.url, 'Google Login');
 }
 
 function openWindow(url, title) {

@@ -37,6 +37,8 @@
 
 <script setup lang="ts">
 import { useAuthStore } from '~~/store/auth';
+import { authRepository } from "~/api/auth";
+import { PasswordLoginRequest } from "~/types/api/auth";
 
 definePageMeta({
   layout: 'auth',
@@ -44,23 +46,14 @@ definePageMeta({
 
 const authStore = useAuthStore();
 
-const loginForm = reactive({
+const loginForm: PasswordLoginRequest = reactive({
   email: 'maksym.lutsiuk@oa.edu.ua',
   password: 'Mlutsiuk&309'
 });
 
-type AccessTokenResponse = {
-  token_type: string,
-  expires_in: number,
-  access_token: string
-}
-
 async function passwordLogin() {
   // TODO: Validate
-  const { data, error } = await useFetch<AccessTokenResponse>('http://localhost:8080/v1/auth/login/password', {
-    method: 'POST',
-    body: loginForm    // TODO: RequestTypes
-  });
+  const { data } = await authRepository.passwordLogin(loginForm)
 
   authStore.saveToken(data.value.access_token);
   console.log(authStore.accessToken);

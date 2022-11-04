@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import Cookies from "js-cookie";
+import { authRepository } from "~/api/auth";
 
 export const useAuthStore = defineStore("auth", {
   state: () => ({
@@ -22,14 +23,11 @@ export const useAuthStore = defineStore("auth", {
       Cookies.remove("token");
     },
     async fetchUser() {
-      const { data, error } = await useFetch('http://localhost:8080/v1/auth/profile', {
-        headers: {
-          'Authorization': `Bearer ${this.accessToken}`,
-          'Accept': 'application/json'
-        }
-      });
+      const { data } = await authRepository.getAuthenticatedUser();
 
-      this.user = data.value.data;    // TODO: Types
+      data.value.data
+
+      this.user = data.value.data;
     }
   },
 });

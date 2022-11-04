@@ -7,6 +7,14 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
   },
+  alias: {
+    "~~": "/<rootDir>",
+    "@@": "/<rootDir>",
+    "~": "/<rootDir>",
+    "@": "/<rootDir>",
+    "assets": "/<rootDir>/assets",
+    "public": "/<rootDir>/public"
+  },
   css: [
     '@/assets/scss/index.scss'
   ],
