@@ -1,6 +1,8 @@
 <template>
-  <div>
+  <div class="bg-gray-400 text-white w-[350px] text-center py-4 px-4 rounded-md">
     <h2 class="text-5xl mb-28 font-bold">Versite</h2>
+
+    <NuxtLink to="/">Home</NuxtLink>
 
     <div class="text-2xl font-medium mb-11">Login</div>
 

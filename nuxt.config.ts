@@ -4,6 +4,9 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt'
   ],
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
   css: [
     '@/assets/scss/index.scss'
   ],
