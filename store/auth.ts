@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import Cookies from "js-cookie";
-import { authRepository } from "~/api/auth";
+import { authRepository } from "~/api";
 
 export const useAuthStore = defineStore("auth", {
   state: () => ({
@@ -24,8 +24,6 @@ export const useAuthStore = defineStore("auth", {
     },
     async fetchUser() {
       const { data } = await authRepository.getAuthenticatedUser();
-
-      data.value.data
 
       this.user = data.value.data;
     }
