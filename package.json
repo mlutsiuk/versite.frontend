@@ -8,15 +8,15 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.1.1",
-    "nuxt": "^3.0.0-rc.13",
-    "sass": "^1.55.0"
-  },
-  "dependencies": {
-    "@pinia/nuxt": "^0.4.3",
     "@types/js-cookie": "^3.0.1",
     "@vueuse/core": "^9.4.0",
     "js-cookie": "^3.0.1",
-    "pinia": "^2.0.23"
+    "pinia": "^2.0.23",
+    "sass": "^1.55.0"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.1.1",
+    "@pinia/nuxt": "^0.4.3",
+    "nuxt": "^3.0.0-rc.13"
   }
 }
