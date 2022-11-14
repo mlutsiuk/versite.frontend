@@ -27,6 +27,6 @@ jobs:
             cd /var/www/versite.frontend
             git pull
 
-            docker-compose build
             docker-compose down
+            docker-compose build
             docker-compose up -d
