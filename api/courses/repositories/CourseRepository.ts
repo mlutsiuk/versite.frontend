@@ -1,6 +1,15 @@
-import { CreateCourseRequest, CreateCourseResponse, UpdateCourseRequest, UpdateCourseResponse } from "~/api";
+import {
+  CreateCourseRequest,
+  CreateCourseResponse,
+  FindCourseResponse,
+  UpdateCourseRequest,
+  UpdateCourseResponse
+} from "~/api";
 
 export const courseRepository = {
+  async find(id: string) {
+    return await useHttpGet<FindCourseResponse>(`v1/courses/${id}`);
+  },
   async create(body: CreateCourseRequest) {
     return await useHttpPost<CreateCourseResponse>('v1/courses', {
       body
