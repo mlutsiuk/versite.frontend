@@ -45,3 +45,8 @@ export async function useHttpPatch<ResT>(url: string, options: UseFetchOptions<R
   options.method = 'PATCH';
   return useHttp<ResT>(url, options)
 }
+
+export async function useHttpDelete<ResT>(url: string, options: UseFetchOptions<ResT> = {}) {
+  options.method = 'DELETE';
+  return useHttp<ResT>(url, options)
+}
