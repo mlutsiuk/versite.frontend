@@ -1,4 +1,5 @@
 import {
+  AllCoursesResponse,
   CreateCourseRequest,
   CreateCourseResponse,
   FindCourseResponse,
@@ -7,6 +8,9 @@ import {
 } from "~/api";
 
 export const courseRepository = {
+  async all() {
+    return await useHttpGet<AllCoursesResponse>(`v1/courses`);
+  },
   async find(id: string) {
     return await useHttpGet<FindCourseResponse>(`v1/courses/${id}`);
   },
