@@ -10,5 +10,8 @@ export const courseRepository = {
     return await useHttpPatch<UpdateCourseResponse>(`v1/courses/${id}`, {
       body
     });
+  },
+  async delete(id: string) {
+    return await useHttpDelete(`v1/courses/${id}`);
   }
 }
