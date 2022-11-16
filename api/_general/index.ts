@@ -1,3 +1,8 @@
+export type ResponseMultiResource<T> = {
+  data: Array<T>,
+  meta: ResponseMeta
+}
+
 export type ResponseSingleResource<T> = {
   data: T,
   meta: ResponseMeta,
