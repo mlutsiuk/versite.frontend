@@ -40,3 +40,8 @@ export async function useHttpPost<ResT>(url: string, options: UseFetchOptions<Re
   options.method = 'POST';
   return useHttp<ResT>(url, options)
 }
+
+export async function useHttpPatch<ResT>(url: string, options: UseFetchOptions<ResT> = {}) {
+  options.method = 'PATCH';
+  return useHttp<ResT>(url, options)
+}
