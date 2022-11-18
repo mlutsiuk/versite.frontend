@@ -20,10 +20,12 @@ const GOOGLE_CALLBACK_MESSAGE_EVENT = 'versite@auth-google-callback';
 
 async function login() {
   const { data } = await authRepository.getGoogleLoginUrl();
-  openWindow(data.value.data.url, 'Google Login');
+  if(data.value) {
+    openWindow(data.value.data.url, 'Google Login');
+  }
 }
 
-function openWindow(url, title) {
+function openWindow(url: string, title: string) {
     let options = {
       url,
       title,
