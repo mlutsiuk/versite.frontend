@@ -37,8 +37,7 @@
 
 <script setup lang="ts">
 import { useAuthStore } from '~~/store/auth';
-import { authRepository } from "~/api/auth";
-import { PasswordLoginRequest } from "~/types/api/auth";
+import { authRepository } from "~/api";
 
 definePageMeta({
   layout: 'auth',
