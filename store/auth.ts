@@ -1,10 +1,10 @@
 import { defineStore } from "pinia";
 import Cookies from "js-cookie";
-import { authRepository } from "~/api";
+import { authRepository, UserModel } from "~/api";
 
 export const useAuthStore = defineStore("auth", {
   state: () => ({
-    user: null,
+    user: null as UserModel | null,
     token: Cookies.get("token") ?? null,
   }),
   getters: {
@@ -12,7 +12,7 @@ export const useAuthStore = defineStore("auth", {
     check: state => state.user !== null
   },
   actions: {
-    saveToken(token) {
+    saveToken(token: string) {
       this.token = token;
       Cookies.set("token", token);
     },
@@ -25,7 +25,9 @@ export const useAuthStore = defineStore("auth", {
     async fetchUser() {
       const { data } = await authRepository.getAuthenticatedUser();
 
-      this.user = data.value.data;
+      if(data.value) {
+        this.user = data.value.data;
+      }
     }
   },
 });
