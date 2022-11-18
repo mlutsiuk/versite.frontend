@@ -1,5 +1,10 @@
-import { AccessTokenResponse, GetGoogleLoginUrlResponse, PasswordLoginRequest, ResponseSingleResource } from "~/api";
-import { UserModel } from "~/api";
+import {
+  AccessTokenResponse,
+  GetGoogleLoginUrlResponse,
+  PasswordLoginRequest,
+  ResponseSingleResource,
+  UserModel
+} from "~/api";
 
 export const authRepository = {
   async getAuthenticatedUser() {
