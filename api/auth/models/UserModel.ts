@@ -8,6 +8,6 @@ export type UserModel = {
   email_verified_at?: Date,
   is_registration_completed: boolean,
 
-  // roles: object[],
-  // permissions: object[]
+  // roles: RelationCollection<RoleModel> | null,
+  // permissions: RelationCollection<PermissionModel> | null
 }
