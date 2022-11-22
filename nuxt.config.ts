@@ -5,7 +5,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt'
   ],
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
+    pageTransition: { name: 'page', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' }
   },
   css: [
     '@/assets/scss/index.scss'
