@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.4",
+    "@iconify-icons/logos": "^1.2.20",
     "@iconify-icons/mdi": "^1.2.32",
     "@iconify/types": "^2.0.0",
     "@nuxtjs/tailwindcss": "^6.1.1",

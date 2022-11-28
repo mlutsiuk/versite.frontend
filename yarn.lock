@@ -304,6 +304,13 @@
   resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.7.4.tgz#c554e9ac893a2ec2f58eb8b6b9d80b8be03c5d0e"
   integrity sha512-QHRlKCK/zRpjSjhth7c2CZvx5eMDFflXauqRdRJgp1CwScx6PwCpWiwDsjQcYM4z8Yik2ZvyX8W4PFT2Wsqqyw==
 
+"@iconify-icons/logos@^1.2.20":
+  version "1.2.20"
+  resolved "https://registry.yarnpkg.com/@iconify-icons/logos/-/logos-1.2.20.tgz#a440424eba61f2ac05b3e7520b8d1782e3d80abb"
+  integrity sha512-s0iYi/VWO1xL9kaPOV4Nj+WnWOqcrq9s1Gp6U9xEv7C4mXYis4aqLXKOZEKe6rRdYSMmMzLOhqNuxd6ilrYcGw==
+  dependencies:
+    "@iconify/types" "*"
+
 "@iconify-icons/mdi@^1.2.32":
   version "1.2.32"
   resolved "https://registry.npmjs.org/@iconify-icons/mdi/-/mdi-1.2.32.tgz"
