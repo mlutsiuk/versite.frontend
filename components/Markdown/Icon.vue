@@ -3,6 +3,7 @@
     :icon="props.icon"
     :inline="props.inline"
     :width="props.width"
+    :height="props.height"
   />
 </template>
 
@@ -12,10 +13,10 @@ import type { IconifyIcon } from '@iconify/types';
 
 const props = withDefaults(defineProps<{
   icon: IconifyIcon,
-  width?: number,
+  width?: number | 'auto',
+  height?: number | 'auto',
   inline?: boolean
 }>(), {
-  width: 24,
   inline: false
 });
 </script>

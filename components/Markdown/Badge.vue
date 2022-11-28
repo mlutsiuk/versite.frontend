@@ -4,7 +4,7 @@
       <slot />
       <span
         :class="badgeClass"
-        class="badge"
+        class="badge select-none"
       >
         {{ content }}
       </span>
