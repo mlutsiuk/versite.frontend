@@ -1,10 +1,13 @@
 <template>
-  <Icon
-    :icon="props.icon"
-    :inline="props.inline"
-    :width="props.width"
-    :height="props.height"
-  />
+  <div>
+    <Icon
+      class="fill-blue-500"
+      :icon="props.icon"
+      :inline="props.inline"
+      :width="props.width"
+      :height="props.height"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
