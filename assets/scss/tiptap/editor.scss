@@ -1,0 +1,36 @@
+.ProseMirror {
+  @apply py-5 px-4
+    focus-visible:outline-none;
+
+  //ul, ol {
+  //  @apply list-inside;
+  //}
+  //ul {
+  //  @apply list-disc;
+  //}
+  //ol {
+  //  @apply list-decimal;
+  //}
+  //
+  //li>p:first-child {
+  //  display: inline;
+  //}
+  //
+  //code {
+  //  @apply text-gray-500 bg-gray-500 bg-opacity-10 rounded p-1;
+  //}
+  //
+  //h1 {
+  //  @apply text-3xl mt-4;
+  //}
+  //h2 {
+  //  @apply text-2xl mt-3;
+  //}
+  //h3 {
+  //  @apply text-xl mt-2;
+  //}
+  //
+  //hr {
+  //  @apply mx-2 my-6 border-gray-400;
+  //}
+}

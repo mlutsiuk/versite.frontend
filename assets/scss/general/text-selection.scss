@@ -1,0 +1,7 @@
+::-moz-selection {
+  @apply bg-violet-100 text-inherit;
+}
+
+::selection {
+  @apply bg-violet-100 text-inherit;
+}

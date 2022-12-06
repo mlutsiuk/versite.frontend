@@ -1,25 +1,5 @@
-* {
-  ::-webkit-scrollbar-button {
-    display: none;
-  }
+@import "general/scrollbar";
+@import "general/text-selection";
 
-  &::-webkit-scrollbar {
-    width: 15px;
-  }
+@import "tiptap/editor";
 
-  &::-webkit-scrollbar-track {
-    //background: #e6e6e6;
-    //border-left: 1px solid #dadada;
-    background: none;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #b0b0b0;
-    border: solid 3px #fff;
-    border-radius: 7px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #757575;
-  }
-}
