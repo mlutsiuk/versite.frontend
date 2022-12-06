@@ -13,12 +13,12 @@ function getFetchOptions<ResT>(options: UseFetchOptions<ResT>) {    // TODO: Che
     Accept: 'application/json'
   };
 
-  options.initialCache = options.initialCache ?? false;
   options.lazy = options.lazy ?? false;
 
   // Auth
   const token = authStore.accessToken;
   if(token) {
+    // @ts-ignore
     options.headers['Authorization'] = `Bearer ${token}`;
   }
 
