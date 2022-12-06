@@ -23,5 +23,8 @@ export default defineNuxtConfig({
       apiBase: ''
     }
   },
-  ssr: false
+  // ssr: true,
+  // typescript: {
+  //   strict: true
+  // }
 });
