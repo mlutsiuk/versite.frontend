@@ -1,15 +1,17 @@
 <template>
-  <div class="flex space-x-5">
-    <div class="sticky top-0 w-5/12 h-screen bg-violet-100">
+  <div class="flex space-x-5 overflow-y-hidden">
+    <!-- <div class="sticky top-0 w-5/12 h-screen bg-violet-100">
       <div class="text-2xl font-semibold select-none cursor-pointer mt-4 ml-16">
         Versite
       </div>
-    </div>
+    </div> -->
 
 <!--    TODO-->
-<!--    <CourseCover class="sticky relative top-0 w-5/12 opacity-95"/>-->
+    <div class="w-5/12 h-screen">
+      <CourseCover class="w-full opacity-90"/>
+    </div>
 
-    <div class="w-7/12 pr-16 py-12">
+    <div class="w-7/12 h-screen pr-16 py-12 overflow-auto">
       <div class="text-lg ">#дизайн #uiux #figma</div>
       <h1 class="text-7xl">
         Як стартувати кар’єру ui/ux дизайнером
