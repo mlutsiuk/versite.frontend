@@ -17,7 +17,7 @@ function getFetchOptions<ResT>(options: UseFetchOptions<ResT>) {    // TODO: Che
 
   // Auth
   const token = authStore.accessToken;
-  if(token) {
+  if (token) {
     // @ts-ignore
     options.headers['Authorization'] = `Bearer ${token}`;
   }

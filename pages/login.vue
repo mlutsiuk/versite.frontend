@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import { useAuthStore } from '~~/store/auth';
-import { authRepository } from "~/api";
+import { authRepository, PasswordLoginRequest } from "~/api";
 
 definePageMeta({
   layout: 'auth',
@@ -54,9 +54,11 @@ async function passwordLogin() {
   // TODO: Validate
   const { data } = await authRepository.passwordLogin(loginForm)
 
-  authStore.saveToken(data.value.access_token);
-  console.log(authStore.accessToken);
-  await authStore.fetchUser();
+  if(data.value) {
+    authStore.saveToken(data.value.access_token);
+    console.log(authStore.accessToken);
+    await authStore.fetchUser();
+  }
 }
 
 function logout() {
