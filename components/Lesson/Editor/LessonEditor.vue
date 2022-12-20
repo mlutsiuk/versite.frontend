@@ -71,5 +71,5 @@ const editor = useEditor({
   ]
 });
 
-const title = 'Auto-layout - Beginning';
+const title = ref('Auto-layout - Beginning');
 </script>
