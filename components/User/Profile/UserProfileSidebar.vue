@@ -15,10 +15,10 @@
       <div class="text-lg font-bold">
         Лінки
       </div>
-      <div class="flex flex-row items-center justify-center space-x-3">
-        <MdIcon class="cursor-pointer" :icon="figma" :height="35"/>
-        <MdIcon class="cursor-pointer" :icon="github" :width="35"/>
-        <MdIcon class="cursor-pointer" :icon="behance" :height="35"/>
+      <div class="flex flex-row items-center space-x-3 pt-2">
+        <MdIcon class="cursor-pointer" :icon="behance" :height="38"/>
+        <MdIcon class="cursor-pointer" :icon="figma" :height="26"/>
+        <MdIcon class="cursor-pointer" :icon="github" :width="26"/>
       </div>
     </div>
 
