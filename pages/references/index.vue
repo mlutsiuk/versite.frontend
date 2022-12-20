@@ -1,7 +1,12 @@
 <template>
   <div class="container m-3">
 
-    <CourseCover class="w-[500px]"/>
+    <h1 class="text-2xl">Lesson Editor Publication Date Popover</h1>
+    <div class="h-24 bg-white p-4 flex justify-center items-center flex-wrap">
+      <LessonEditorPublicationDatePopover/>
+    </div>
+
+   <CourseCover class="w-[500px]"/>
 
     <h1 class="text-2xl">Badge</h1>
     <div class="bg-white p-4 flex justify-center items-center flex-wrap">
