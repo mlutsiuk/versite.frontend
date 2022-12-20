@@ -3,15 +3,7 @@
     <div class="border-b px-4 py-2 flex flex-col items-baseline">
       <LessonEditorTitleField v-model="title" class="mb-1"/>
 
-      <div class="flex flex-row space-x-2 items-center text-gray-600 hover:border-gray-200 border-transparent px-1 cursor-pointer hover:bg-gray-100 rounded">
-        <MdIcon
-          class="text-gray-600"
-          :icon="iconCalendar"
-        />
-        <span>
-          03.12.2022
-        </span>
-      </div>
+      <LessonEditorPublicationDatePopover />
     </div>
 
     <LessonEditorMenu
