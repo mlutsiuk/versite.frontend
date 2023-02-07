@@ -4,6 +4,13 @@ export default defineNuxtConfig({
     transpile: ['@headlessui/vue']
   },
   modules: [
+    [
+      '@nuxtjs/google-fonts',
+      {
+        families: {
+          Montserrat: true
+        }
+      }],
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt'
   ],
@@ -26,6 +33,7 @@ export default defineNuxtConfig({
       apiBase: ''
     }
   },
+
   // ssr: true,
   // typescript: {
   //   strict: true
