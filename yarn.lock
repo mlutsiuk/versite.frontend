@@ -5742,6 +5742,11 @@ vue-devtools-stub@^0.1.0:
   resolved "https://registry.yarnpkg.com/vue-devtools-stub/-/vue-devtools-stub-0.1.0.tgz#a65b9485edecd4273cedcb8102c739b83add2c81"
   integrity sha512-RutnB7X8c5hjq39NceArgXg28WZtZpGc3+J16ljMiYnFhKvd8hITxSWQSQ5bvldxMDU6gG5mkxl1MTQLXckVSQ==
 
+vue-input-autowidth@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/vue-input-autowidth/-/vue-input-autowidth-2.2.0.tgz#d3c42f17b3199e234cc575f5a80b40d1f970c514"
+  integrity sha512-yRngEzIdQb0GxY6+JNIvhDXX9RAuXlq+DwILZMUlK1SO/mGKKYd7Nq42AuUOZC/ZGkMHR400N8FbHVaWFNoYvw==
+
 vue-router@^4.1.6:
   version "4.1.6"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.1.6.tgz#b70303737e12b4814578d21d68d21618469375a1"
