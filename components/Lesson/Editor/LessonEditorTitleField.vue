@@ -23,7 +23,7 @@ const content = useVModel(props, 'modelValue', emit);
 
 <style scoped>
 input {
-  @apply text-2xl px-2 transition-colors outline-none
+  @apply text-2xl px-1 transition-colors outline-none
   border border-transparent rounded-sm
   hover:border-gray-200
   focus-visible:border-gray-400;
