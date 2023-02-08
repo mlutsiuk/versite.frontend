@@ -54,19 +54,9 @@ function rect(x: number, y: number, width: number, height: number) {
   if (!context) {
     return;
   }
-
+  context.beginPath();
   context.rect(x, y, width, height);
-}
-
-function configureCanvas() {
-  let context = getContext();
-  if (!context) {
-    return;
-  }
-
-  context.translate(0.2, 0.2);
-  // context.globalCompositeOperation = 'destination-in';
-  context.lineWidth = 0.67;
+  context.closePath();
 }
 
 function clear() {
@@ -85,39 +75,30 @@ function draw() {
   for (let x = 0; x < size; x += tileLen) {
     for (let y = 0; y < size * 2; y += tileLen) {
       queueNumber = shuffle(queueNumber);
-      fill(currentPalette[queueNumber[0]]);
       rect(x, y, tileLen, tileLen);
-      fill(currentPalette[queueNumber[1]]);
+      fill(currentPalette[queueNumber[0]]);
+    }
+  }
 
-      switch (Math.round(random(0.51, 9.49))) {
+  for (let x = 0; x < size; x += tileLen) {
+    for (let y = 0; y < size * 2; y += tileLen) {
+      switch (Math.round(random(0.51, 4.49))) {
         case 1:
-          triangle(x, y, x, y + tileLen, x + tileLen, y + tileLen);
+          triangle(x + tileLen, y, x + tileLen, y + tileLen, x, y);    // Right Top
           break;
         case 2:
-          triangle(x, y, x + tileLen, y, x + tileLen, y + tileLen);
+          triangle(x + tileLen, y + tileLen, x,y + tileLen, x + tileLen, y);    // Right Bottom
           break;
         case 3:
-          triangle(x + tileLen, y, x + tileLen, y + tileLen, x, y);
+          triangle(x, y + tileLen, x, y, x + tileLen, y + tileLen);    // Left Bottom
           break;
         case 4:
-          triangle(x + tileLen, y + tileLen, x + tileLen, y, x, y);
-          break;
-        case 5:
-          triangle(x + tileLen, y, x + tileLen, y + tileLen, x, y + tileLen);
-          break;
-        case 6:
-          triangle(x, y, x + tileLen, y + tileLen, x, y + tileLen);
-          break;
-        case 7:
-          triangle(x + tileLen, y, x, y, x + tileLen, y + tileLen);
-          break;
-        case 8:
-          triangle(x, y + tileLen, x + tileLen, y, x, y);
-          break;
-        case 9:
-          triangle(x + tileLen, y, x, y + tileLen, x + tileLen, y + tileLen);
+          triangle(x, y,x + tileLen, y, x, y + tileLen);    // Left Top
           break;
       }
+
+      queueNumber = shuffle(queueNumber);
+      fill(currentPalette[queueNumber[0]]);
     }
   }
 }
@@ -128,7 +109,6 @@ function mouseClicked() {
 }
 
 onMounted(() => {
-  configureCanvas();
   draw();
 })
 </script>
