@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full flex flex-col shadow-lg bg-white rounded-lg">
+  <div class="h-full flex flex-col items-stretch shadow-lg bg-white rounded-lg">
     <div class="border-b px-4 py-2 flex flex-col items-baseline">
       <LessonEditorTitleField v-model="title" class="mb-1"/>
 
@@ -11,10 +11,13 @@
       class="border-b"
     />
 
-    <EditorContent
-      :editor="editor"
-      class="h-full prose mx-auto"
-    />
+    <ClientOnly>
+      <EditorContent
+        :editor="editor"
+        class="h-full self-center w-full max-w-[85ch]"
+      />
+    </ClientOnly>
+
   </div>
 </template>
 
@@ -39,8 +42,6 @@ import Strike from '@tiptap/extension-strike';
 import Text from '@tiptap/extension-text';
 import TextAlign from '@tiptap/extension-text-align';
 import Underline from '@tiptap/extension-underline';
-
-import iconCalendar from "@iconify-icons/mdi/calendar";
 
 const editor = useEditor({
   content: '<h1>I’m running Tiptap with Vue.js. 🎉</h1>',
