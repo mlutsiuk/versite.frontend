@@ -21,22 +21,22 @@
 
       <LessonEditorMenuButton
         @click="toggleBold"
-        :active="editor?.isActive('bold')"
+        :active="editor.isActive('bold')"
         :icon="iconBold"
       />
       <LessonEditorMenuButton
         @click="toggleItalic"
-        :active="editor?.isActive('italic')"
+        :active="editor.isActive('italic')"
         :icon="iconItalic"
       />
       <LessonEditorMenuButton
         @click="toggleUnderline"
-        :active="editor?.isActive('underline')"
+        :active="editor.isActive('underline')"
         :icon="iconUnderline"
       />
       <LessonEditorMenuButton
         @click="toggleStrike"
-        :active="editor?.isActive('strike')"
+        :active="editor.isActive('strike')"
         :icon="iconStrikethrough"
       />
 
@@ -67,23 +67,28 @@
 
       <LessonEditorMenuButton
         @click="toggleBulletedList"
-        :active="editor?.isActive('bulletList')"
+        :active="editor.isActive('bulletList')"
         :icon="iconListBulleted"
       />
       <LessonEditorMenuButton
         @click="toggleOrderedList"
-        :active="editor?.isActive('orderedList')"
+        :active="editor.isActive('orderedList')"
         :icon="iconListNumbered"
       />
 
       <LessonEditorMenuButton
         @click="toggleCode"
-        :active="editor?.isActive('code')"
+        :active="editor.isActive('code')"
         :icon="iconCodeTags"
       />
       <LessonEditorMenuButton
         @click="setHorizontalLine"
         :icon="iconHorizontalLine"
+      />
+      <LessonEditorMenuButton
+        @click="toggleBlockquote"
+        :active="editor.isActive('blockquote')"
+        :icon="iconQuoteOpen"
       />
     </template>
   </div>
@@ -101,15 +106,16 @@ import iconHeadingOne from '@iconify-icons/mdi/number-1-box-outline';
 import iconHeadingTwo from '@iconify-icons/mdi/number-2-box-outline';
 import iconHeadingThree from '@iconify-icons/mdi/number-3-box-outline';
 
-import iconListBulleted from '@iconify-icons/mdi/format-list-bulleted';
-import iconListNumbered from '@iconify-icons/mdi/format-list-numbered';
-import iconCodeTags from '@iconify-icons/mdi/code-tags';
-import iconHorizontalLine from '@iconify-icons/mdi/horizontal-line';
-
 import iconAlignLeft from '@iconify-icons/mdi/format-align-left';
 import iconAlignCenter from '@iconify-icons/mdi/format-align-center';
 import iconAlignRight from '@iconify-icons/mdi/format-align-right';
 import iconAlignJustify from '@iconify-icons/mdi/format-align-justify';
+
+import iconListBulleted from '@iconify-icons/mdi/format-list-bulleted';
+import iconListNumbered from '@iconify-icons/mdi/format-list-numbered';
+import iconCodeTags from '@iconify-icons/mdi/code-tags';
+import iconHorizontalLine from '@iconify-icons/mdi/horizontal-line';
+import iconQuoteOpen from '@iconify-icons/mdi/format-quote-open';
 
 const props = defineProps<{
   modelValue: Editor
@@ -154,5 +160,8 @@ function toggleCode() {
 }
 function setHorizontalLine() {
   editor.value.chain().focus().setHorizontalRule().run();
+}
+function toggleBlockquote() {
+  editor.value.chain().focus().toggleBlockquote().run();
 }
 </script>
