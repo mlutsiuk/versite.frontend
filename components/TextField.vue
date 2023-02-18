@@ -1,27 +1,45 @@
 <template>
-  <div>
-    <div>
-      <label
-        v-if="props.label"
-        v-text="props.label"
-        :for="id"
-      />
+  <div
+    class="TextField"
+    :class="{
+      'TextField--error': !meta.valid,
+      'TextField--focused': isFocused,
+    }"
+  >
+    <label
+      v-if="props.label"
+      v-text="props.label"
+      :for="id"
+      class="TextField_Label"
+    />
+    <div class="TextField_Field">
       <input
-        v-model="content"
+        @blur="onBlur"
+        @input="validationChangeHandler"
+        @focus="focus"
         :id="id"
+        :name="props.name"
         :placeholder="props.placeholder"
         :disabled="disabled"
-        type="text"
+        :type="props.password ? 'password' : 'text'"
+        class="TextField_Input"
       />
+      <div class="TextField_Outline"></div>
     </div>
 
-    <div v-if="!props.hideDetails" class="TextField_Details"></div>
+    <div v-if="!props.hideDetails" class="TextField_Details">
+      <DevOnly><LazyDevValidationMeta :meta="meta"/></DevOnly>
+      <span>
+        {{ errorMessage }}
+      </span>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 // TODO: Add input type prop
 import { useVModel } from "@vueuse/core";
+import { useField } from "vee-validate";
 
 const props = withDefaults(defineProps<{
   id?: string
@@ -29,9 +47,13 @@ const props = withDefaults(defineProps<{
   hideDetails?: boolean,
   placeholder?: string,
   label?: string,
+  password?: boolean,
+
+  name: string,
 
   modelValue?: string
 }>(), {
+  password: false,
   disabled: false,
   hideDetails: false
 });
@@ -39,26 +61,74 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>();
 
+// TODO: Simplify
 const { uid } = useUid();
 const id = computed(() => props.id || `input-${uid}`);
 
 const content = useVModel(props, 'modelValue', emit);
+
+const {
+  isFocused,
+  focus,
+  blur
+} = useFocus();
+
+/**
+ *  @see https://vee-validate.logaretm.com/v4/guide/composition-api/caveats
+ */
+const { name } = toRefs(props);
+const {
+  value: inputValue,
+  errorMessage,
+  handleBlur: validationBlurHandler,
+  handleChange: validationChangeHandler,
+  meta
+} = useField(name);
+
+function onBlur(e: FocusEvent) {
+  blur();
+  validationBlurHandler(e);
+}
 </script>
 
 <style lang="postcss" scoped>
-label {
+.TextField--error .TextField_Outline {
+  @apply border-[#B91C1C];
+}
+
+.TextField--error .TextField_Details {
+  @apply text-[#B91C1C];
+}
+
+.TextField--focused .TextField_Outline {
+  @apply border-2 opacity-80;
+}
+
+.TextField_Field {
+    @apply relative;
+}
+
+.TextField_Field:hover .TextField_Outline {
+    @apply opacity-90;
+}
+
+.TextField_Outline {
+    @apply absolute top-0 left-0 w-full h-full
+    pointer-events-none
+    border border-black rounded-md opacity-40 transition-opacity;
+}
+
+.TextField_Label {
   @apply block text-left mb-2 text-sm font-medium text-gray-900 dark:text-gray-300;
 }
 
-input {
+.TextField_Input {
   @apply block w-full p-4
-  focus:outline-none border border-gray-300 rounded-md
-  text-gray-900 text-sm placeholder-gray-400;
+  focus:outline-none
+  text-gray-900 placeholder:text-black placeholder:opacity-50;
 }
 
-.TextField {
-  &_Details {
-    @apply min-h-[14px];
-  }
+.TextField_Details {
+  @apply pl-4 text-start text-xs leading-6 min-h-[2em];
 }
 </style>
