@@ -14,7 +14,7 @@
     <ClientOnly>
       <EditorContent
         :editor="editor"
-        class="h-full self-center w-full"
+        class="h-full self-center w-full max-w-[85ch]"
       />
     </ClientOnly>
 
