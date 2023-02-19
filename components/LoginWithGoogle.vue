@@ -1,21 +1,16 @@
 <template>
-  <button @click="login" class="flex items-center justify-center w-full px-4 h-[60px] font-normal rounded-md bg-gray-50">
-    <span class="flex items-center text-gray-600">
-      <span class="font-bold text-2xl">
-        <MdIcon
-          class="cursor-pointer"
-          :icon="google"
-          :width="24"
-        />
-      </span>
-
-      <span class="ml-1.5">Google</span>
-    </span>
-  </button>
+  <MdButton
+    @click="login"
+    prepend-icon="mdi:google"
+    class="text-[#6F5274]"
+    size="x-large"
+    block
+  >
+      Google
+  </MdButton>
 </template>
 
 <script setup lang="ts">
-import google from '@iconify-icons/mdi/google';
 import { useAuthStore } from '~~/store/auth';
 import Cookies from "js-cookie";
 import { useEventListener } from "@vueuse/core";
