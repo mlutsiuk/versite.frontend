@@ -30,10 +30,9 @@
     <div class="bg-white p-4 flex justify-center items-center flex-wrap">
       Some text
       <span>
-        <MdIcon
+        <Icon
           class="cursor-pointer"
-          :icon="account"
-          inline
+          name="mdi:account"
         />
       </span>
     </div>
@@ -41,20 +40,13 @@
     <h1 class="text-2xl">Badge component</h1>
     <div class="bg-white p-4 flex justify-center items-center flex-wrap">
       <MdBadge content="9">
-        <MdIcon
+        <Icon
           class="cursor-pointer"
-          :icon="bellOutline"
-          :width="24"
-          inline
+          name="mdi:bell-outline"
+          size="24"
         />
       </MdBadge>
     </div>
     <hr>
   </div>
 </template>
-
-<script setup lang="ts">
-import account from '@iconify-icons/mdi/account';
-import bellOutline from '@iconify-icons/mdi/bell-outline';
-
-</script>

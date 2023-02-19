@@ -4,9 +4,9 @@
       class="flex flex-row space-x-2 items-center text-gray-600 hover:border-gray-200 border-transparent px-1 cursor-pointer hover:bg-gray-100 rounded"
       as="div"
     >
-      <MdIcon
+      <Icon
         class="text-gray-600"
-        :icon="iconCalendar"
+        name="mdi:calendar"
       />
       <span>03.12.2022</span>
     </PopoverButton>
@@ -31,11 +31,5 @@
 <script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import Datepicker from 'vuejs3-datepicker';
-import iconCalendar from "@iconify-icons/mdi/calendar";
-
 
 </script>
-
-<style scoped>
-
-</style>

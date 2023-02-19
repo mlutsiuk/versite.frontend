@@ -1,14 +1,9 @@
 <template>
   <MdBadge content="6" color="bg-[#4CAF50]" class="cursor-pointer">
-    <MdIcon
+    <Icon
       class="cursor-pointer text-gray-500"
-      :icon="bellOutline"
-      :width="28"
+      name="mdi:bell-outline"
+      :size="28"
     />
   </MdBadge>
 </template>
-
-<script setup lang="ts">
-import bellOutline from '@iconify-icons/mdi/bell-outline';
-
-</script>

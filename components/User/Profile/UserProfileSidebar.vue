@@ -16,9 +16,9 @@
         Лінки
       </div>
       <div class="flex flex-row items-center space-x-3 pt-2">
-        <MdIcon class="cursor-pointer" :icon="behance" :height="38"/>
-        <MdIcon class="cursor-pointer" :icon="figma" :height="26"/>
-        <MdIcon class="cursor-pointer" :icon="github" :width="26"/>
+        <Icon class="cursor-pointer" name="mdi:behance" size="38"/>
+        <Icon class="cursor-pointer" name="logos:figma" size="26"/>
+        <Icon class="cursor-pointer" name="logos:github-icon" size="26"/>
       </div>
     </div>
 
@@ -27,14 +27,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import figma from '@iconify-icons/logos/figma';
-import github from '@iconify-icons/logos/github-icon';
-import behance from '@iconify-icons/mdi/behance';
-
-
-</script>
 
 <style scoped>
 .avatar {

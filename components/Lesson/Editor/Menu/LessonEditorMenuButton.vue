@@ -1,22 +1,19 @@
 <template>
-  <MdIcon
+  <Icon
     @click="emit('click')"
     :class="{
       'active': props.active
     }"
     class="button"
-    :icon="icon"
-    :height="24"
-    :width="24"
+    :name="icon"
+    size="2em"
   />
 </template>
 
 <script setup lang="ts">
-import { IconifyIcon } from "@iconify/types";
-
 const props = withDefaults(defineProps<{
   active?: boolean,
-  icon: IconifyIcon,
+  icon: string,
 }>(), {
   active: false
 });

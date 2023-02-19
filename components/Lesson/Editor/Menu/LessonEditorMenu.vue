@@ -4,17 +4,17 @@
       <LessonEditorMenuButton
         @click="toggleHeading(1)"
         :active="editor.isActive('heading', { level: 1 })"
-        :icon="iconHeadingOne"
+        icon="mdi:number-1-box-outline"
       />
       <LessonEditorMenuButton
         @click="toggleHeading(2)"
         :active="editor.isActive('heading', { level: 2 })"
-        :icon="iconHeadingTwo"
+        icon="mdi:number-2-box-outline"
       />
       <LessonEditorMenuButton
         @click="toggleHeading(3)"
         :active="editor.isActive('heading', { level: 3 })"
-        :icon="iconHeadingThree"
+        icon="mdi:number-3-box-outline"
       />
 
       <div class="border-r-2"></div>
@@ -22,22 +22,22 @@
       <LessonEditorMenuButton
         @click="toggleBold"
         :active="editor.isActive('bold')"
-        :icon="iconBold"
+        icon="mdi:format-bold"
       />
       <LessonEditorMenuButton
         @click="toggleItalic"
         :active="editor.isActive('italic')"
-        :icon="iconItalic"
+        icon="mdi:format-italic"
       />
       <LessonEditorMenuButton
         @click="toggleUnderline"
         :active="editor.isActive('underline')"
-        :icon="iconUnderline"
+        icon="mdi:format-underline"
       />
       <LessonEditorMenuButton
         @click="toggleStrike"
         :active="editor.isActive('strike')"
-        :icon="iconStrikethrough"
+        icon="mdi:format-strikethrough-variant"
       />
 
       <div class="border-r-2 mx-2"></div>
@@ -45,22 +45,22 @@
       <LessonEditorMenuButton
         @click="setTextAlign('left')"
         :active="editor.isActive({ textAlign: 'left' })"
-        :icon="iconAlignLeft"
+        icon="mdi:format-align-left"
       />
       <LessonEditorMenuButton
         @click="setTextAlign('center')"
         :active="editor.isActive({ textAlign: 'center' })"
-        :icon="iconAlignCenter"
+        icon="mdi:format-align-center"
       />
       <LessonEditorMenuButton
         @click="setTextAlign('right')"
         :active="editor.isActive({ textAlign: 'right' })"
-        :icon="iconAlignRight"
+        icon="mdi:format-align-right"
       />
       <LessonEditorMenuButton
         @click="setTextAlign('justify')"
         :active="editor.isActive({ textAlign: 'justify' })"
-        :icon="iconAlignJustify"
+        icon="mdi:format-align-justify"
       />
 
       <div class="border-r-2"></div>
@@ -68,27 +68,27 @@
       <LessonEditorMenuButton
         @click="toggleBulletedList"
         :active="editor.isActive('bulletList')"
-        :icon="iconListBulleted"
+        icon="mdi:format-list-bulleted"
       />
       <LessonEditorMenuButton
         @click="toggleOrderedList"
         :active="editor.isActive('orderedList')"
-        :icon="iconListNumbered"
+        icon="mdi:format-list-numbered"
       />
 
       <LessonEditorMenuButton
         @click="toggleCode"
         :active="editor.isActive('code')"
-        :icon="iconCodeTags"
+        icon="mdi:code-tags"
       />
       <LessonEditorMenuButton
         @click="setHorizontalLine"
-        :icon="iconHorizontalLine"
+        icon="mdi:horizontal-line"
       />
       <LessonEditorMenuButton
         @click="toggleBlockquote"
         :active="editor.isActive('blockquote')"
-        :icon="iconQuoteOpen"
+        icon="mdi:format-quote-open"
       />
     </template>
   </div>
@@ -97,25 +97,6 @@
 <script setup lang="ts">
 import { Editor } from '@tiptap/vue-3';
 import { useVModel } from "@vueuse/core";
-import iconBold from '@iconify-icons/mdi/format-bold';
-import iconItalic from '@iconify-icons/mdi/format-italic';
-import iconStrikethrough from '@iconify-icons/mdi/format-strikethrough-variant';
-import iconUnderline from '@iconify-icons/mdi/format-underline';
-
-import iconHeadingOne from '@iconify-icons/mdi/number-1-box-outline';
-import iconHeadingTwo from '@iconify-icons/mdi/number-2-box-outline';
-import iconHeadingThree from '@iconify-icons/mdi/number-3-box-outline';
-
-import iconAlignLeft from '@iconify-icons/mdi/format-align-left';
-import iconAlignCenter from '@iconify-icons/mdi/format-align-center';
-import iconAlignRight from '@iconify-icons/mdi/format-align-right';
-import iconAlignJustify from '@iconify-icons/mdi/format-align-justify';
-
-import iconListBulleted from '@iconify-icons/mdi/format-list-bulleted';
-import iconListNumbered from '@iconify-icons/mdi/format-list-numbered';
-import iconCodeTags from '@iconify-icons/mdi/code-tags';
-import iconHorizontalLine from '@iconify-icons/mdi/horizontal-line';
-import iconQuoteOpen from '@iconify-icons/mdi/format-quote-open';
 
 const props = defineProps<{
   modelValue: Editor
