@@ -2,6 +2,7 @@ import { UseFetchOptions } from "#app";
 import { useAuthStore } from "~/store/auth";
 import { FetchError } from 'ohmyfetch';
 import { NitroFetchRequest } from "nitropack";
+import { RouterMethod } from "h3";
 
 function getFetchOptions<ResT>(options: UseFetchOptions<ResT>) {    // TODO: Check options parameter on all functions
   const config = useRuntimeConfig();
@@ -28,7 +29,7 @@ function getFetchOptions<ResT>(options: UseFetchOptions<ResT>) {    // TODO: Che
 async function useHttp<ResT>(url: string, options: UseFetchOptions<ResT>) {
   options = getFetchOptions<ResT>(options);
 
-  return await useFetch<ResT, FetchError, NitroFetchRequest, ResT>(url, options);
+  return useFetch<ResT, FetchError, NitroFetchRequest, RouterMethod, ResT>(url, options);
 }
 
 export async function useHttpGet<ResT>(url: string, options: UseFetchOptions<ResT> = {}) {
