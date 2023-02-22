@@ -5,13 +5,13 @@
     <div class="text-2xl font-semibold mb-9">Увійти</div>
 
     <TextField
-      v-model="email"
+      v-model="loginForm.email"
       class="mb-7"
       name="email"
-      placeholder="e-mail"
+      placeholder="E-Mail"
     />
     <TextField
-      v-model="password"
+      v-model="loginForm.password"
       class="mb-16"
       label="Пароль"
       name="password"
@@ -52,25 +52,25 @@ interface SignInForm {
   password: string;
 }
 
+const loginForm: PasswordLoginRequest = reactive({
+  email: '',
+  password: ''
+});
+
 const form = useForm<SignInForm>({
   validationSchema: yup.object({
     email: yup.string().required().email(),
     password: yup.string().required().min(8),
   }),
-  initialValues: {
-    email: '',
-    password: ''
-  }
+  validateOnMount: false
 });
-const [email, password] = form.useFieldModel(['email', 'password']);
 
-const loginForm: PasswordLoginRequest = reactive({
-  email: 'maksym.lutsiuk@oa.edu.ua',
-  password: 'Mlutsiuk&309'
-});
 
 async function passwordLogin() {
-  // TODO: Validate
+  if(!(await form.validate()).valid) {
+    alert('Invalid');
+    return;
+  }
   const { data } = await authRepository.passwordLogin(loginForm)
 
   if(data.value) {
@@ -78,10 +78,6 @@ async function passwordLogin() {
     console.log(authStore.accessToken);
     await authStore.fetchUser();
   }
-}
-
-function logout() {
-  authStore.logout();
 }
 </script>
 

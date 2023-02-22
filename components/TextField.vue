@@ -2,7 +2,7 @@
   <div
     class="TextField"
     :class="{
-      'TextField--error': !meta.valid,
+      'TextField--error': errorMessage,
       'TextField--focused': isFocused,
     }"
   >
@@ -14,8 +14,9 @@
     />
     <div class="TextField_Field">
       <input
-        @blur="onBlur"
-        @input="validationChangeHandler"
+        v-on="validationHandlers"
+        v-model="inputValue"
+        @blur="blur"
         @focus="focus"
         :id="id"
         :name="props.name"
@@ -38,7 +39,6 @@
 
 <script setup lang="ts">
 // TODO: Add input type prop
-import { useVModel } from "@vueuse/core";
 import { useField } from "vee-validate";
 
 const props = withDefaults(defineProps<{
@@ -65,8 +65,6 @@ const emit = defineEmits<{
 const { uid } = useUid();
 const id = computed(() => props.id || `input-${uid}`);
 
-const content = useVModel(props, 'modelValue', emit);
-
 const {
   isFocused,
   focus,
@@ -77,18 +75,19 @@ const {
  *  @see https://vee-validate.logaretm.com/v4/guide/composition-api/caveats
  */
 const { name } = toRefs(props);
+const fieldContext = useField<string>(name, undefined, {
+  validateOnMount: false,
+  validateOnValueUpdate: false,
+  initialValue: props.modelValue
+});
+
 const {
   value: inputValue,
   errorMessage,
-  handleBlur: validationBlurHandler,
-  handleChange: validationChangeHandler,
   meta
-} = useField(name);
+} = fieldContext;
 
-function onBlur(e: FocusEvent) {
-  blur();
-  validationBlurHandler(e);
-}
+const validationHandlers = useValidationModes(fieldContext, 'eager');
 </script>
 
 <style lang="postcss" scoped>
