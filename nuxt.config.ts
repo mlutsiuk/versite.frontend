@@ -36,7 +36,7 @@ export default defineNuxtConfig({
     }
   },
 
-  // ssr: true,
+  ssr: true,
   // typescript: {
   //   strict: true
   // }
