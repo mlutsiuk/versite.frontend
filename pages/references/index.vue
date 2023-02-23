@@ -8,6 +8,7 @@
         class="text-[#3A84AD]"
         size="x-large"
         prepend-icon="mdi:google"
+        append-icon="mdi:google"
         :disabled="buttonDisabled"
       >
         Target button

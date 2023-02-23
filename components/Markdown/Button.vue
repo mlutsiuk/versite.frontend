@@ -27,6 +27,13 @@
       <span>
         <slot/>
       </span>
+
+      <Icon
+        v-if="props.appendIcon"
+        class="Button_AppendIcon"
+        :name="props.appendIcon"
+        size="1.25em"
+      />
     </span>
   </button>
 </template>
@@ -34,6 +41,7 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
   prependIcon?: string,
+  appendIcon?: string,
   variant?: 'filled' | 'outline',
   size?: 'small' | 'default' | 'large' | 'x-large',
   block?: boolean,
@@ -120,5 +128,9 @@ const props = withDefaults(defineProps<{
 
 .Button_PrependIcon {
   @apply mr-1.5 -ml-0.5;
+}
+
+.Button_AppendIcon {
+  @apply ml-1.5 -mr-0.5;
 }
 </style>
