@@ -3,6 +3,27 @@
 
     <h1 class="text-2xl">Lesson Editor Publication Date Popover</h1>
     <div class="h-24 bg-white p-4 flex justify-center items-center flex-wrap">
+      <MdButton
+        @click="testClick('disable/enable')"
+        class="text-[#3A84AD]"
+        size="x-large"
+        prepend-icon="mdi:google"
+        :disabled="buttonDisabled"
+      >
+        Target button
+      </MdButton>
+
+      <MdButton
+        class="text-[#6F5274] ml-2"
+        size="x-large"
+        @click="buttonDisabled = !buttonDisabled"
+      >
+        Disable/Enable target
+      </MdButton>
+    </div>
+
+    <h1 class="text-2xl">Lesson Editor Publication Date Popover</h1>
+    <div class="h-24 bg-white p-4 flex justify-center items-center flex-wrap">
       <LessonEditorPublicationDatePopover/>
     </div>
 
@@ -50,3 +71,11 @@
     <hr>
   </div>
 </template>
+
+<script setup lang="ts">
+const buttonDisabled = ref(false);
+
+function testClick(text: string) {
+  alert(text);
+}
+</script>
