@@ -13,7 +13,6 @@
     <TextField
       v-model="loginForm.password"
       class="mb-16"
-      label="Пароль"
       name="password"
       placeholder="Пароль"
       password
@@ -53,8 +52,8 @@ interface SignInForm {
 }
 
 const loginForm: PasswordLoginRequest = reactive({
-  email: '',
-  password: ''
+  email: 'f@f.ff',
+  password: '12121212'
 });
 
 const form = useForm<SignInForm>({
@@ -68,12 +67,12 @@ const form = useForm<SignInForm>({
 
 async function passwordLogin() {
   if(!(await form.validate()).valid) {
-    alert('Invalid');
     return;
   }
-  const { data } = await authRepository.passwordLogin(loginForm)
 
-  if(data.value) {
+  const { data, error } = await authRepository.passwordLogin(loginForm);
+
+  if(data.value && !error.value) {
     authStore.saveToken(data.value.access_token);
     console.log(authStore.accessToken);
     await authStore.fetchUser();

@@ -14,7 +14,8 @@ export const authRepository = {
     return await useHttpGet<GetGoogleLoginUrlResponse>('v1/auth/login/google/redirect');
   },
   async passwordLogin(body: PasswordLoginRequest) {
-    return await useHttpPost<AccessTokenResponse>('v1/auth/login/password', {
+    return await useAsyncHttp<AccessTokenResponse>('v1/auth/login/password', {
+      method: "POST",
       body
     });
   }
