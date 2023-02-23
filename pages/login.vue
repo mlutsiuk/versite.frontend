@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import { useForm } from 'vee-validate';
-import * as yup from 'yup';
+import { string, object } from 'yup';
 
 import { useAuthStore } from '~~/store/auth';
 import { authRepository, PasswordLoginRequest } from "~/api";
@@ -57,9 +57,9 @@ const loginForm: PasswordLoginRequest = reactive({
 });
 
 const form = useForm<SignInForm>({
-  validationSchema: yup.object({
-    email: yup.string().required().email(),
-    password: yup.string().required().min(8),
+  validationSchema: object({
+    email: string().required().email(),
+    password: string().required().min(8),
   }),
   validateOnMount: false
 });
