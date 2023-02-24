@@ -15,6 +15,7 @@
         prepend-icon="mdi:google"
         append-icon="mdi:google"
         :disabled="buttonDisabled"
+        :loading="buttonLoading"
       >
         Target button
       </MdButton>
@@ -25,6 +26,14 @@
         @click="buttonDisabled = !buttonDisabled"
       >
         Disable/Enable target
+      </MdButton>
+
+      <MdButton
+        class="text-[#6F5274] ml-2"
+        size="x-large"
+        @click="buttonLoading = !buttonLoading"
+      >
+        Switch loading
       </MdButton>
     </div>
 
@@ -80,6 +89,7 @@
 
 <script setup lang="ts">
 const buttonDisabled = ref(false);
+const buttonLoading = ref(false);
 
 function testClick(text: string) {
   alert(text);

@@ -5,6 +5,7 @@
       'Button--filled': props.variant == 'filled',
       'Button--outline': props.variant == 'outline',
       'Button--disabled': props.disabled,
+      'Button--loading': props.loading,
 
       'Button--block': props.block,
 
@@ -35,6 +36,9 @@
         size="1.25em"
       />
     </span>
+    <span class="Button_Loader">
+      <MdProgressCircular v-if="props.loading"/>
+    </span>
   </button>
 </template>
 
@@ -45,12 +49,14 @@ const props = withDefaults(defineProps<{
   variant?: 'filled' | 'outline',
   size?: 'small' | 'default' | 'large' | 'x-large',
   block?: boolean,
-  disabled?: boolean
+  disabled?: boolean,
+  loading?: boolean
 }>(), {
   variant: 'filled',
   size: 'default',
   block: false,
-  disabled: false
+  disabled: false,
+  loading: false
 });
 </script>
 
@@ -73,9 +79,16 @@ const props = withDefaults(defineProps<{
 .Button.Button--disabled {
   @apply bg-gray-200;
 
-  .Button_Content {
+  .Button_Content, .Button_Loader {
     @apply text-gray-400
   }
+}
+.Button--loading {
+  @apply pointer-events-none;
+}
+
+.Button--loading .Button_Content {
+  @apply opacity-0;
 }
 
 .Button--size-small {
@@ -122,7 +135,7 @@ const props = withDefaults(defineProps<{
   @apply flex items-center transition-all;
 }
 
-.Button--filled .Button_Content {
+.Button--filled .Button_Content, .Button--filled .Button_Loader {
    @apply text-white;
  }
 
@@ -132,5 +145,10 @@ const props = withDefaults(defineProps<{
 
 .Button_AppendIcon {
   @apply ml-1.5 -mr-0.5;
+}
+
+.Button_Loader {
+  @apply absolute top-0 left-0 w-full h-full
+  flex align-middle justify-center;
 }
 </style>
