@@ -98,7 +98,7 @@ const props = withDefaults(defineProps<{
     @apply opacity-0;
   }
 }
-.Button--block {
+.Button.Button--block {
   @apply flex grow shrink-0 min-w-full;
 }
 
