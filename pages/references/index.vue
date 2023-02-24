@@ -1,7 +1,12 @@
 <template>
   <div class="container m-3">
 
-    <h1 class="text-2xl">Lesson Editor Publication Date Popover</h1>
+    <h1 class="text-2xl">Progress Circular</h1>
+    <div class="h-24 bg-white p-4 flex justify-center items-center flex-wrap">
+      <MdProgressCircular/>
+    </div>
+
+    <h1 class="text-2xl">Buttons</h1>
     <div class="h-24 bg-white p-4 flex justify-center items-center flex-wrap">
       <MdButton
         @click="testClick('disable/enable')"
