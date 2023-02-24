@@ -69,6 +69,14 @@ const props = withDefaults(defineProps<{
 
 .Button--filled {
   @apply bg-current;
+
+  .Button_Content, .Button_Loader {
+    @apply text-white;
+  }
+
+  .Button_Highlighter {
+    @apply text-white;
+  }
 }
 .Button--outline {
   @apply border border-current;
@@ -85,15 +93,18 @@ const props = withDefaults(defineProps<{
 }
 .Button--loading {
   @apply pointer-events-none;
-}
 
-.Button--loading .Button_Content {
-  @apply opacity-0;
+  .Button_Content {
+    @apply opacity-0;
+  }
+}
+.Button--block {
+  @apply flex grow shrink-0 min-w-full;
 }
 
 .Button--size-small {
   @apply px-3 min-w-[50px] h-[28px]
-    text-xs;
+  text-xs;
 }
 .Button--size-default {
   @apply px-4 min-w-[64px] h-[36px]
@@ -101,20 +112,15 @@ const props = withDefaults(defineProps<{
 }
 .Button--size-large {
     @apply px-5 min-w-[78px] h-[44px]
-      text-base;
+    text-base;
 }
 .Button--size-x-large {
     @apply px-6 min-w-[92px] h-[52px]
     text-lg;
 }
 
-
-.Button--block {
-  @apply flex grow shrink-0 min-w-full;
-}
-
-.Button--filled .Button_Highlighter {
-  @apply text-white;
+.Button:hover .Button_Highlighter {
+  @apply bg-current opacity-5;
 }
 
 .Button_Highlighter {
@@ -125,28 +131,15 @@ const props = withDefaults(defineProps<{
 
   transition: background-color .3s cubic-bezier(.25,.8,.5,1), opacity .4s cubic-bezier(.25,.8,.5,1);
 }
-
-/* On button hover */
-.Button:hover .Button_Highlighter {
-  @apply bg-current opacity-5;
-}
-
 .Button_Content {
   @apply flex items-center transition-all;
 }
-
-.Button--filled .Button_Content, .Button--filled .Button_Loader {
-   @apply text-white;
- }
-
 .Button_PrependIcon {
   @apply mr-1.5 -ml-0.5;
 }
-
 .Button_AppendIcon {
   @apply ml-1.5 -mr-0.5;
 }
-
 .Button_Loader {
   @apply absolute top-0 left-0 w-full h-full
   flex align-middle justify-center;
