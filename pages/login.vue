@@ -22,6 +22,7 @@
       @click="passwordLogin"
       class="text-[#3A84AD]"
       size="x-large"
+      :loading="isLoading"
       block
     >
       Увійти
@@ -65,11 +66,14 @@ const form = useForm<SignInForm>({
 });
 
 
+const isLoading = ref(false);
+
 async function passwordLogin() {
   if(!(await form.validate()).valid) {
     return;
   }
 
+  isLoading.value = true;
   const { data, error } = await authRepository.passwordLogin(loginForm);
 
   if(data.value && !error.value) {
@@ -77,6 +81,7 @@ async function passwordLogin() {
     console.log(authStore.accessToken);
     await authStore.fetchUser();
   }
+  isLoading.value = false;
 }
 </script>
 

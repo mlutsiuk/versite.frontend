@@ -4,6 +4,7 @@
     prepend-icon="mdi:google"
     class="text-[#6F5274]"
     size="x-large"
+    :loading="fetchingUrl"
     block
   >
       Google
@@ -20,15 +21,19 @@ const authStore = useAuthStore();
 const config = useRuntimeConfig();
 const GOOGLE_CALLBACK_MESSAGE_EVENT = 'versite@auth-google-callback';
 
+const fetchingUrl = ref(false);
 async function login() {
+  fetchingUrl.value = true;
   const { data } = await authRepository.getGoogleLoginUrl();
   if(data.value) {
     openWindow(data.value.data.url, 'Google Login');
   }
+  fetchingUrl.value = false;
 }
 
+// TODO: Create composable
 function openWindow(url: string, title: string) {
-    let options = {
+    let options: Record<string, any> = {
       url,
       title,
       width: window.screen.width / 2,
@@ -46,7 +51,7 @@ function openWindow(url: string, title: string) {
       optionsStr
     );
 
-    if(window.focus) {
+    if(loginWindow?.focus) {
       loginWindow.focus();
     }
 }
