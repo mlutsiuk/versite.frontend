@@ -2,10 +2,15 @@ import { defineStore } from "pinia";
 import Cookies from "js-cookie";
 import { authRepository, UserModel } from "~/api";
 
+interface State {
+  user: UserModel | null,
+  token: string | null
+}
+
 export const useAuthStore = defineStore("auth", {
-  state: () => ({
-    user: null as UserModel | null,
-    token: Cookies.get("token") ?? null,
+  state: (): State => ({
+    user: null,
+    token: useCookie("token").value ?? null,
   }),
   getters: {
     accessToken: state => state.token,

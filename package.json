@@ -11,10 +11,8 @@
     "@iconify/vue": "^4.0.0",
     "@nuxtjs/google-fonts": "^3.0.0-1",
     "@tailwindcss/typography": "^0.5.8",
-    "@types/js-cookie": "^3.0.1",
     "@types/lodash-es": "^4.17.6",
     "@vueuse/core": "^9.4.0",
-    "js-cookie": "^3.0.1",
     "nuxt-icon": "^0.3.2",
     "pinia": "^2.0.23",
     "sass": "^1.55.0"
