@@ -39,7 +39,7 @@ import { useForm } from 'vee-validate';
 import { string, object } from 'yup';
 
 import { useAuthStore } from '~~/store/auth';
-import { authRepository, PasswordLoginRequest } from '~/api';
+import { passwordLoginEndpoint, PasswordLoginRequest } from '~/api';
 
 definePageMeta({
   layout: 'auth'
@@ -69,7 +69,7 @@ async function passwordLogin() {
   }
 
   isLoading.value = true;
-  const { data, error } = await authRepository.passwordLogin(loginForm);
+  const { data, error } = await useEndpointAsyncData(passwordLoginEndpoint, loginForm);
 
   if (data.value && !error.value) {
     authStore.saveToken(data.value.access_token);
