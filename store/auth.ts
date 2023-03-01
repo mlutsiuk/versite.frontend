@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import Cookies from "js-cookie";
 import { authRepository, UserModel } from "~/api";
 
 interface State {
@@ -19,13 +18,13 @@ export const useAuthStore = defineStore("auth", {
   actions: {
     saveToken(token: string) {
       this.token = token;
-      Cookies.set("token", token);
+      useCookie("token").value = token;
     },
     logout() {
       this.user = null;
       this.token = null;
 
-      Cookies.remove("token");
+      useCookie("token").value = null;
     },
     async fetchUser() {
       const { data } = await authRepository.getAuthenticatedUser();
