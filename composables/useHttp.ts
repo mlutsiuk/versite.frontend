@@ -1,9 +1,10 @@
-import { AsyncDataOptions, UseFetchOptions } from "#app";
+import { UseFetchOptions } from "#app";
 import { useAuthStore } from "~/store/auth";
 import { FetchError } from 'ohmyfetch';
 import { NitroFetchRequest } from "nitropack";
 import { RouterMethod } from "h3";
 import { FetchOptions } from "ofetch";
+import { AsyncHttpOptions } from '~/types/fetch/fetch';
 
 
 async function useHttp<ResT>(url: string, options: UseFetchOptions<ResT>) {
@@ -30,10 +31,6 @@ export async function useHttpPatch<ResT>(url: string, options: UseFetchOptions<R
 export async function useHttpDelete<ResT>(url: string, options: UseFetchOptions<ResT> = {}) {
   options.method = 'DELETE';
   return useHttp<ResT>(url, options)
-}
-
-interface AsyncHttpOptions<ResT> extends AsyncDataOptions<ResT>, FetchOptions {
-  method?: Uppercase<RouterMethod>
 }
 
 export async function useAsyncHttp<ResT>(url: string, options?: AsyncHttpOptions<ResT>) {
