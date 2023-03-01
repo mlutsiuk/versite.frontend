@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-[300vh] container mx-auto flex flex-col">
+  <div class="min-h-screen container mx-auto flex flex-col p-8">
     <h1 class="text-2xl font-bold text-indigo-500">Hello World</h1>
 
     <NuxtLink to="/login">Login</NuxtLink>
