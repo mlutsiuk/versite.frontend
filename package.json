@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@iconify/vue": "^4.0.0",
+    "@nuxt/devtools": "^0.2.5",
     "@nuxtjs/google-fonts": "^3.0.0-1",
     "@tailwindcss/typography": "^0.5.8",
     "@types/lodash-es": "^4.17.6",
@@ -47,7 +48,7 @@
     "@tiptap/pm": "^2.0.0-beta.212",
     "@tiptap/vue-3": "^2.0.0-beta.212",
     "lodash-es": "^4.17.21",
-    "nuxt": "npm:nuxt3@latest",
+    "nuxt": "^3.0.0",
     "vee-validate": "^4.7.4",
     "vue-input-autowidth": "^2.2.0",
     "vuejs3-datepicker": "^1.0.13",
