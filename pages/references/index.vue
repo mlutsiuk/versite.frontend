@@ -6,7 +6,7 @@
       <MdProgressCircular/>
     </div>
 
-    <h1 class="text-2xl">Buttons</h1>
+    <h1 class="text-2xl">Button disabled/loading states</h1>
     <div class="h-24 bg-white p-4 flex justify-center items-center flex-wrap">
       <MdButton
         @click="testClick('disable/enable')"
@@ -34,6 +34,49 @@
         @click="buttonLoading = !buttonLoading"
       >
         Switch loading
+      </MdButton>
+    </div>
+
+    <h1 class="text-2xl">Button sizes</h1>
+    <div class="h-24 bg-white space-x-2 p-4 flex justify-center items-center flex-wrap">
+      <MdButton
+        class="text-[#6F5274]"
+        size="small"
+        prepend-icon="mdi:google"
+        :disabled="buttonDisabled"
+        :loading="buttonLoading"
+      >
+        small
+      </MdButton>
+
+      <MdButton
+        class="text-[#6F5274]"
+        size="default"
+        prepend-icon="mdi:google"
+        :disabled="buttonDisabled"
+        :loading="buttonLoading"
+      >
+        default
+      </MdButton>
+
+      <MdButton
+        class="text-[#6F5274]"
+        size="large"
+        prepend-icon="mdi:google"
+        :disabled="buttonDisabled"
+        :loading="buttonLoading"
+      >
+        large
+      </MdButton>
+
+      <MdButton
+        class="text-[#6F5274]"
+        size="x-large"
+        prepend-icon="mdi:google"
+        :disabled="buttonDisabled"
+        :loading="buttonLoading"
+      >
+        x-large
       </MdButton>
     </div>
 
