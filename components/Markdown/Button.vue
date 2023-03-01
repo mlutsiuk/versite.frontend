@@ -64,7 +64,7 @@ const props = withDefaults(defineProps<{
 .Button {
   @apply relative items-center justify-center
   font-normal rounded-md box-border
-  select-none transition-all;
+  select-none transition-colors;
 }
 
 .Button--filled {
