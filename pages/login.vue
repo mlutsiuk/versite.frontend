@@ -6,13 +6,13 @@
 
     <TextField
       v-model="loginForm.email"
-      class="mb-7"
+      class="mb-1"
       name="email"
       placeholder="E-Mail"
     />
     <TextField
       v-model="loginForm.password"
-      class="mb-16"
+      class="mb-3"
       name="password"
       placeholder="Пароль"
       password
@@ -30,7 +30,7 @@
 
     <div class="my-4 font-normal text-gray-600">або</div>
 
-    <LoginWithGoogle />
+    <LoginWithGoogle/>
   </div>
 </template>
 
@@ -39,28 +39,23 @@ import { useForm } from 'vee-validate';
 import { string, object } from 'yup';
 
 import { useAuthStore } from '~~/store/auth';
-import { authRepository, PasswordLoginRequest } from "~/api";
+import { authRepository, PasswordLoginRequest } from '~/api';
 
 definePageMeta({
-  layout: 'auth',
+  layout: 'auth'
 });
 
 const authStore = useAuthStore();
 
-interface SignInForm {
-  email: string;
-  password: string;
-}
-
 const loginForm: PasswordLoginRequest = reactive({
-  email: 'f@f.ff',
-  password: '12121212'
+  email: '',
+  password: ''
 });
 
-const form = useForm<SignInForm>({
+const form = useForm<PasswordLoginRequest>({
   validationSchema: object({
     email: string().required().email(),
-    password: string().required().min(8),
+    password: string().required().min(8)
   }),
   validateOnMount: false
 });
@@ -69,14 +64,14 @@ const form = useForm<SignInForm>({
 const isLoading = ref(false);
 
 async function passwordLogin() {
-  if(!(await form.validate()).valid) {
+  if (!(await form.validate()).valid) {
     return;
   }
 
   isLoading.value = true;
   const { data, error } = await authRepository.passwordLogin(loginForm);
 
-  if(data.value && !error.value) {
+  if (data.value && !error.value) {
     authStore.saveToken(data.value.access_token);
     console.log(authStore.accessToken);
     await authStore.fetchUser();
