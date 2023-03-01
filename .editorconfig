@@ -10,3 +10,5 @@ trim_trailing_whitespace = true
 charset = utf-8
 indent_style = space
 indent_size = 2
+ij_javascript_enforce_trailing_comma = remove
+ij_typescript_enforce_trailing_comma = remove
