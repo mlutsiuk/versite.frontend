@@ -49,7 +49,7 @@ export async function useAsyncHttp<ResT>(url: string, options?: AsyncHttpOptions
   } = options;
 
 
-  return useAsyncData(() => {
+  return useAsyncData<ResT>(() => {
     let fetchFn = $fetchCreate();
 
     return fetchFn<ResT>(url, fetchOptions);
