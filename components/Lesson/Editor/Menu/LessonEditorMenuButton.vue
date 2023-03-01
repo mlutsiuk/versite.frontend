@@ -31,6 +31,6 @@ const emit = defineEmits<{
 }
 
 .button.active {
-  @apply bg-sky-100 text-sky-800;
+  @apply bg-sky-100 hover:bg-sky-200 text-sky-800;
 }
 </style>
