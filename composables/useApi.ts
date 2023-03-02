@@ -13,7 +13,7 @@ export function useApiAsyncData<
   endpoint: EP,
   // TODO: - Support of nullable ReqT(Request Type) in Endpoint interface
   //       - Ref<ReqT>
-  body?: ReqT,
+  body: ReqT,
   options?: Omit<AsyncHttpOptions<ResT>, 'method' | 'body'>
 ) {
 
