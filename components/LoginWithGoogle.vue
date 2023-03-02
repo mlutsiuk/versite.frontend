@@ -13,8 +13,8 @@
 
 <script setup lang="ts">
 import { useAuthStore } from '~~/store/auth';
-import { useEventListener } from "@vueuse/core";
-import { authRepository } from "~/api";
+import { useEventListener } from '@vueuse/core';
+import { authRepository } from '~/api';
 
 const authStore = useAuthStore();
 const config = useRuntimeConfig();
@@ -67,10 +67,10 @@ function onMessage(e: MessageEvent) {
   authStore.saveToken(e.data.payload.access_token);
   authStore.fetchUser();
 
-  const intendedUrl = useCookie("intended_url");
+  const intendedUrl = useCookie('intended_url');
 
   if (intendedUrl) {
-    useCookie("intended_url").value = null;
+    useCookie('intended_url').value = null;
     navigateTo(intendedUrl.value);
   } else {
     navigateTo('/');
