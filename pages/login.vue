@@ -73,8 +73,15 @@ async function passwordLogin() {
 
   if (data.value && !error.value) {
     authStore.saveToken(data.value.access_token);
-    console.log(authStore.accessToken);
     await authStore.fetchUser();
+
+    const intendedUrl = useCookie('intended_url');
+    if (intendedUrl) {
+      useCookie('intended_url').value = null;
+      navigateTo(intendedUrl.value);
+    } else {
+      navigateTo('/');
+    }
   }
   isLoading.value = false;
 }
