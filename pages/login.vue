@@ -69,7 +69,7 @@ async function passwordLogin() {
   }
 
   isLoading.value = true;
-  const { data, error } = await useEndpointAsyncData(passwordLoginEndpoint, loginForm);
+  const { data, error } = await useApiAsyncData(passwordLoginEndpoint, loginForm);
 
   if (data.value && !error.value) {
     authStore.saveToken(data.value.access_token);
