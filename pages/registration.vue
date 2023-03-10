@@ -49,10 +49,10 @@
 
 <script setup lang="ts">
 import { useForm } from 'vee-validate';
-import { string, object, ref as yupRef } from 'yup';
+import { object, ref as yupRef, string } from 'yup';
 
 import { useAuthStore } from '~~/store/auth';
-import { authRepository, passwordRegistrationEndpoint, PasswordRegistrationRequest } from '~/api';
+import { passwordRegistrationEndpoint, PasswordRegistrationRequest } from '~/api';
 
 definePageMeta({
   layout: 'auth',
@@ -85,7 +85,7 @@ async function passwordRegistration() {
   }
 
   isLoading.value = true;
-  const { data, error } = await useApiAsyncData(passwordRegistrationEndpoint, registrationForm);
+  const { data, error } = await passwordRegistrationEndpoint.asyncData(registrationForm);
 
   if(data.value && !error.value) {
     authStore.saveToken(data.value.access_token);

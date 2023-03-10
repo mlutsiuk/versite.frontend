@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { useForm } from 'vee-validate';
-import { string, object } from 'yup';
+import { object, string } from 'yup';
 
 import { useAuthStore } from '~~/store/auth';
 import { passwordLoginEndpoint, PasswordLoginRequest } from '~/api';
@@ -69,7 +69,7 @@ async function passwordLogin() {
   }
 
   isLoading.value = true;
-  const { data, error } = await useApiAsyncData(passwordLoginEndpoint, loginForm);
+  const { data, error } = await passwordLoginEndpoint.asyncData(loginForm);
 
   if (data.value && !error.value) {
     authStore.saveToken(data.value.access_token);
