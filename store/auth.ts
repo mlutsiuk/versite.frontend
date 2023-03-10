@@ -1,5 +1,5 @@
-import { defineStore } from "pinia";
-import { authRepository, UserModel } from "~/api";
+import { defineStore } from 'pinia';
+import { getAuthenticatedUserEndpoint, UserModel } from '~/api';
 
 interface State {
   user: UserModel | null,
@@ -27,7 +27,7 @@ export const useAuthStore = defineStore("auth", {
       useCookie("token").value = null;
     },
     async fetchUser() {
-      const { data } = await authRepository.getAuthenticatedUser();
+      const { data } = await getAuthenticatedUserEndpoint.asyncData();
 
       if(data.value) {
         this.user = data.value.data;
