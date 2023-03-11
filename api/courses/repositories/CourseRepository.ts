@@ -2,29 +2,58 @@ import {
   AllCoursesResponse,
   CreateCourseRequest,
   CreateCourseResponse,
+  Endpoint,
   FindCourseResponse,
   UpdateCourseRequest,
   UpdateCourseResponse
-} from "~/api";
+} from '~/api';
 
-export const courseRepository = {
-  async all() {
-    return await useHttpGet<AllCoursesResponse>(`v1/courses`);
-  },
-  async find(id: string) {
-    return await useHttpGet<FindCourseResponse>(`v1/courses/${id}`);
-  },
-  async create(body: CreateCourseRequest) {
-    return await useHttpPost<CreateCourseResponse>('v1/courses', {
-      body
-    });
-  },
-  async update(id: string, body: UpdateCourseRequest) {
-    return await useHttpPatch<UpdateCourseResponse>(`v1/courses/${id}`, {
-      body
-    });
-  },
-  async delete(id: string) {
-    return await useHttpDelete(`v1/courses/${id}`);
-  }
-}
+const all = new Endpoint<
+  AllCoursesResponse
+>({
+  method: 'GET',
+  url: 'v1/courses'
+});
+
+const find = new Endpoint<
+  FindCourseResponse,
+  undefined,
+  { id: number }
+>({
+  method: 'GET',
+  url: ({ id }) => `v1/courses/${id}`
+});
+
+const create = new Endpoint<
+  CreateCourseResponse,
+  CreateCourseRequest
+>({
+  method: 'POST',
+  url: 'v1/courses'
+});
+
+const update = new Endpoint<
+  UpdateCourseResponse,
+  UpdateCourseRequest,
+  { id: number }
+>({
+  method: 'PATCH',
+  url: ({ id }) => `v1/courses/${id}`
+});
+
+const deleteCourse = new Endpoint<
+  undefined,
+  undefined,
+  { id: number }
+>({
+  method: 'DELETE',
+  url: ({ id }) => `v1/courses/${id}`
+});
+
+export const courses = {
+  all,
+  find,
+  create,
+  update,
+  delete: deleteCourse
+};
