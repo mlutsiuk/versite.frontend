@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
 // TODO: Add input type prop
-import { useField } from "vee-validate";
+import { useField } from 'vee-validate';
 
 const props = withDefaults(defineProps<{
   id?: string
@@ -123,7 +123,7 @@ const validationHandlers = useValidationModes(fieldContext, 'eager');
 
 .TextField_Input {
   @apply block w-full p-4
-  focus:outline-none
+  focus:outline-none rounded-md
   text-gray-900 placeholder:text-black placeholder:opacity-50;
 }
 
