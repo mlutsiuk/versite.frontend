@@ -1,23 +1,23 @@
 import { RouterMethod } from 'h3';
 import { AsyncHttpOptions } from '~/types/fetch/fetch';
+import { ConditionalProperty, RequiredFieldsOnly } from '~/types/object';
 
-// interface PaParams<ResT, ReqT, RouteParamsT> extends Omit<AsyncHttpOptions<ResT>, 'method' | 'body'> {
-//   body: ReqT extends undefined ? never : ReqT,
-//   routeParams?: RouteParamsT extends undefined ? undefined : RouteParamsT
-// }
 
-interface PaParams<ResT> extends Omit<AsyncHttpOptions<ResT>, 'method' | 'body'> {
-  // body: ReqT extends undefined ? never : ReqT,
-  // routeParams?: RouteParamsT extends undefined ? undefined : RouteParamsT
-}
+type AsyncDataOptions<ResT, ReqT, RouteParamsT> = ConditionalProperty<
+  ConditionalProperty<
+    Omit<AsyncHttpOptions<ResT>, 'method' | 'body'>,
+    'body',
+    ReqT
+  >,
+  'routeParams',
+  RouteParamsT
+>;
 
-type BPaParams<ResT, ReqT> = ReqT extends undefined    // TODO: Create helper type
-  ? PaParams<ResT> & { body?: never }
-  : PaParams<ResT> & { body: ReqT};
-
-type RBPaParams<ResT, ReqT, RouteParamsT> = RouteParamsT extends undefined
-  ? BPaParams<ResT, ReqT> & { routeParams?: never }
-  : BPaParams<ResT, ReqT> & { routeParams: RouteParamsT };
+type ConditionallyRequiredOptions<
+  OptionsT extends object
+> = keyof RequiredFieldsOnly<OptionsT> extends never    // If options don't have any required field
+  ? [OptionsT?]    // They can be optional
+  : [OptionsT];    // Otherwise, required
 
 export class Endpoint<
   ResT,
@@ -35,12 +35,12 @@ export class Endpoint<
     this.url = opts.url;
   }
 
-  public asyncData(
-    options: RBPaParams<ResT, ReqT, RouteParamsT>
-  ) {
 
+  public asyncData(
+    ...[options]: ConditionallyRequiredOptions<AsyncDataOptions<ResT, ReqT, RouteParamsT>>
+  ) {
     let url = this.url instanceof Function
-      ? this.url(options.routeParams as RouteParamsT)    // TODO: Check for undefined
+      ? this.url(options!.routeParams as RouteParamsT)
       : this.url;
 
     return useAsyncHttp<ResT>(url, {
