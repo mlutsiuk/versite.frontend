@@ -14,23 +14,3 @@ export type ConditionalProperty<Base, Key extends string, PropertyT> = Base & (
 export type RequiredFieldsOnly<T extends object> = {
   [K in keyof T as T[K] extends Required<T>[K] ? K : never]: T[K]
 }
-
-/**
- * Omit all properties with given type.
- */
-type OmitType<T, V> = {
-  [K in keyof T]-?: T[K] extends V ? never : K
-}[keyof T];
-
-type KeysMatching<T, V> = {[K in keyof T]-?: T[K] extends V ? K : never}[keyof T];
-
-export type MappedConditionalProperties<
-  Base,
-  Map,
-  NonUnd extends keyof Map = OmitType<Map, undefined>,
-  Und extends keyof Map = Exclude<keyof Map, NonUnd>,
-> = Base & {
-  [K in NonUnd]: Map[K]
-} & {
-  [K in Und]?: never
-};
