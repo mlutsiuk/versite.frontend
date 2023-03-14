@@ -69,7 +69,9 @@ async function passwordLogin() {
   }
 
   isLoading.value = true;
-  const { data, error } = await passwordLoginEndpoint.asyncData(loginForm);
+  const { data, error } = await passwordLoginEndpoint.asyncData({
+    body: loginForm
+  });
 
   if (data.value && !error.value) {
     authStore.saveToken(data.value.access_token);

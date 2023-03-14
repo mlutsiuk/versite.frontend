@@ -85,7 +85,9 @@ async function passwordRegistration() {
   }
 
   isLoading.value = true;
-  const { data, error } = await passwordRegistrationEndpoint.asyncData(registrationForm);
+  const { data, error } = await passwordRegistrationEndpoint.asyncData({
+    body: registrationForm
+  });
 
   if(data.value && !error.value) {
     authStore.saveToken(data.value.access_token);
