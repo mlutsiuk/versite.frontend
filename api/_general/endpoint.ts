@@ -1,6 +1,7 @@
 import { RouterMethod } from 'h3';
 import { AsyncHttpOptions } from '~/types/fetch/fetch';
 import { ConditionalProperty, RequiredFieldsOnly } from '~/types/object';
+import { useApiAsyncData } from '~/composables/useApiFetch';
 
 
 type AsyncDataOptions<ResT, ReqT, RouteParamsT> = ConditionalProperty<
@@ -11,7 +12,9 @@ type AsyncDataOptions<ResT, ReqT, RouteParamsT> = ConditionalProperty<
   >,
   'routeParams',
   RouteParamsT
->;
+> & {
+  key?: string
+};
 
 type ConditionallyRequiredOptions<
   OptionsT extends object
@@ -43,7 +46,21 @@ export class Endpoint<
       ? this.url(options!.routeParams as RouteParamsT)
       : this.url;
 
-    return useAsyncHttp<ResT>(url, {
+    return useApiAsyncData<ResT>(url, {
+      method: this.method,
+
+      ...options
+    }, options?.key);
+  }
+
+  public fetch(
+    ...[options]: ConditionallyRequiredOptions<AsyncDataOptions<ResT, ReqT, RouteParamsT>>
+  ) {
+    let url = this.url instanceof Function
+      ? this.url(options!.routeParams as RouteParamsT)
+      : this.url;
+
+    return useApiFetch<ResT>(url, {
       method: this.method,
 
       ...options
