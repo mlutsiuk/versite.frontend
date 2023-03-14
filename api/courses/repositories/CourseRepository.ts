@@ -1,12 +1,6 @@
-import {
-  AllCoursesResponse,
-  CreateCourseRequest,
-  CreateCourseResponse,
-  Endpoint,
-  FindCourseResponse,
-  UpdateCourseRequest,
-  UpdateCourseResponse
-} from '~/api';
+import { Endpoint } from '~/api';
+import { AllCoursesResponse, CreateCourseResponse, FindCourseResponse, UpdateCourseResponse } from '../responses';
+import { CreateCourseRequest, UpdateCourseRequest } from '~/api/courses';
 
 const all = new Endpoint<
   AllCoursesResponse

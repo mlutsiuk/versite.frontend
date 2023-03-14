@@ -39,7 +39,8 @@ import { useForm } from 'vee-validate';
 import { object, string } from 'yup';
 
 import { useAuthStore } from '~~/store/auth';
-import { passwordLoginEndpoint, PasswordLoginRequest } from '~/api';
+import { PasswordLoginRequest } from '~/api/auth';
+import { auth } from '~/api/repositories';
 
 definePageMeta({
   layout: 'auth'
@@ -69,7 +70,7 @@ async function passwordLogin() {
   }
 
   isLoading.value = true;
-  const { data, error } = await passwordLoginEndpoint.asyncData({
+  const { data, error } = await auth.passwordLogin.asyncData({
     body: loginForm
   });
 

@@ -52,7 +52,8 @@ import { useForm } from 'vee-validate';
 import { object, ref as yupRef, string } from 'yup';
 
 import { useAuthStore } from '~~/store/auth';
-import { passwordRegistrationEndpoint, PasswordRegistrationRequest } from '~/api';
+import { PasswordRegistrationRequest } from '~/api/auth';
+import { auth } from '~/api/auth/repositories';
 
 definePageMeta({
   layout: 'auth',
@@ -85,7 +86,7 @@ async function passwordRegistration() {
   }
 
   isLoading.value = true;
-  const { data, error } = await passwordRegistrationEndpoint.asyncData({
+  const { data, error } = await auth.passwordRegistration.asyncData({
     body: registrationForm
   });
 

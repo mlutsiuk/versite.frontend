@@ -1,7 +1,15 @@
-import { FindUserByNicknameResponse } from "~/api";
+import { Endpoint } from '~/api';
+import { FindUserByNicknameResponse } from '~/api/user';
 
-export const userRepository = {
-  async findByNickname(nickname: string) {
-    return await useHttpGet<FindUserByNicknameResponse>(`v1/users/${nickname}`)
-  }
+const findByNickname = new Endpoint<
+  FindUserByNicknameResponse,
+  undefined,
+  { nickname: string }
+>({
+  method: 'GET',
+  url: ({ nickname }) => `v1/users/${nickname}`
+});
+
+export const users = {
+  findByNickname
 }

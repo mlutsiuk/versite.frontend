@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '~~/store/auth';
 import { useEventListener } from '@vueuse/core';
-import { getGoogleLoginUrlEndpoint } from '~/api';
+import { auth } from '~/api/auth/repositories';
 
 const authStore = useAuthStore();
 const config = useRuntimeConfig();
@@ -24,7 +24,7 @@ const fetchingUrl = ref(false);
 
 async function login() {
   fetchingUrl.value = true;
-  const { data } = await getGoogleLoginUrlEndpoint.asyncData();
+  const { data } = await auth.getGoogleLoginUrl.asyncData();
   if (data.value) {
     openWindow(data.value.data.url, 'Google Login');
   }
