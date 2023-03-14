@@ -7,7 +7,7 @@
       alt="Avatar"
     />
     <div
-      v-else
+      v-else-if="user"
       :style="{ 'background-color' : avatarColor }"
       class="missing-avatar"
     >
@@ -33,9 +33,13 @@ const authStore = useAuthStore();
 const user = computed(() => authStore.user);
 
 const avatarColor = computed(() => {
+  if (!user.value) {
+    return;
+  }
+
   let hash = 0;
-  for (let i = 0; i < user.value!.nickname!.length; i++) {
-    hash = user.value!.nickname!.charCodeAt(i) + ((hash << 5) - hash);
+  for (let i = 0; i < user.value!.nickname.length; i++) {
+    hash = user.value!.nickname.charCodeAt(i) + ((hash << 5) - hash);
   }
   console.info(hash);
 
