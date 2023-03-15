@@ -24,7 +24,9 @@ const fetchingUrl = ref(false);
 
 async function login() {
   fetchingUrl.value = true;
-  const { data } = await auth.getGoogleLoginUrl.asyncData();
+  const { data } = await auth.getGoogleLoginUrl.asyncData({
+    key: 'auth:getGoogleLoginUrl'
+  });
   if (data.value) {
     openWindow(data.value.data.url, 'Google Login');
   }

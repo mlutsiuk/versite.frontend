@@ -4,6 +4,7 @@
 
     <NuxtLink to="/login">Login</NuxtLink>
 
+    <NuxtLink to="/courses">Courses</NuxtLink>
     <NuxtLink to="/courses/advanced-uiux-design-in-figma">Course landing</NuxtLink>
     <NuxtLink to="/anna.romaniuk">Profile</NuxtLink>
     <NuxtLink to="/lessons/515151/edit">Edit lesson</NuxtLink>

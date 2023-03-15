@@ -87,6 +87,7 @@ async function passwordRegistration() {
 
   isLoading.value = true;
   const { data, error } = await auth.passwordRegistration.asyncData({
+    key: 'passwordRegistration',
     body: registrationForm
   });
 

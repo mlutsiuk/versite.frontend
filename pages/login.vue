@@ -71,6 +71,7 @@ async function passwordLogin() {
 
   isLoading.value = true;
   const { data, error } = await auth.passwordLogin.asyncData({
+    key: 'auth:passwordLogin',
     body: loginForm
   });
 
