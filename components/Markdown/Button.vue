@@ -1,6 +1,7 @@
 <template>
-  <button
+  <NuxtLink
     class="Button"
+    :to="props.to"
     :class="{
       'Button--filled': props.variant == 'filled',
       'Button--outline': props.variant == 'outline',
@@ -14,7 +15,6 @@
       'Button--size-large': props.size == 'large',
       'Button--size-x-large': props.size == 'x-large'
     }"
-    :disabled="props.disabled"
   >
     <span class="Button_Highlighter"></span>
     <span class="Button_Content">
@@ -39,7 +39,7 @@
     <span class="Button_Loader">
       <MdProgressCircular v-if="props.loading"/>
     </span>
-  </button>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
@@ -50,7 +50,9 @@ const props = withDefaults(defineProps<{
   size?: 'small' | 'default' | 'large' | 'x-large',
   block?: boolean,
   disabled?: boolean,
-  loading?: boolean
+  loading?: boolean,
+
+  to?: string
 }>(), {
   variant: 'filled',
   size: 'default',
@@ -62,9 +64,9 @@ const props = withDefaults(defineProps<{
 
 <style lang="postcss" scoped>
 .Button {
-  @apply relative items-center justify-center
+  @apply relative inline-flex items-center justify-center
   font-normal rounded-md box-border
-  select-none transition-colors;
+  select-none cursor-pointer transition-colors;
 }
 
 .Button--filled {
@@ -99,7 +101,7 @@ const props = withDefaults(defineProps<{
   }
 }
 .Button.Button--block {
-  @apply flex grow shrink-0 min-w-full;
+  @apply flex shrink-0 min-w-full;
 }
 
 .Button--size-small {
@@ -111,12 +113,12 @@ const props = withDefaults(defineProps<{
   text-sm;
 }
 .Button--size-large {
-    @apply px-5 min-w-[78px] h-[44px]
-    text-base;
+  @apply px-5 min-w-[78px] h-[44px]
+  text-base;
 }
 .Button--size-x-large {
-    @apply px-6 min-w-[92px] h-[52px]
-    text-lg;
+  @apply px-6 min-w-[92px] h-[52px]
+  text-lg;
 }
 
 .Button:hover .Button_Highlighter {
@@ -129,7 +131,7 @@ const props = withDefaults(defineProps<{
   /*transition-opacity transition-colors duration-200 ease-in-out;*/
   border-radius: inherit;
 
-  transition: background-color .3s cubic-bezier(.25,.8,.5,1), opacity .4s cubic-bezier(.25,.8,.5,1);
+  transition: background-color .3s cubic-bezier(.25, .8, .5, 1), opacity .4s cubic-bezier(.25, .8, .5, 1);
 }
 .Button_Content {
   @apply flex items-center transition-all;
