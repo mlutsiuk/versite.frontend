@@ -58,7 +58,7 @@ const avatarColor = computed(() => {
 }
 
 .missing-avatar {
-  @apply h-[40px] w-[40px] flex items-center justify-center rounded
+  @apply h-[40px] w-[40px] flex items-center justify-center rounded-md
   text-2xl text-white font-medium
   transition-colors;
 }
