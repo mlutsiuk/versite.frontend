@@ -36,7 +36,9 @@
 
 <script setup lang="ts">
 import { useForm } from 'vee-validate';
-import { object, string } from 'yup';
+import { object, string } from 'zod';
+
+import { toFormValidator } from '@vee-validate/zod';
 
 import { useAuthStore } from '~~/store/auth';
 import { PasswordLoginRequest } from '~/api/auth';
@@ -54,10 +56,10 @@ const loginForm: PasswordLoginRequest = reactive({
 });
 
 const form = useForm<PasswordLoginRequest>({
-  validationSchema: object({
-    email: string().required().email(),
-    password: string().required().min(8)
-  }),
+  validationSchema: toFormValidator(object<Record<keyof PasswordLoginRequest, any>>({
+    email: string().email(),
+    password: string().min(8)
+  })),
   validateOnMount: false
 });
 

@@ -49,7 +49,9 @@
 
 <script setup lang="ts">
 import { useForm } from 'vee-validate';
-import { object, ref as yupRef, string } from 'yup';
+import { object, string } from 'zod';
+
+import { toFormValidator } from '@vee-validate/zod';
 
 import { useAuthStore } from '~~/store/auth';
 import { PasswordRegistrationRequest } from '~/api/auth';
@@ -69,12 +71,15 @@ const registrationForm: PasswordRegistrationRequest = reactive({
 });
 
 const form = useForm<PasswordRegistrationRequest>({
-  validationSchema: object({
-    name: string().required().min(2).max(32),
-    email: string().required().email(),
-    password: string().required().min(8),
-    passwordRepeat: string().required().oneOf([yupRef('password')], 'Паролі не співпадають')
-  }),
+  validationSchema: toFormValidator(object({
+    name: string().min(2).max(32),
+    email: string().email(),
+    password: string().min(8),
+    passwordRepeat: string()
+  }).refine((data) => data.password === data.passwordRepeat, {
+    message: 'Паролі не співпадають',
+    path: ['passwordRepeat']
+  })),
   validateOnMount: false
 });
 
