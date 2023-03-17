@@ -12,7 +12,7 @@
       class="missing-avatar"
     >
       <div>
-        {{ user!.name.charAt(0) }}
+        {{ user!.name.charAt(0).toUpperCase() }}
       </div>
     </div>
     <div class="flex flex-col ml-1">

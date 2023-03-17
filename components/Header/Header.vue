@@ -13,6 +13,7 @@
         <HeaderNotificationsButton class="mr-6"/>
 
         <HeaderAvatar/>
+        <HeaderLogout class="ml-4"/>
       </div>
     </div>
   </div>
