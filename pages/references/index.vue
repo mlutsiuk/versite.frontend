@@ -1,6 +1,11 @@
 <template>
   <div class="container m-3">
 
+    <h1 class="text-2xl">Header dropdown</h1>
+    <div class="bg-neutral-50 p-4 flex justify-center items-center flex-wrap">
+      <HeaderDropdown/>
+    </div>
+
     <h1 class="text-2xl">Progress Circular</h1>
     <div class="h-24 bg-white p-4 flex justify-center items-center flex-wrap">
       <MdProgressCircular/>
