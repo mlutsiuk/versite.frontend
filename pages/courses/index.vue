@@ -35,7 +35,7 @@
         </MdButton>
 
         <MdButton
-          :to="`/courses/${course.id}`"
+          :to="`/courses/${course.id}/lessons`"
           block
           class="mt-2 text-[#6F5274]"
           variant="outline"
