@@ -90,7 +90,7 @@
       <LessonEditorPublicationDatePopover/>
     </div>
 
-   <CourseCover class="w-[500px]"/>
+    <CourseCover class="w-[500px]"/>
 
     <h1 class="text-2xl">Badge</h1>
     <div class="bg-white p-4 flex justify-center items-center flex-wrap">
