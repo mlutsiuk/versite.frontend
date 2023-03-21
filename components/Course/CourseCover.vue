@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import shuffle from "lodash-es/shuffle";
-import random from "lodash-es/random";
+import shuffle from 'lodash-es/shuffle';
+import random from 'lodash-es/random';
 
 const canvas = ref<HTMLCanvasElement | null>(null);
 

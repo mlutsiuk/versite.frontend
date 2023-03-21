@@ -12,7 +12,7 @@ const all = new Endpoint<
 const find = new Endpoint<
   FindCourseResponse,
   undefined,
-  { id: number }
+  { id: string }
 >({
   method: 'GET',
   url: ({ id }) => `v1/courses/${id}`
@@ -29,7 +29,7 @@ const create = new Endpoint<
 const update = new Endpoint<
   UpdateCourseResponse,
   UpdateCourseRequest,
-  { id: number }
+  { id: string }
 >({
   method: 'PATCH',
   url: ({ id }) => `v1/courses/${id}`
@@ -38,7 +38,7 @@ const update = new Endpoint<
 const deleteCourse = new Endpoint<
   undefined,
   undefined,
-  { id: number }
+  { id: string }
 >({
   method: 'DELETE',
   url: ({ id }) => `v1/courses/${id}`

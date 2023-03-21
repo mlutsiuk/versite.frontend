@@ -28,7 +28,9 @@ export const useAuthStore = defineStore("auth", {
       useCookie("token").value = null;
     },
     async fetchUser() {
-      const { data } = await auth.getAuthenticatedUser.asyncData();
+      const { data } = await auth.getAuthenticatedUser.asyncData({
+        key: 'auth:getAuthenticatedUser'
+      });
 
       if(data.value) {
         this.user = data.value.data;

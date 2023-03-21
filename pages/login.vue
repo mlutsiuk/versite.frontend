@@ -5,13 +5,11 @@
     <div class="text-2xl font-semibold mb-9">Увійти</div>
 
     <TextField
-      v-model="loginForm.email"
       class="mb-1"
       name="email"
       placeholder="E-Mail"
     />
     <TextField
-      v-model="loginForm.password"
       class="mb-3"
       name="password"
       placeholder="Пароль"
@@ -35,14 +33,10 @@
 </template>
 
 <script setup lang="ts">
-import { useForm } from 'vee-validate';
-import { object, string } from 'zod';
-
-import { toFormValidator } from '@vee-validate/zod';
-
 import { useAuthStore } from '~~/store/auth';
 import { PasswordLoginRequest } from '~/api/auth';
 import { auth } from '~/api/repositories';
+import { object, string } from 'zod';
 
 definePageMeta({
   layout: 'auth'
@@ -50,17 +44,11 @@ definePageMeta({
 
 const authStore = useAuthStore();
 
-const loginForm: PasswordLoginRequest = reactive({
-  email: '',
-  password: ''
-});
-
 const form = useForm<PasswordLoginRequest>({
-  validationSchema: toFormValidator(object<Record<keyof PasswordLoginRequest, any>>({
+  validationSchema: object({
     email: string().email(),
     password: string().min(8)
-  })),
-  validateOnMount: false
+  })
 });
 
 
@@ -74,7 +62,7 @@ async function passwordLogin() {
   isLoading.value = true;
   const { data, error } = await auth.passwordLogin.asyncData({
     key: 'auth:passwordLogin',
-    body: loginForm
+    body: form.values
   });
 
   if (data.value && !error.value) {
@@ -92,4 +80,3 @@ async function passwordLogin() {
   isLoading.value = false;
 }
 </script>
-

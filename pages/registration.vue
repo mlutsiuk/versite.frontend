@@ -5,26 +5,22 @@
     <div class="text-2xl font-semibold mb-9">Реєстрація</div>
 
     <TextField
-      v-model="registrationForm.name"
       class="mb-1"
       name="name"
       placeholder="Ім'я"
     />
     <TextField
-      v-model="registrationForm.email"
       class="mb-1"
       name="email"
       placeholder="E-Mail"
     />
     <TextField
-      v-model="registrationForm.password"
       class="mb-1"
       name="password"
       placeholder="Пароль"
       password
     />
     <TextField
-      v-model="registrationForm.passwordRepeat"
       class="mb-1"
       name="passwordRepeat"
       placeholder="Повторіть пароль"
@@ -63,13 +59,6 @@ definePageMeta({
 
 const authStore = useAuthStore();
 
-const registrationForm: PasswordRegistrationRequest = reactive({
-  name: '',
-  email: '',
-  password: '',
-  passwordRepeat: ''
-});
-
 const form = useForm<PasswordRegistrationRequest>({
   validationSchema: toFormValidator(object({
     name: string().min(2).max(32),
@@ -79,8 +68,7 @@ const form = useForm<PasswordRegistrationRequest>({
   }).refine((data) => data.password === data.passwordRepeat, {
     message: 'Паролі не співпадають',
     path: ['passwordRepeat']
-  })),
-  validateOnMount: false
+  }))
 });
 
 
@@ -93,12 +81,14 @@ async function passwordRegistration() {
   isLoading.value = true;
   const { data, error } = await auth.passwordRegistration.asyncData({
     key: 'passwordRegistration',
-    body: registrationForm
+    body: form.values
   });
 
   if(data.value && !error.value) {
     authStore.saveToken(data.value.access_token);
     await authStore.fetchUser();
+
+    navigateTo('/')
   }
   isLoading.value = false;
 }

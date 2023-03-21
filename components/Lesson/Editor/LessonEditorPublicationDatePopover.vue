@@ -29,7 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
 import Datepicker from 'vuejs3-datepicker';
-
 </script>
