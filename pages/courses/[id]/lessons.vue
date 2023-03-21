@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row h-full space-x-5">
     <div class="basis-2/12 h-full bg-gray-100">
-      <CourseSidebar :course-slug="$route.params.slug"/>
+      <CourseSidebar :course-slug="$route.params.id"/>
     </div>
 
     <div class="basis-10/12 bg-gray-100">
