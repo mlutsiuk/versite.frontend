@@ -1,3 +1,5 @@
+import { Message } from '~/types/snackbar';
+
 export type AppEvents = {
-  'event-bus:test': { message: string }
+  'snackbar:show': Message
 }
