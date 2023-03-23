@@ -61,8 +61,7 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>();
 
-// TODO: Simplify
-const { uid } = useUid();
+const uid = useUid().next();
 const id = computed(() => props.id || `input-${uid}`);
 
 const {
