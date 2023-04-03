@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     transpile: ['@headlessui/vue']
   },
   modules: [
+    'nuxt-typed-router',
     '@nuxt/devtools',
     [
       '@nuxtjs/google-fonts',
@@ -17,10 +18,10 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt'
   ],
-  app: {
-    pageTransition: { name: 'page', mode: 'out-in' },
-    layoutTransition: { name: 'layout', mode: 'out-in' }
-  },
+  // app: {
+  //   pageTransition: { name: 'page', mode: 'out-in' },
+  //   layoutTransition: { name: 'layout', mode: 'out-in' }
+  // },
   css: [
     '@/assets/scss/index.scss'
   ],
