@@ -1,11 +1,13 @@
 <template>
-  <NuxtLayout>
-    <NuxtLoadingIndicator/>
+  <div>
+    <NuxtLayout>
+      <NuxtLoadingIndicator/>
 
-    <NuxtPage/>
+      <NuxtPage/>
+    </NuxtLayout>
 
     <Snackbar/>
-  </NuxtLayout>
+  </div>
 </template>
 
 <style>
