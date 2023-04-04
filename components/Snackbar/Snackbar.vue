@@ -37,6 +37,16 @@ function removeMessage(index: number) {
   messages.splice(index, 1);
 }
 
-onMounted(() => on('snackbar:show', addMessage));
-onUnmounted(() => off('snackbar:show', addMessage));
+function clearMessages() {
+  messages.splice(0, messages.length);
+}
+
+onMounted(() => {
+  on('snackbar:show', addMessage);
+  on('snackbar:clear', clearMessages);
+});
+onUnmounted(() => {
+  off('snackbar:show', addMessage);
+  off('snackbar:clear', clearMessages);
+});
 </script>

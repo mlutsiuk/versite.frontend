@@ -18,8 +18,13 @@ function add(message: Partial<Message>) {
   });
 }
 
+function clear() {
+  emit('snackbar:clear');
+}
+
 export function useSnackbar() {
   return {
-    add
+    add,
+    clear
   };
 }

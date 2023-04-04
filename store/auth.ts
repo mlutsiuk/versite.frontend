@@ -26,6 +26,7 @@ export const useAuthStore = defineStore("auth", {
       this.token = null;
 
       useCookie("token").value = null;
+      useSnackbar().clear();
     },
     async fetchUser() {
       const { data } = await auth.getAuthenticatedUser.asyncData({
