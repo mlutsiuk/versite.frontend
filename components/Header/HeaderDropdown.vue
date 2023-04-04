@@ -13,7 +13,7 @@
       leave-to-class="translate-y-1 opacity-0"
     >
       <PopoverPanel
-        class="absolute right-0 z-10 mt-4 shadow-lg bg-white rounded-md p-3"
+        class="absolute right-0 z-10 mt-6 shadow-lg bg-white rounded-md p-3"
       >
         <div class="space-y-2.5">
           <div class="flex flex-row items-end">
