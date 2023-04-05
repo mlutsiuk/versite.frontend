@@ -1,38 +1,30 @@
 <template>
   <div class="inline-block">
-    <div class="flex relative">
+    <div class="relative flex">
       <slot />
-      <span
-        :class="badgeClass"
-        class="badge select-none"
-      >
-        {{ content }}
-      </span>
+      <div :class="props.color" class="badge mr-0.5 mt-0.5">
+        <div>{{ content }}</div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
-  content?: string,
-  color?: string
-}>(), {
-  color: 'bg-gray-500'
-});
-
-const badgeClass = computed(() => {
-  return ['badge', props.color];
-})
+const props = withDefaults(
+  defineProps<{
+    content?: string;
+    color?: string;
+  }>(),
+  {
+    color: 'bg-gray-500'
+  }
+);
 </script>
 
 <style scoped>
 .badge {
-  @apply items-center rounded-full justify-center indent-0
-    text-xs text-center leading-none
-    h-5 min-w-[20px] py-1 px-1.5 absolute
-    text-gray-200;
-
-  bottom: calc(100% - 12px);
-  left: calc(100% - 12px);
+  @apply absolute right-0 top-0 flex h-5 min-w-[20px] -translate-y-1/2
+  translate-x-1/2 select-none items-center
+  justify-center rounded-full px-1.5 py-1 text-center indent-0 text-xs leading-none text-gray-200;
 }
 </style>
