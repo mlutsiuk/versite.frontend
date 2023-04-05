@@ -52,6 +52,8 @@
     "lodash-es": "^4.17.21",
     "mitt": "^3.0.0",
     "nuxt": "^3.3.3",
+    "prettier": "^2.8.7",
+    "prettier-plugin-tailwindcss": "^0.2.6",
     "vee-validate": "^4.8.3",
     "vue-input-autowidth": "^2.2.0",
     "vuejs3-datepicker": "^1.0.13",
