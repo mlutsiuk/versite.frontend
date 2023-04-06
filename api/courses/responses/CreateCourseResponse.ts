@@ -1,4 +1,4 @@
 import { ResponseSingleResource } from '~/api';
-import { CourseModel } from '~/api/courses';
+import { Course } from '~/api/courses';
 
-export type CreateCourseResponse = ResponseSingleResource<CourseModel>;
+export type CreateCourseResponse = ResponseSingleResource<Course>;

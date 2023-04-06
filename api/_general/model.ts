@@ -1,7 +1,7 @@
 export type RelationItem<T> = {
-  data: T
-}
+  data: T | null;
+};
 
 export type RelationCollection<T> = {
-  data: Array<T>
-}
+  data: Array<T>;
+};

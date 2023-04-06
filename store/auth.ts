@@ -1,16 +1,16 @@
 import { defineStore } from 'pinia';
-import { UserModel } from '~/api/user';
+import { User } from '~/api/user';
 import { auth } from '~/api/repositories';
 
 interface State {
-  user: UserModel | null,
-  token: string | null
+  user: User | null;
+  token: string | null;
 }
 
-export const useAuthStore = defineStore("auth", {
+export const useAuthStore = defineStore('auth', {
   state: (): State => ({
     user: null,
-    token: useCookie("token").value ?? null,
+    token: useCookie('token').value ?? null
   }),
   getters: {
     accessToken: state => state.token,
@@ -19,13 +19,13 @@ export const useAuthStore = defineStore("auth", {
   actions: {
     saveToken(token: string) {
       this.token = token;
-      useCookie("token").value = token;
+      useCookie('token').value = token;
     },
     logout() {
       this.user = null;
       this.token = null;
 
-      useCookie("token").value = null;
+      useCookie('token').value = null;
       useSnackbar().clear();
     },
     async fetchUser() {
@@ -33,9 +33,9 @@ export const useAuthStore = defineStore("auth", {
         key: 'auth:getAuthenticatedUser'
       });
 
-      if(data.value) {
+      if (data.value) {
         this.user = data.value.data;
       }
     }
-  },
+  }
 });

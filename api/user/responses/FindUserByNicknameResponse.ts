@@ -1,4 +1,4 @@
 import { ResponseSingleResource } from '~/api';
-import { UserModel } from '~/api/user';
+import { User } from '~/api/user';
 
-export type FindUserByNicknameResponse = ResponseSingleResource<UserModel>;
+export type FindUserByNicknameResponse = ResponseSingleResource<User>;
