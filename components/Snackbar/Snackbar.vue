@@ -1,6 +1,6 @@
 <template>
-  <div class="fixed right-0 bottom-0 mr-15 mb-7 w-[450px]">
-    <transition-group name="snackbar" tag="div">
+  <div class="fixed bottom-0 right-0 mb-7 mr-15 w-[450px]">
+    <transition-group name="snackbar-transition" tag="div">
       <SnackbarMessage
         v-for="(message, index) in messages"
         :key="message.key"

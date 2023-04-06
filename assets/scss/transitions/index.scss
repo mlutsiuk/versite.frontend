@@ -1,20 +1,43 @@
-.snackbar-enter-from {
-  opacity: 0;
-  transform: translateY(50%)
-}
-.snackbar-leave-from {
-  max-height: 1000px
-}
-.snackbar-leave-to {
-  max-height: 0;
-  opacity: 0;
-  margin-bottom: 0;
-  overflow: hidden
+.snackbar-transition {
+  &-enter-from {
+    opacity: 0;
+    transform: translateY(50%)
+  }
+
+  &-enter-active {
+    transition: transform .3s, opacity .3s
+  }
+
+  &-leave-from {
+    max-height: 1000px
+  }
+
+  &-leave-active {
+    transition: max-height .45s cubic-bezier(0, 1, 0, 1), opacity .3s, margin-bottom .3s
+  }
+
+  &-leave-to {
+    max-height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+    overflow: hidden
+  }
 }
 
-.snackbar-enter-active {
-  transition: transform .3s, opacity .3s
-}
-.snackbar-leave-active {
-  transition: max-height .45s cubic-bezier(0, 1, 0, 1), opacity .3s, margin-bottom .3s
+.dropdown-transition {
+  &-enter-active {
+    @apply transition duration-200 ease-out;
+  }
+
+  &-leave-active {
+    @apply transition duration-150 ease-in;
+  }
+
+  &-enter-from, &-leave-to {
+    @apply translate-y-1 opacity-0;
+  }
+
+  &-enter-to, &-leave-from {
+    @apply translate-y-0 opacity-100;
+  }
 }
