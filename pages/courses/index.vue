@@ -1,57 +1,35 @@
 <template>
-  <div class="w-full transition-all">
+  <div class="w-full rounded bg-white p-6 shadow-lg">
+    <div class="flex flex-row items-center justify-between">
+      <h2 class="text-3xl font-medium">Мої курси</h2>
+      <!--      <TextField-->
+      <!--        class="w-[400px]"-->
+      <!--        placeholder="Пошук"-->
+      <!--        hide-details-->
+      <!--      />-->
+    </div>
+
     <div v-if="pending">
-      <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-      <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
-      <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-      <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
-      <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
-      <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+      <h2 class="text-3xl">Loading</h2>
     </div>
     <div v-else-if="error">
       <h2 class="text-3xl">ERRORRRR</h2>
       {{ error }}
     </div>
-    <div
-      v-else-if="data"
-      class="grid grid-cols-3"
-    >
-      <div
-        v-for="course in data.data"
-        class="border rounded p-2 bg-white m-2 flex flex-col justify-between"
-      >
-        <div>
-          <div v-for="(value, key) in course">
-            <span class="text-gray-400" v-text="key"/>: <span v-text="value"/>
-          </div>
-        </div>
-        <MdButton
-          :to="`/courses/${course.id}/edit`"
-          block
-          class="mt-2 text-[#6F5274]"
-          variant="outline"
-        >
-          Edit
-        </MdButton>
-
-        <MdButton
-          :to="`/courses/${course.id}/lessons`"
-          block
-          class="mt-2 text-[#6F5274]"
-          variant="outline"
-        >
-          Open
-        </MdButton>
+    <div v-else-if="data">
+      <div class="grid grid-cols-3 gap-3">
+        <CourseCard
+          v-for="course in data.data"
+          :key="course.id"
+          :course="course"
+        />
       </div>
-    </div>
-    <div v-else>
-      <h2 class="text-2xl text-red-600">ELSE ????????</h2>
     </div>
 
     <div>
       <MdButton
         block
-        class="text-gray-400 mt-4"
+        class="mt-4 text-gray-400"
         size="x-large"
         to="/courses/create"
         variant="outline"
