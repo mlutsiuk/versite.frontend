@@ -1,14 +1,9 @@
 <template>
-  <div :style="{ width: props.size, height: props.size }">
-    <img
-      v-if="user?.avatar"
-      class="avatar"
-      :src="user?.avatar"
-      alt="Avatar"
-    />
+  <div :style="{ width: props.size, height: props.size }" class="select-none">
+    <img v-if="user?.avatar" :src="user?.avatar" alt="Avatar" class="avatar" />
     <div
       v-else-if="user"
-      :style="{ 'background-color' : avatarColor }"
+      :style="{ 'background-color': avatarColor }"
       class="missing-avatar"
     >
       <div>
@@ -21,11 +16,14 @@
 <script setup lang="ts">
 import { useAuthStore } from '~/store/auth';
 
-const props = withDefaults(defineProps<{
-  size?: string
-}>(), {
-  size: '40px'
-});
+const props = withDefaults(
+  defineProps<{
+    size?: string;
+  }>(),
+  {
+    size: '40px'
+  }
+);
 
 const authStore = useAuthStore();
 const user = computed(() => authStore.user);
@@ -50,14 +48,13 @@ const avatarColor = computed(() => {
 
 <style scoped>
 .avatar {
-  @apply
-  rounded-md
-  cursor-pointer;
+  @apply cursor-pointer
+  rounded-md;
 }
 
 .missing-avatar {
-  @apply h-full w-full flex items-center justify-center rounded-md
-  text-2xl text-white font-medium
+  @apply flex h-full w-full items-center justify-center rounded-md
+  text-2xl font-medium text-white
   transition-colors;
 }
 </style>
