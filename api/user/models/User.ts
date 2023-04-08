@@ -10,8 +10,8 @@ export type User = {
   avatar?: string;
   email_verified_at?: Date;
 
-  authored_courses: RelationCollection<Course> | null;
-  invitations: RelationCollection<Invitation> | null;
+  authored_courses?: RelationCollection<Course> | null;
+  invitations?: RelationCollection<Invitation> | null;
   // roles: RelationCollection<RoleModel> | null,
   // permissions: RelationCollection<PermissionModel> | null
 };

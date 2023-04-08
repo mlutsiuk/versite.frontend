@@ -5,10 +5,10 @@ import { Student } from '~/api/student';
 
 export type Course = {
   object: 'Course';
-  id: string;
+  id: number;
   title: string;
-  description: string;
-  author_id: string;
+  description?: string;
+  author_id: number;
 
   author?: RelationItem<User>;
   lessons?: RelationCollection<Lesson>;

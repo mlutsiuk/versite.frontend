@@ -9,6 +9,6 @@ export type Invitation = {
   email: string | null;
   is_hidden: boolean;
 
-  student: RelationItem<Student> | null;
-  receiver: RelationItem<User> | null;
+  student?: RelationItem<Student> | null;
+  receiver?: RelationItem<User> | null;
 };
