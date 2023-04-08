@@ -1,32 +1,15 @@
 <template>
   <div>
     <h1 class="text-3xl">Course edit</h1>
-    <div class="text-gray-400 text-sm">
+    <div class="text-sm text-gray-400">
       {{ $route.params.id }}
     </div>
 
-    <TextField
-      class="mb-1"
-      name="slug"
-      placeholder="Slug"
-    />
-    <TextField
-      class="mb-3"
-      name="title"
-      placeholder="Title"
-    />
-    <TextField
-      class="mb-3"
-      name="description"
-      placeholder="Description"
-    />
+    <TextField class="mb-1" name="slug" placeholder="Slug" />
+    <TextField class="mb-3" name="title" placeholder="Title" />
+    <TextField class="mb-3" name="description" placeholder="Description" />
 
-    <MdButton
-      block
-      class="text-[#3A84AD]"
-      size="x-large"
-      @click="update"
-    >
+    <MdButton block class="text-[#3A84AD]" size="x-large" @click="update">
       Create
     </MdButton>
   </div>
@@ -48,17 +31,16 @@ const form = useForm<UpdateCourseRequest>({
 async function loadCourse() {
   const { data, error } = await courses.find.asyncData({
     routeParams: {
-      id: useRoute().params.id as string
+      id: useRoute('courses-id-edit').params.id
     },
     immediate: true
   });
 
-  if(data.value && !error.value) {
+  if (data.value && !error.value) {
     let course = data.value.data;
     form.setValues({
-      slug: course.slug,
       title: course.title,
-      description: course.description,
+      description: course.description
     });
   }
 }
@@ -75,9 +57,8 @@ async function update() {
     body: form.values
   });
 
-  if(data.value) {
-    navigateTo(`/courses/${data.value.data.slug}`);
+  if (data.value) {
+    navigateTo(`/courses/${data.value.data.id}`);
   }
 }
 </script>
-
