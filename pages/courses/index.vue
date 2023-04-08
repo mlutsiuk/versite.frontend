@@ -45,7 +45,10 @@ import { courses } from '~/api/courses/repositories';
 
 const { data, error, pending, execute } = await courses.all.asyncData({
   key: 'courses:all',
-  immediate: false
+  immediate: false,
+  params: {
+    include: 'author,lessons,next_lesson'
+  }
 });
 
 onMounted(execute);
