@@ -1,8 +1,8 @@
 <template>
   <div>
-    <NuxtLayout>
-      <NuxtLoadingIndicator/>
+    <NuxtLoadingIndicator/>
 
+    <NuxtLayout>
       <NuxtPage/>
     </NuxtLayout>
 
@@ -13,9 +13,9 @@
 <style>
 .page-enter-active,
 .page-leave-active {
-  transition: opacity .2s;
+  transition: opacity .1s;
 }
-.page-enter,
+.page-enter-from,
 .page-leave-to {
   opacity: 0;
 }
