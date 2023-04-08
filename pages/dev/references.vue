@@ -3,7 +3,7 @@
     <h1 class="text-2xl">Course card</h1>
     <div class="flex flex-wrap items-center justify-center bg-neutral-50 p-4">
       <MdBadge color="bg-blue-600" content="6">
-        <CourseCard />
+        <CourseCard :course="course" />
       </MdBadge>
     </div>
 
@@ -135,10 +135,39 @@
 </template>
 
 <script setup lang="ts">
+import { Course } from '~/api/courses';
+
 const buttonDisabled = ref(false);
 const buttonLoading = ref(false);
 
 function testClick(text: string) {
   alert(text);
 }
+
+const course: Course = {
+  object: 'Course',
+  id: 1,
+  author_id: 1,
+  author: {
+    data: {
+      object: 'User',
+      id: 1,
+      name: 'User name',
+      nickname: 'User nickname',
+      email: 'fdf',
+      avatar: 'https://pic' + 'sum.photos/200/300'
+    }
+  },
+  title: 'Course title',
+  description: 'Course description',
+  next_lesson: {
+    data: {
+      object: 'Lesson',
+      id: 1,
+      title: 'Lesson title',
+      course_id: 1,
+      date: 1670000000
+    }
+  }
+};
 </script>
