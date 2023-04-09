@@ -15,9 +15,15 @@ import { lessons as lessonRepository } from '~/api/repositories';
 
 const route = useRoute('courses-id-lessons');
 
-const { data: lessons } = await lessonRepository.allFromCourse.asyncData({
-  routeParams: {
-    id: route.params.id
-  }
+const { data: lessons, execute } =
+  await lessonRepository.allFromCourse.asyncData({
+    immediate: false,
+    routeParams: {
+      id: route.params.id
+    }
+  });
+
+onMounted(() => {
+  execute();
 });
 </script>
