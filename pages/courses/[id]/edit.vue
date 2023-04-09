@@ -5,7 +5,6 @@
       {{ $route.params.id }}
     </div>
 
-    <TextField class="mb-1" name="slug" placeholder="Slug" />
     <TextField class="mb-3" name="title" placeholder="Title" />
     <TextField class="mb-3" name="description" placeholder="Description" />
 
@@ -22,7 +21,6 @@ import { object, string } from 'zod';
 
 const form = useForm<UpdateCourseRequest>({
   validationSchema: object({
-    slug: string().min(4).max(32),
     title: string().min(4).max(32),
     description: string().min(15).max(100)
   })
