@@ -1,28 +1,15 @@
 <template>
-  <div>
-    <h1 class="text-3xl">Course Create</h1>
-    <TextField
-      class="mb-1"
-      name="slug"
-      placeholder="Slug"
-    />
-    <TextField
-      class="mb-3"
-      name="title"
-      placeholder="Title"
-    />
-    <TextField
-      class="mb-3"
-      name="description"
-      placeholder="Description"
-    />
+  <div class="space-y-2.5 px-5 py-2.5">
+    <div class="flex flex-row items-center">
+      <h2 class="text-xl font-medium leading-8">Створення курсу</h2>
+    </div>
 
-    <MdButton
-      block
-      class="text-[#3A84AD]"
-      size="x-large"
-      @click="createCourse"
-    >
+    <hr />
+
+    <TextField class="mb-3" name="title" placeholder="Title" />
+    <TextField class="mb-3" name="description" placeholder="Description" />
+
+    <MdButton block class="text-[#3A84AD]" size="x-large" @click="createCourse">
       Create
     </MdButton>
   </div>
@@ -35,7 +22,6 @@ import { object, string } from 'zod';
 
 const form = useForm<CreateCourseRequest>({
   validationSchema: object({
-    slug: string().min(4).max(32),
     title: string().min(4).max(32),
     description: string().min(15).max(100)
   })
@@ -51,8 +37,13 @@ async function createCourse() {
     body: form.values
   });
 
-  if(data.value) {
-    navigateTo(`/courses/${data.value.data.slug}`);
+  if (data.value) {
+    navigateTo({
+      name: 'courses-id-lessons',
+      params: {
+        id: data.value.data.id
+      }
+    });
   }
 }
 </script>
