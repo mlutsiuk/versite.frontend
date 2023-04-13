@@ -18,24 +18,17 @@
     </div>
     <div v-else-if="data">
       <div class="grid grid-cols-3 gap-3">
-        <CourseCard
+        <NuxtLink
           v-for="course in data.data"
           :key="course.id"
-          :course="course"
-        />
+          :to="{
+            name: 'courses-id-lessons',
+            params: { id: course.id }
+          }"
+        >
+          <CourseCard :course="course" />
+        </NuxtLink>
       </div>
-    </div>
-
-    <div>
-      <MdButton
-        block
-        class="mt-4 text-gray-400"
-        size="x-large"
-        to="/courses/create"
-        variant="outline"
-      >
-        Створити новий курс
-      </MdButton>
     </div>
   </div>
 </template>
