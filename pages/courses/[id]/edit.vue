@@ -50,9 +50,12 @@ async function update() {
     return;
   }
 
-  const { data, error } = await courses.create.asyncData({
+  const { data, error } = await courses.update.asyncData({
     key: 'courses:create',
-    body: form.values
+    body: form.values,
+    routeParams: {
+      id: useRoute('courses-id-edit').params.id
+    }
   });
 
   if (data.value) {
