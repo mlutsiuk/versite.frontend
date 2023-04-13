@@ -41,3 +41,17 @@
     @apply translate-y-0 opacity-100;
   }
 }
+
+.fade-transition {
+  &-enter-active, &-leave-active {
+    @apply transition ease-out duration-200 transform;
+  }
+
+  &-enter-from, &-leave-to {
+    @apply opacity-0;
+  }
+
+  &-enter-to, &-leave-from {
+    @apply opacity-100;
+  }
+}
