@@ -1,27 +1,28 @@
 import { Endpoint } from '~/api';
-import { AllCoursesResponse, CreateCourseResponse, FindCourseResponse, UpdateCourseResponse } from '../responses';
+import {
+  AllCoursesResponse,
+  CreateCourseResponse,
+  FindCourseResponse,
+  UpdateCourseResponse
+} from '../responses';
 import { CreateCourseRequest, UpdateCourseRequest } from '~/api/courses';
 
-const all = new Endpoint<
-  AllCoursesResponse
->({
+const all = new Endpoint<AllCoursesResponse>({
   method: 'GET',
   url: 'v1/courses'
 });
 
-const find = new Endpoint<
-  FindCourseResponse,
-  undefined,
-  { id: string }
->({
+const authored = new Endpoint<AllCoursesResponse>({
+  method: 'GET',
+  url: 'v1/courses/authored'
+});
+
+const find = new Endpoint<FindCourseResponse, undefined, { id: string }>({
   method: 'GET',
   url: ({ id }) => `v1/courses/${id}`
 });
 
-const create = new Endpoint<
-  CreateCourseResponse,
-  CreateCourseRequest
->({
+const create = new Endpoint<CreateCourseResponse, CreateCourseRequest>({
   method: 'POST',
   url: 'v1/courses'
 });
@@ -35,17 +36,14 @@ const update = new Endpoint<
   url: ({ id }) => `v1/courses/${id}`
 });
 
-const deleteCourse = new Endpoint<
-  undefined,
-  undefined,
-  { id: string }
->({
+const deleteCourse = new Endpoint<undefined, undefined, { id: string }>({
   method: 'DELETE',
   url: ({ id }) => `v1/courses/${id}`
 });
 
 export const courses = {
   all,
+  authored,
   find,
   create,
   update,
