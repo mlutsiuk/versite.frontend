@@ -12,7 +12,7 @@ interface State {
 export const useDevStore = defineStore('dev', {
   state: (): State => ({
     data: {
-      showId: true
+      showId: false
     },
     validation: {
       showIsValid: false
