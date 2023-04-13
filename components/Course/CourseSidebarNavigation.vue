@@ -2,11 +2,11 @@
   <div class="flex flex-col space-y-2 rounded bg-white p-2">
     <div v-if="props.courseTitle">
       <div class="text-sm text-gray-400">Курс</div>
-      <div class="text-2xl font-medium" v-text="props.courseTitle"/>
+      <div class="text-2xl font-medium" v-text="props.courseTitle" />
     </div>
     <div v-else>
-      <SkeletonBone class="h-3 w-16 rounded-full mt-1" />
-      <SkeletonBone class="h-6 w-10/12 rounded-full mt-2" />
+      <SkeletonBone class="mt-1 h-3 w-16 rounded-full" />
+      <SkeletonBone class="mt-2 h-6 w-10/12 rounded-full" />
     </div>
 
     <hr />

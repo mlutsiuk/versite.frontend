@@ -1,14 +1,10 @@
 <template>
   <div>
-    <div class="flex items-center select-none">
-      <img
-        class="avatar"
-        src="/avatar.jfif"
-        alt="Avatar"
-      />
+    <div class="flex select-none items-center">
+      <img alt="Avatar" class="avatar" src="/avatar.jfif" />
 
-      <div class="flex flex-col ml-4 self-end">
-        <div class="text-black/50 text-lg italic">@anna.romaniuk</div>
+      <div class="ml-4 flex flex-col self-end">
+        <div class="text-lg italic text-black/50">@anna.romaniuk</div>
         <div class="text-3xl">Анна Романюк</div>
       </div>
     </div>
@@ -18,7 +14,7 @@
 <style scoped>
 .avatar {
   @apply h-[90px]
-  rounded-bl-xl rounded-tr-xl rounded-tl-sm rounded-br-sm
-  cursor-pointer;
+  cursor-pointer rounded-bl-xl rounded-br-sm rounded-tl-sm
+  rounded-tr-xl;
 }
 </style>

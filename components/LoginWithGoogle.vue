@@ -46,12 +46,8 @@ function openWindow(url: string, title: string) {
   const optionsStr = Object.keys(options).reduce((acc, key) => {
     return `${acc}${key}=${options[key]},`;
   }, '');
-  optionsStr.slice(0, -1);    // Removing last comma
-  let loginWindow = window.open(
-    url,
-    title,
-    optionsStr
-  );
+  optionsStr.slice(0, -1); // Removing last comma
+  let loginWindow = window.open(url, title, optionsStr);
 
   if (loginWindow?.focus) {
     loginWindow.focus();

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row space-x-1 px-4 py-1 bg-white min-h-[2.5rem]">
+  <div class="flex min-h-[2.5rem] flex-row space-x-1 bg-white px-4 py-1">
     <template v-if="editor">
       <LessonEditorMenuButton
         @click="toggleHeading(1)"
@@ -40,7 +40,7 @@
         icon="mdi:format-strikethrough-variant"
       />
 
-      <div class="border-r-2 mx-2"></div>
+      <div class="mx-2 border-r-2"></div>
 
       <LessonEditorMenuButton
         @click="setTextAlign('left')"
@@ -96,17 +96,16 @@
 
 <script setup lang="ts">
 import { Editor } from '@tiptap/vue-3';
-import { useVModel } from "@vueuse/core";
+import { useVModel } from '@vueuse/core';
 
 const props = defineProps<{
-  modelValue: Editor
+  modelValue: Editor;
 }>();
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: Editor): void
-}>()
+  (e: 'update:modelValue', value: Editor): void;
+}>();
 
 const editor = useVModel(props, 'modelValue', emit);
-
 
 function toggleHeading(level: 1 | 2 | 3) {
   editor.value.chain().focus().toggleHeading({ level }).run();
@@ -115,12 +114,15 @@ function toggleHeading(level: 1 | 2 | 3) {
 function toggleBold() {
   editor.value.chain().focus().toggleBold().run();
 }
+
 function toggleItalic() {
   editor.value.chain().focus().toggleItalic().run();
 }
+
 function toggleUnderline() {
   editor.value.chain().focus().toggleUnderline().run();
 }
+
 function toggleStrike() {
   editor.value.chain().focus().toggleStrike().run();
 }
@@ -132,6 +134,7 @@ function setTextAlign(alignment: 'left' | 'center' | 'right' | 'justify') {
 function toggleBulletedList() {
   editor.value.chain().focus().toggleBulletList().run();
 }
+
 function toggleOrderedList() {
   editor.value.chain().focus().toggleOrderedList().run();
 }
@@ -139,9 +142,11 @@ function toggleOrderedList() {
 function toggleCode() {
   editor.value.chain().focus().toggleCode().run();
 }
+
 function setHorizontalLine() {
   editor.value.chain().focus().setHorizontalRule().run();
 }
+
 function toggleBlockquote() {
   editor.value.chain().focus().toggleBlockquote().run();
 }

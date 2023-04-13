@@ -3,7 +3,7 @@
     class="TextField"
     :class="{
       'TextField--error': errorMessage,
-      'TextField--focused': isFocused,
+      'TextField--focused': isFocused
     }"
   >
     <label
@@ -29,7 +29,9 @@
     </div>
 
     <div v-if="!props.hideDetails" class="TextField_Details">
-      <DevOnly><LazyDevValidationMeta :meta="meta"/></DevOnly>
+      <DevOnly>
+        <LazyDevValidationMeta :meta="meta" />
+      </DevOnly>
       <span>
         {{ errorMessage }}
       </span>
@@ -41,34 +43,33 @@
 // TODO: Add input type prop
 import { useField } from 'vee-validate';
 
-const props = withDefaults(defineProps<{
-  id?: string
-  disabled?: boolean,
-  hideDetails?: boolean,
-  placeholder?: string,
-  label?: string,
-  password?: boolean,
+const props = withDefaults(
+  defineProps<{
+    id?: string;
+    disabled?: boolean;
+    hideDetails?: boolean;
+    placeholder?: string;
+    label?: string;
+    password?: boolean;
 
-  name: string,
+    name: string;
 
-  modelValue?: string
-}>(), {
-  password: false,
-  disabled: false,
-  hideDetails: false
-});
+    modelValue?: string;
+  }>(),
+  {
+    password: false,
+    disabled: false,
+    hideDetails: false
+  }
+);
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  (e: 'update:modelValue', value: string): void;
 }>();
 
 const uid = useUid().next();
 const id = computed(() => props.id || `input-${uid}`);
 
-const {
-  isFocused,
-  focus,
-  blur
-} = useFocus();
+const { isFocused, focus, blur } = useFocus();
 
 /**
  *  @see https://vee-validate.logaretm.com/v4/guide/composition-api/caveats
@@ -80,11 +81,7 @@ const fieldContext = useField<string>(name, undefined, {
   initialValue: props.modelValue
 });
 
-const {
-  value: inputValue,
-  errorMessage,
-  meta
-} = fieldContext;
+const { value: inputValue, errorMessage, meta } = fieldContext;
 
 const validationHandlers = useValidationModes(fieldContext, 'eager');
 </script>
@@ -103,30 +100,30 @@ const validationHandlers = useValidationModes(fieldContext, 'eager');
 }
 
 .TextField_Field {
-    @apply relative;
+  @apply relative;
 }
 
 .TextField_Field:hover .TextField_Outline {
-    @apply opacity-90;
+  @apply opacity-90;
 }
 
 .TextField_Outline {
-    @apply absolute top-0 left-0 w-full h-full
-    pointer-events-none
-    border border-black rounded-md opacity-40 transition-opacity;
+  @apply pointer-events-none absolute left-0 top-0 h-full
+  w-full
+  rounded-md border border-black opacity-40 transition-opacity;
 }
 
 .TextField_Label {
-  @apply block text-left mb-2 text-sm font-medium text-gray-900 dark:text-gray-300;
+  @apply mb-2 block text-left text-sm font-medium text-gray-900 dark:text-gray-300;
 }
 
 .TextField_Input {
-  @apply block w-full p-4
-  focus:outline-none rounded-md
-  text-gray-900 placeholder:text-black placeholder:opacity-50;
+  @apply block w-full rounded-md
+  p-4 text-gray-900
+  placeholder:text-black placeholder:opacity-50 focus:outline-none;
 }
 
 .TextField_Details {
-  @apply pl-4 text-start text-xs leading-6 min-h-[2em];
+  @apply min-h-[2em] pl-4 text-start text-xs leading-6;
 }
 </style>

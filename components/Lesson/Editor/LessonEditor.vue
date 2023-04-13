@@ -1,28 +1,24 @@
 <template>
-  <div class="h-full flex flex-col items-stretch shadow-lg bg-white rounded-lg">
-    <div class="border-b px-4 py-2 flex flex-col items-baseline">
-      <LessonEditorTitleField v-model="title" class="mb-1"/>
+  <div class="flex h-full flex-col items-stretch rounded-lg bg-white shadow-lg">
+    <div class="flex flex-col items-baseline border-b px-4 py-2">
+      <LessonEditorTitleField v-model="title" class="mb-1" />
 
       <LessonEditorPublicationDatePopover />
     </div>
 
-    <LessonEditorMenu
-      v-model="editor"
-      class="border-b"
-    />
+    <LessonEditorMenu v-model="editor" class="border-b" />
 
     <ClientOnly>
       <EditorContent
         :editor="editor"
-        class="h-full self-center w-full max-w-[85ch]"
+        class="h-full w-full max-w-[85ch] self-center"
       />
     </ClientOnly>
-
   </div>
 </template>
 
 <script setup lang="ts">
-import { useEditor, EditorContent } from "@tiptap/vue-3";
+import { EditorContent, useEditor } from '@tiptap/vue-3';
 import Blockquote from '@tiptap/extension-blockquote';
 import Bold from '@tiptap/extension-bold';
 import BulletList from '@tiptap/extension-bullet-list';
@@ -66,7 +62,7 @@ const editor = useEditor({
     Strike,
     Text,
     TextAlign.configure({
-      types: ['heading', 'paragraph'],
+      types: ['heading', 'paragraph']
     }),
     Underline
   ]

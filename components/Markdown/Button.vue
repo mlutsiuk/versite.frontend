@@ -26,7 +26,7 @@
       />
 
       <span>
-        <slot/>
+        <slot />
       </span>
 
       <Icon
@@ -37,42 +37,46 @@
       />
     </span>
     <span class="Button_Loader">
-      <MdProgressCircular v-if="props.loading"/>
+      <MdProgressCircular v-if="props.loading" />
     </span>
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
-  prependIcon?: string,
-  appendIcon?: string,
-  variant?: 'filled' | 'outline',
-  size?: 'small' | 'default' | 'large' | 'x-large',
-  block?: boolean,
-  disabled?: boolean,
-  loading?: boolean,
+const props = withDefaults(
+  defineProps<{
+    prependIcon?: string;
+    appendIcon?: string;
+    variant?: 'filled' | 'outline';
+    size?: 'small' | 'default' | 'large' | 'x-large';
+    block?: boolean;
+    disabled?: boolean;
+    loading?: boolean;
 
-  to?: string
-}>(), {
-  variant: 'filled',
-  size: 'default',
-  block: false,
-  disabled: false,
-  loading: false
-});
+    to?: string;
+  }>(),
+  {
+    variant: 'filled',
+    size: 'default',
+    block: false,
+    disabled: false,
+    loading: false
+  }
+);
 </script>
 
 <style lang="postcss" scoped>
 .Button {
-  @apply relative inline-flex items-center justify-center
-  font-normal rounded-md box-border
-  select-none cursor-pointer transition-colors;
+  @apply relative box-border inline-flex cursor-pointer
+  select-none items-center justify-center
+  rounded-md font-normal transition-colors;
 }
 
 .Button--filled {
   @apply bg-current;
 
-  .Button_Content, .Button_Loader {
+  .Button_Content,
+  .Button_Loader {
     @apply text-white;
   }
 
@@ -80,19 +84,24 @@ const props = withDefaults(defineProps<{
     @apply text-white;
   }
 }
+
 .Button--outline {
   @apply border border-current;
 }
+
 .Button--disabled {
   @apply pointer-events-none;
 }
+
 .Button.Button--disabled {
   @apply bg-gray-200;
 
-  .Button_Content, .Button_Loader {
-    @apply text-gray-400
+  .Button_Content,
+  .Button_Loader {
+    @apply text-gray-400;
   }
 }
+
 .Button--loading {
   @apply pointer-events-none;
 
@@ -100,24 +109,28 @@ const props = withDefaults(defineProps<{
     @apply opacity-0;
   }
 }
+
 .Button.Button--block {
-  @apply flex shrink-0 min-w-full;
+  @apply flex min-w-full shrink-0;
 }
 
 .Button--size-small {
-  @apply px-3 min-w-[50px] h-[28px]
+  @apply h-[28px] min-w-[50px] px-3
   text-xs;
 }
+
 .Button--size-default {
-  @apply px-4 min-w-[64px] h-[36px]
+  @apply h-[36px] min-w-[64px] px-4
   text-sm;
 }
+
 .Button--size-large {
-  @apply px-5 min-w-[78px] h-[44px]
+  @apply h-[44px] min-w-[78px] px-5
   text-base;
 }
+
 .Button--size-x-large {
-  @apply px-6 min-w-[92px] h-[52px]
+  @apply h-[52px] min-w-[92px] px-6
   text-lg;
 }
 
@@ -126,24 +139,29 @@ const props = withDefaults(defineProps<{
 }
 
 .Button_Highlighter {
-  @apply absolute top-0 left-0 w-full h-full pointer-events-none
+  @apply pointer-events-none absolute left-0 top-0 h-full w-full
   opacity-0;
   /*transition-opacity transition-colors duration-200 ease-in-out;*/
   border-radius: inherit;
 
-  transition: background-color .3s cubic-bezier(.25, .8, .5, 1), opacity .4s cubic-bezier(.25, .8, .5, 1);
+  transition: background-color 0.3s cubic-bezier(0.25, 0.8, 0.5, 1),
+    opacity 0.4s cubic-bezier(0.25, 0.8, 0.5, 1);
 }
+
 .Button_Content {
   @apply flex items-center transition-all;
 }
+
 .Button_PrependIcon {
-  @apply mr-1.5 -ml-0.5;
+  @apply -ml-0.5 mr-1.5;
 }
+
 .Button_AppendIcon {
-  @apply ml-1.5 -mr-0.5;
+  @apply -mr-0.5 ml-1.5;
 }
+
 .Button_Loader {
-  @apply absolute top-0 left-0 w-full h-full
-  flex align-middle justify-center;
+  @apply absolute left-0 top-0 flex h-full
+  w-full justify-center align-middle;
 }
 </style>

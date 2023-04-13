@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="min-w-[16rem] px-4 py-5 bg-white rounded-md shadow border flex flex-row"
+      class="flex min-w-[16rem] flex-row rounded-md border bg-white px-4 py-5 shadow"
     >
       <div class="grow">
         <div v-if="props.message.title" class="text-lg font-medium">
@@ -14,10 +14,10 @@
       </div>
 
       <div
-        class="cursor-pointer rounded-full hover:bg-gray-100 transition-colors select-none self-start"
+        class="cursor-pointer select-none self-start rounded-full transition-colors hover:bg-gray-100"
         @click="dismiss"
       >
-        <Icon name="mdi:close" size="24"/>
+        <Icon name="mdi:close" size="24" />
       </div>
     </div>
   </div>
@@ -27,10 +27,10 @@
 import { Message } from '~/types/snackbar';
 
 const props = defineProps<{
-  message: Message
+  message: Message;
 }>();
 const emit = defineEmits<{
-  (e: 'dismiss'): void
+  (e: 'dismiss'): void;
 }>();
 
 function dismiss() {

@@ -1,13 +1,10 @@
 <template>
   <Popover v-slot="{ open }">
     <PopoverButton
-      class="flex flex-row space-x-2 items-center text-gray-600 hover:border-gray-200 border-transparent px-1 cursor-pointer hover:bg-gray-100 rounded"
+      class="flex cursor-pointer flex-row items-center space-x-2 rounded border-transparent px-1 text-gray-600 hover:border-gray-200 hover:bg-gray-100"
       as="div"
     >
-      <Icon
-        class="text-gray-600"
-        name="mdi:calendar"
-      />
+      <Icon class="text-gray-600" name="mdi:calendar" />
       <span>03.12.2022</span>
     </PopoverButton>
 
@@ -19,10 +16,8 @@
       leave-from-class="translate-y-0 opacity-100"
       leave-to-class="translate-y-1 opacity-0"
     >
-      <PopoverPanel
-        class="absolute z-10 mt-3"
-      >
-        <Datepicker inline/>
+      <PopoverPanel class="absolute z-10 mt-3">
+        <Datepicker inline />
       </PopoverPanel>
     </transition>
   </Popover>

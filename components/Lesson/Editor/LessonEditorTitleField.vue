@@ -10,21 +10,21 @@
 
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core';
-import { directive as vAutowidth } from "vue-input-autowidth"
+import { directive as vAutowidth } from 'vue-input-autowidth';
 
 const props = defineProps<{
-  modelValue: string
+  modelValue: string;
 }>();
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  (e: 'update:modelValue', value: string): void;
 }>();
 const content = useVModel(props, 'modelValue', emit);
 </script>
 
 <style scoped>
 input {
-  @apply text-2xl px-1 transition-colors outline-none
-  border border-transparent rounded-sm
+  @apply rounded-sm border border-transparent px-1
+  text-2xl outline-none transition-colors
   hover:border-gray-200
   focus-visible:border-gray-400;
 }

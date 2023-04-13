@@ -1,5 +1,5 @@
 <template>
-  <canvas ref="canvas" @click="mouseClicked" width="5000" height="10000"/>
+  <canvas ref="canvas" height="10000" width="5000" @click="mouseClicked" />
 </template>
 
 <script setup lang="ts">
@@ -36,7 +36,14 @@ function fill(color: string) {
   context.fill();
 }
 
-function triangle(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number) {
+function triangle(
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  x3: number,
+  y3: number
+) {
   let context = getContext();
   if (!context) {
     return;
@@ -60,8 +67,7 @@ function rect(x: number, y: number, width: number, height: number) {
 
 function clear() {
   let context = getContext();
-  if (!context)
-    return;
+  if (!context) return;
 
   context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 }
@@ -83,16 +89,16 @@ function draw() {
     for (let y = 0; y < size * 2; y += tileLen) {
       switch (Math.round(random(0.51, 4.49))) {
         case 1:
-          triangle(x + tileLen, y, x + tileLen, y + tileLen, x, y);    // Right Top
+          triangle(x + tileLen, y, x + tileLen, y + tileLen, x, y); // Right Top
           break;
         case 2:
-          triangle(x + tileLen, y + tileLen, x,y + tileLen, x + tileLen, y);    // Right Bottom
+          triangle(x + tileLen, y + tileLen, x, y + tileLen, x + tileLen, y); // Right Bottom
           break;
         case 3:
-          triangle(x, y + tileLen, x, y, x + tileLen, y + tileLen);    // Left Bottom
+          triangle(x, y + tileLen, x, y, x + tileLen, y + tileLen); // Left Bottom
           break;
         case 4:
-          triangle(x, y,x + tileLen, y, x, y + tileLen);    // Left Top
+          triangle(x, y, x + tileLen, y, x, y + tileLen); // Left Top
           break;
       }
 
@@ -109,5 +115,5 @@ function mouseClicked() {
 
 onMounted(() => {
   draw();
-})
+});
 </script>
