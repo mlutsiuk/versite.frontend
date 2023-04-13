@@ -1,5 +1,7 @@
 <template>
-  <div class="space-y-4 rounded border border-gray-200 bg-white p-5 shadow-sm">
+  <div
+    class="group space-y-4 rounded border border-gray-200 bg-white p-5 shadow-sm transition-colors hover:bg-neutral-100"
+  >
     <div>
       <DevOnly>
         <LazyDevDataId :id="props.course.id" />
@@ -7,26 +9,24 @@
       <div class="text-xl font-bold" v-text="props.course.title" />
       <div
         class="text-lg font-bold text-neutral-400"
-        v-text="props.course.author.data.name"
+        v-text="props.course.author!.data!.name"
       />
     </div>
 
     <div
       v-if="nextLesson"
-      class="relative rounded border border-neutral-400 p-3"
+      class="rounded bg-neutral-100 p-3 transition-colors group-hover:bg-neutral-200"
     >
-      <span
-        class="absolute top-0 -translate-y-1/2 select-none bg-white pb-0.5 align-middle text-sm text-neutral-400"
-      >
-        Наступний урок
-      </span>
-
       <DevOnly>
         <LazyDevDataId :id="nextLesson.id" />
       </DevOnly>
 
+      <div class="select-none text-xs leading-none text-neutral-400">
+        Наступний урок
+      </div>
+
       <div class="flex flex-row items-center justify-between">
-        <div class="text-lg font-medium" v-text="nextLesson.title" />
+        <div class="text-lg font-medium leading-5" v-text="nextLesson.title" />
         <Icon name="logos:google-meet" size="24px" />
       </div>
 
@@ -37,7 +37,15 @@
         <span v-text="nextLessonDate" />
       </div>
 
-      <div>Якийсь клятючий текст який написав автор, але ми його обр...</div>
+      <div class="text-sm font-medium">
+        <div class="text-gray-400">Завдання</div>
+
+        <ul class="pl-2">
+          <li class="list-inside list-disc">
+            Create a simple login screen for a mobile app.
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
