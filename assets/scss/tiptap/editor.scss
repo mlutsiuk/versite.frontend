@@ -1,7 +1,8 @@
 .ProseMirror {
-  @apply py-5 px-4
-    focus-visible:outline-none;
+  @apply focus-visible:outline-none;
+}
 
+.Tiptap-LessonMaterial {
   p {
     @apply my-4;
   }

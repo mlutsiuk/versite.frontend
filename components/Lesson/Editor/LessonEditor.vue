@@ -11,7 +11,7 @@
     <ClientOnly>
       <EditorContent
         :editor="editor"
-        class="h-full w-full max-w-[85ch] self-center"
+        class="Tiptap-LessonMaterial h-full w-full max-w-[85ch] self-center px-4 py-5"
       />
     </ClientOnly>
   </div>
@@ -38,6 +38,13 @@ import Strike from '@tiptap/extension-strike';
 import Text from '@tiptap/extension-text';
 import TextAlign from '@tiptap/extension-text-align';
 import Underline from '@tiptap/extension-underline';
+import { useDebounceFn } from '@vueuse/core';
+import { Editor } from '@tiptap/core';
+import { lessons } from '~/api/repositories';
+
+const props = defineProps<{
+  lessonId: string;
+}>();
 
 const editor = useEditor({
   content: '<h1>I’m running Tiptap with Vue.js. 🎉</h1>',
@@ -65,8 +72,22 @@ const editor = useEditor({
       types: ['heading', 'paragraph']
     }),
     Underline
-  ]
+  ],
+  onUpdate: ({ editor }) => updateLessonMaterial(editor)
 });
+
+const updateLessonMaterial = useDebounceFn(async (editor: Editor) => {
+  console.info('Sending update request');
+
+  await lessons.updateMaterial.asyncData({
+    body: {
+      content: editor.getHTML()
+    },
+    routeParams: {
+      id: props.lessonId
+    }
+  });
+}, 700);
 
 const title = ref('Auto-layout - Beginning');
 </script>
