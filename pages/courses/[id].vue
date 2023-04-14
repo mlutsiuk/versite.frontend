@@ -46,7 +46,6 @@ const route = useRoute('courses-id-lessons');
 
 const { data: course, execute } = await courses.find.asyncData({
   immediate: false,
-  key: 'course:find',
   routeParams: {
     id: route.params.id
   }

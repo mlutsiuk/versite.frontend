@@ -29,9 +29,7 @@ export const useAuthStore = defineStore('auth', {
       useSnackbar().clear();
     },
     async fetchUser() {
-      const { data } = await auth.getAuthenticatedUser.asyncData({
-        key: 'auth:getAuthenticatedUser'
-      });
+      const { data } = await auth.getAuthenticatedUser.asyncData();
 
       if (data.value) {
         this.user = data.value.data;

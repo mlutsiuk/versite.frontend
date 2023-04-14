@@ -1,25 +1,12 @@
 <template>
-  <div class="w-[350px] text-center py-4 px-4 rounded-md">
-    <h2 class="text-5xl mb-20 font-bold">Versite</h2>
+  <div class="w-[350px] rounded-md px-4 py-4 text-center">
+    <h2 class="mb-20 text-5xl font-bold">Versite</h2>
 
-    <div class="text-2xl font-semibold mb-9">Реєстрація</div>
+    <div class="mb-9 text-2xl font-semibold">Реєстрація</div>
 
-    <TextField
-      class="mb-1"
-      name="name"
-      placeholder="Ім'я"
-    />
-    <TextField
-      class="mb-1"
-      name="email"
-      placeholder="E-Mail"
-    />
-    <TextField
-      class="mb-1"
-      name="password"
-      placeholder="Пароль"
-      password
-    />
+    <TextField class="mb-1" name="name" placeholder="Ім'я" />
+    <TextField class="mb-1" name="email" placeholder="E-Mail" />
+    <TextField class="mb-1" name="password" placeholder="Пароль" password />
     <TextField
       class="mb-1"
       name="passwordRepeat"
@@ -54,43 +41,43 @@ import { PasswordRegistrationRequest } from '~/api/auth';
 import { auth } from '~/api/auth/repositories';
 
 definePageMeta({
-  layout: 'auth',
+  layout: 'auth'
 });
 
 const authStore = useAuthStore();
 
 const form = useForm<PasswordRegistrationRequest>({
-  validationSchema: toFormValidator(object({
-    name: string().min(2).max(32),
-    email: string().email(),
-    password: string().min(8),
-    passwordRepeat: string()
-  }).refine((data) => data.password === data.passwordRepeat, {
-    message: 'Паролі не співпадають',
-    path: ['passwordRepeat']
-  }))
+  validationSchema: toFormValidator(
+    object({
+      name: string().min(2).max(32),
+      email: string().email(),
+      password: string().min(8),
+      passwordRepeat: string()
+    }).refine(data => data.password === data.passwordRepeat, {
+      message: 'Паролі не співпадають',
+      path: ['passwordRepeat']
+    })
+  )
 });
 
-
 const isLoading = ref(false);
+
 async function passwordRegistration() {
-  if(!(await form.validate()).valid) {
+  if (!(await form.validate()).valid) {
     return;
   }
 
   isLoading.value = true;
   const { data, error } = await auth.passwordRegistration.asyncData({
-    key: 'passwordRegistration',
     body: form.values
   });
 
-  if(data.value && !error.value) {
+  if (data.value && !error.value) {
     authStore.saveToken(data.value.access_token);
     await authStore.fetchUser();
 
-    navigateTo('/')
+    navigateTo('/');
   }
   isLoading.value = false;
 }
 </script>
-

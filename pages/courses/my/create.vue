@@ -33,7 +33,6 @@ async function createCourse() {
   }
 
   const { data, error } = await courses.create.asyncData({
-    key: 'courses:create',
     body: form.values
   });
 

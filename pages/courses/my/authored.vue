@@ -34,7 +34,6 @@
 import { courses } from '~/api/repositories';
 
 const { data, error, pending, execute } = await courses.authored.asyncData({
-  key: 'courses:authored',
   immediate: false,
   params: {
     include: 'author,lessons,next_lesson'

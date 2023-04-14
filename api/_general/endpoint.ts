@@ -10,9 +10,7 @@ type AsyncDataOptions<ResT, ReqT, RouteParamsT> = ConditionalProperty<
   >,
   'routeParams',
   RouteParamsT
-> & {
-  key?: string;
-};
+>;
 
 type ConditionallyRequiredOptions<OptionsT extends object> =
   keyof RequiredFieldsOnly<OptionsT> extends never // If options don't have any required field
@@ -47,6 +45,8 @@ export class Endpoint<
         ? this.url(options!.routeParams as RouteParamsT)
         : this.url;
 
+    let key = `${this.method}-${url}`;
+
     return useApiAsyncData<ResT>(
       url,
       {
@@ -54,7 +54,7 @@ export class Endpoint<
 
         ...options
       },
-      options?.key
+      key
     );
   }
 

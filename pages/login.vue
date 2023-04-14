@@ -1,20 +1,11 @@
 <template>
-  <div class="w-[350px] text-center py-4 px-4 rounded-md">
-    <h2 class="text-5xl mb-20 font-bold">Versite</h2>
+  <div class="w-[350px] rounded-md px-4 py-4 text-center">
+    <h2 class="mb-20 text-5xl font-bold">Versite</h2>
 
-    <div class="text-2xl font-semibold mb-9">Увійти</div>
+    <div class="mb-9 text-2xl font-semibold">Увійти</div>
 
-    <TextField
-      class="mb-1"
-      name="email"
-      placeholder="E-Mail"
-    />
-    <TextField
-      class="mb-3"
-      name="password"
-      placeholder="Пароль"
-      password
-    />
+    <TextField class="mb-1" name="email" placeholder="E-Mail" />
+    <TextField class="mb-3" name="password" placeholder="Пароль" password />
 
     <MdButton
       @click="passwordLogin"
@@ -28,7 +19,7 @@
 
     <div class="my-4 font-normal text-gray-600">або</div>
 
-    <LoginWithGoogle/>
+    <LoginWithGoogle />
   </div>
 </template>
 
@@ -51,7 +42,6 @@ const form = useForm<PasswordLoginRequest>({
   })
 });
 
-
 const isLoading = ref(false);
 
 async function passwordLogin() {
@@ -61,7 +51,6 @@ async function passwordLogin() {
 
   isLoading.value = true;
   const { data, error } = await auth.passwordLogin.asyncData({
-    key: 'auth:passwordLogin',
     body: form.values
   });
 

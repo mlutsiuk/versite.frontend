@@ -30,7 +30,6 @@ const route = useRoute('courses-id-students');
 const { data, error, execute, pending } =
   await students.allFromCourse.asyncData({
     immediate: false,
-    key: 'students:find',
     routeParams: {
       id: route.params.id
     },
