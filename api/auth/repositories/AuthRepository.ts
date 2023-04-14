@@ -1,4 +1,4 @@
-import { Endpoint, ResponseSingleResource } from '~/api';
+import { Endpoint, ResourceSingle } from '~/api';
 import {
   AccessTokenResponse,
   GetGoogleLoginUrlResponse,
@@ -18,7 +18,7 @@ const passwordRegistration = new Endpoint<
   method: 'POST',
   url: 'v1/auth/register'
 });
-const getAuthenticatedUser = new Endpoint<ResponseSingleResource<User>>({
+const getAuthenticatedUser = new Endpoint<ResourceSingle<User>>({
   method: 'GET',
   url: 'v1/auth/profile'
 });

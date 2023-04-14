@@ -1,14 +1,14 @@
-import { Endpoint, ResponseMultiResource, ResponseSingleResource } from '~/api';
+import { Endpoint, ResourceArray, ResourceSingle } from '~/api';
 import { Student } from '~/api/models';
 import { CreateStudentRequest, UpdateStudentRequest } from '../requests';
 
-const all = new Endpoint<ResponseMultiResource<Student>>({
+const all = new Endpoint<ResourceArray<Student>>({
   method: 'GET',
   url: 'v1/students'
 });
 
 const allFromCourse = new Endpoint<
-  ResponseMultiResource<Student>,
+  ResourceArray<Student>,
   undefined,
   { id: string }
 >({
@@ -16,25 +16,18 @@ const allFromCourse = new Endpoint<
   url: ({ id }) => `v1/courses/${id}/students`
 });
 
-const find = new Endpoint<
-  ResponseSingleResource<Student>,
-  undefined,
-  { id: string }
->({
+const find = new Endpoint<ResourceSingle<Student>, undefined, { id: string }>({
   method: 'GET',
   url: ({ id }) => `v1/students/${id}`
 });
 
-const create = new Endpoint<
-  ResponseSingleResource<Student>,
-  CreateStudentRequest
->({
+const create = new Endpoint<ResourceSingle<Student>, CreateStudentRequest>({
   method: 'POST',
   url: 'v1/students'
 });
 
 const update = new Endpoint<
-  ResponseSingleResource<Student>,
+  ResourceSingle<Student>,
   UpdateStudentRequest,
   { id: string }
 >({

@@ -1,8 +1,8 @@
-import { Endpoint } from '~/api';
-import { FindUserByNicknameResponse } from '~/api/user';
+import { Endpoint, ResourceSingle } from '~/api';
+import { User } from '~/api/models';
 
 const findByNickname = new Endpoint<
-  FindUserByNicknameResponse,
+  ResourceSingle<User>,
   undefined,
   { nickname: string }
 >({
@@ -12,4 +12,4 @@ const findByNickname = new Endpoint<
 
 export const users = {
   findByNickname
-}
+};

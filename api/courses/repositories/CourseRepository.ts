@@ -1,34 +1,32 @@
-import { Endpoint } from '~/api';
+import { Endpoint, ResourceArray, ResourceSingle } from '~/api';
 import {
-  AllCoursesResponse,
-  CreateCourseResponse,
-  FindCourseResponse,
-  UpdateCourseResponse
-} from '../responses';
-import { CreateCourseRequest, UpdateCourseRequest } from '~/api/courses';
+  Course,
+  CreateCourseRequest,
+  UpdateCourseRequest
+} from '~/api/courses';
 
-const all = new Endpoint<AllCoursesResponse>({
+const all = new Endpoint<ResourceArray<Course>>({
   method: 'GET',
   url: 'v1/courses'
 });
 
-const authored = new Endpoint<AllCoursesResponse>({
+const authored = new Endpoint<ResourceArray<Course>>({
   method: 'GET',
   url: 'v1/courses/authored'
 });
 
-const find = new Endpoint<FindCourseResponse, undefined, { id: string }>({
+const find = new Endpoint<ResourceSingle<Course>, undefined, { id: string }>({
   method: 'GET',
   url: ({ id }) => `v1/courses/${id}`
 });
 
-const create = new Endpoint<CreateCourseResponse, CreateCourseRequest>({
+const create = new Endpoint<ResourceSingle<Course>, CreateCourseRequest>({
   method: 'POST',
   url: 'v1/courses'
 });
 
 const update = new Endpoint<
-  UpdateCourseResponse,
+  ResourceSingle<Course>,
   UpdateCourseRequest,
   { id: string }
 >({

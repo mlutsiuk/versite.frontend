@@ -1,4 +1,4 @@
-import { Endpoint, ResponseMultiResource, ResponseSingleResource } from '~/api';
+import { Endpoint, ResourceArray, ResourceSingle } from '~/api';
 import {
   CreateLessonRequest,
   Lesson,
@@ -7,13 +7,13 @@ import {
   UpdateLessonRequest
 } from '~/api/lesson';
 
-const all = new Endpoint<ResponseMultiResource<Lesson>>({
+const all = new Endpoint<ResourceArray<Lesson>>({
   method: 'GET',
   url: 'v1/lessons'
 });
 
 const allFromCourse = new Endpoint<
-  ResponseMultiResource<Lesson>,
+  ResourceArray<Lesson>,
   undefined,
   { id: string }
 >({
@@ -21,17 +21,13 @@ const allFromCourse = new Endpoint<
   url: ({ id }) => `v1/courses/${id}/lessons`
 });
 
-const find = new Endpoint<
-  ResponseSingleResource<Lesson>,
-  undefined,
-  { id: string }
->({
+const find = new Endpoint<ResourceSingle<Lesson>, undefined, { id: string }>({
   method: 'GET',
   url: ({ id }) => `v1/lessons/${id}`
 });
 
 const findMaterial = new Endpoint<
-  ResponseSingleResource<LessonMaterial>,
+  ResourceSingle<LessonMaterial>,
   undefined,
   { id: string }
 >({
@@ -39,16 +35,13 @@ const findMaterial = new Endpoint<
   url: ({ id }) => `v1/lessons/${id}/material`
 });
 
-const create = new Endpoint<
-  ResponseSingleResource<Lesson>,
-  CreateLessonRequest
->({
+const create = new Endpoint<ResourceSingle<Lesson>, CreateLessonRequest>({
   method: 'POST',
   url: 'v1/lessons'
 });
 
 const update = new Endpoint<
-  ResponseSingleResource<Lesson>,
+  ResourceSingle<Lesson>,
   UpdateLessonRequest,
   { id: string }
 >({
@@ -57,7 +50,7 @@ const update = new Endpoint<
 });
 
 const updateMaterial = new Endpoint<
-  ResponseSingleResource<LessonMaterial>,
+  ResourceSingle<LessonMaterial>,
   UpdateLessonMaterialRequest,
   { id: string }
 >({
