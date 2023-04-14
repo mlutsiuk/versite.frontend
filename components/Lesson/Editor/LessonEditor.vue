@@ -3,17 +3,19 @@
     <div class="flex flex-col items-baseline border-b px-4 py-2">
       <LessonEditorTitleField v-model="title" class="mb-1" />
 
-      <LessonEditorPublicationDatePopover />
+      <!-- <LessonEditorPublicationDatePopover v-model="date" /> -->
     </div>
 
-    <LessonEditorMenu v-model="editor" class="border-b" />
+    <LessonEditorMenu v-if="editor" v-model="editor" class="border-b" />
 
-    <ClientOnly>
-      <EditorContent
-        :editor="editor"
-        class="Tiptap-LessonMaterial h-full w-full max-w-[85ch] self-center px-4 py-5"
-      />
-    </ClientOnly>
+    <div class="flex w-full grow justify-center overflow-auto">
+      <ClientOnly>
+        <EditorContent
+          :editor="editor"
+          class="Tiptap-LessonMaterial h-full w-full max-w-[85ch] self-center px-4 py-5"
+        />
+      </ClientOnly>
+    </div>
   </div>
 </template>
 
@@ -46,8 +48,19 @@ const props = defineProps<{
   lessonId: string;
 }>();
 
+const updateLessonMaterial = useDebounceFn(async (editor: Editor) => {
+  await lessons.updateMaterial.asyncData({
+    body: {
+      content: editor.getHTML()
+    },
+    routeParams: {
+      id: props.lessonId
+    }
+  });
+}, 700);
+
+const title = ref('Auto-layout - Beginning');
 const editor = useEditor({
-  content: '<h1>I’m running Tiptap with Vue.js. 🎉</h1>',
   extensions: [
     Blockquote,
     Bold,
@@ -76,18 +89,18 @@ const editor = useEditor({
   onUpdate: ({ editor }) => updateLessonMaterial(editor)
 });
 
-const updateLessonMaterial = useDebounceFn(async (editor: Editor) => {
-  console.info('Sending update request');
+const { data, execute } = await lessons.findMaterial.asyncData({
+  immediate: false,
+  routeParams: {
+    id: props.lessonId
+  }
+});
 
-  await lessons.updateMaterial.asyncData({
-    body: {
-      content: editor.getHTML()
-    },
-    routeParams: {
-      id: props.lessonId
-    }
-  });
-}, 700);
+onMounted(async () => {
+  await execute();
 
-const title = ref('Auto-layout - Beginning');
+  if (data.value?.data) {
+    editor.value?.commands.setContent(data.value.data.content);
+  }
+});
 </script>
