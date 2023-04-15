@@ -8,7 +8,7 @@
       />
     </div>
 
-    <div class="basis-8/12 rounded bg-white">
+    <div class="grow basis-8/12 overflow-auto rounded bg-white">
       <NuxtPage :page-key="route.fullPath"></NuxtPage>
     </div>
 
