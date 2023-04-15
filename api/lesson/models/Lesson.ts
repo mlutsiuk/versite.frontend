@@ -5,8 +5,8 @@ export type Lesson = {
   object: 'Lesson';
   id: number;
   title: string;
-  date: number;
-  course_id: number;
+  date: string;
+  course_id: string;
 
   assignments?: RelationItem<Assignment>[];
   course?: RelationItem<Course>;

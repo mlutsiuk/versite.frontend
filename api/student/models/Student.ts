@@ -5,7 +5,7 @@ export type Student = {
   object: 'Student';
   id: number;
   name: string | null;
-  course_id: number;
+  course_id: string;
   user_id: number | null;
 
   // TODO: Add assignments_submissions relations
