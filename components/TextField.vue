@@ -22,7 +22,7 @@
         :name="props.name"
         :placeholder="props.placeholder"
         :disabled="disabled"
-        :type="props.password ? 'password' : 'text'"
+        :type="props.type"
         class="TextField_Input"
       />
       <div class="TextField_Outline"></div>
@@ -50,14 +50,14 @@ const props = withDefaults(
     hideDetails?: boolean;
     placeholder?: string;
     label?: string;
-    password?: boolean;
+    type: 'text' | 'password' | 'date' | 'datetime-local';
 
     name: string;
 
     modelValue?: string;
   }>(),
   {
-    password: false,
+    type: 'text',
     disabled: false,
     hideDetails: false
   }

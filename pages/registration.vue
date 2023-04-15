@@ -6,12 +6,17 @@
 
     <TextField class="mb-1" name="name" placeholder="Ім'я" />
     <TextField class="mb-1" name="email" placeholder="E-Mail" />
-    <TextField class="mb-1" name="password" placeholder="Пароль" password />
+    <TextField
+      class="mb-1"
+      name="password"
+      placeholder="Пароль"
+      type="password"
+    />
     <TextField
       class="mb-1"
       name="passwordRepeat"
       placeholder="Повторіть пароль"
-      password
+      type="password"
     />
 
     <MdButton

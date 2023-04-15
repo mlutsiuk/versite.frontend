@@ -5,7 +5,12 @@
     <div class="mb-9 text-2xl font-semibold">Увійти</div>
 
     <TextField class="mb-1" name="email" placeholder="E-Mail" />
-    <TextField class="mb-3" name="password" placeholder="Пароль" password />
+    <TextField
+      class="mb-3"
+      name="password"
+      placeholder="Пароль"
+      type="password"
+    />
 
     <MdButton
       @click="passwordLogin"
