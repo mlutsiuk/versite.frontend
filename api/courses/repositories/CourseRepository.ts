@@ -15,6 +15,11 @@ const authored = new Endpoint<ResourceArray<Course>>({
   url: 'v1/courses/authored'
 });
 
+const participated = new Endpoint<ResourceArray<Course>>({
+  method: 'GET',
+  url: 'v1/courses/participated'
+});
+
 const find = new Endpoint<ResourceSingle<Course>, undefined, { id: string }>({
   method: 'GET',
   url: ({ id }) => `v1/courses/${id}`
@@ -42,6 +47,7 @@ const deleteCourse = new Endpoint<undefined, undefined, { id: string }>({
 export const courses = {
   all,
   authored,
+  participated,
   find,
   create,
   update,
