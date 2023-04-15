@@ -2,6 +2,19 @@
   <div class="flex flex-col space-y-2 rounded bg-white p-2">
     <NuxtLink
       :to="{
+        name: 'courses-my-calendar'
+      }"
+      active-class="active"
+      class="link"
+    >
+      <Icon name="mdi:calendar" size="24" />
+      <span>Календар</span>
+    </NuxtLink>
+
+    <hr />
+
+    <NuxtLink
+      :to="{
         name: 'courses-my-participated'
       }"
       active-class="active"
