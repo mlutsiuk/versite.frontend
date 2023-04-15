@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-col space-y-2.5">
     <CourseStudentsListItem
       v-for="student in props.students"
       :key="student.id"
