@@ -4,7 +4,8 @@
       class="flex basis-3/4 flex-col space-y-2.5 rounded bg-white px-5 py-2.5"
     >
       <div class="flex flex-row justify-between">
-        <h1 class="text-2xl font-medium" v-text="lesson?.data.title" />
+        <SkeletonBone v-if="pending" class="mt-2 h-6 w-96 rounded-full" />
+        <h1 v-else class="text-2xl font-medium" v-text="lesson?.data.title" />
 
         <NuxtLink
           :to="{ name: 'lessons-id-edit', params: { id: route.params.id } }"
@@ -18,7 +19,11 @@
       <hr />
 
       <div class="grow overflow-auto">
+        <div v-if="pending" class="h-full">
+          <SkeletonBone class="mb-2 h-5/6 w-full rounded" />
+        </div>
         <div
+          v-else
           class="Tiptap-LessonMaterial"
           v-html="lesson?.data.material?.data?.content"
         />
