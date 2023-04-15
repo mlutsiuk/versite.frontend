@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-2.5 px-5 py-2.5">
+  <div class="space-y-2.5 overflow-auto px-5 py-2.5">
     <div class="flex flex-row items-center">
       <h2 class="text-xl font-medium leading-8">Авторські курси</h2>
     </div>
@@ -15,17 +15,19 @@
       <h2 class="text-3xl">ERRORRRR</h2>
       {{ error }}
     </div>
-    <div v-else-if="data" class="grid grid-cols-3 gap-3">
-      <NuxtLink
-        v-for="course in data.data"
-        :key="course.id"
-        :to="{
-          name: 'courses-id-lessons',
-          params: { id: course.id }
-        }"
-      >
-        <CourseCard :course="course" />
-      </NuxtLink>
+    <div v-else-if="data" class="overflow-auto">
+      <div class="grid grid-cols-3 gap-3">
+        <NuxtLink
+          v-for="course in data.data"
+          :key="course.id"
+          :to="{
+            name: 'courses-id-lessons',
+            params: { id: course.id }
+          }"
+        >
+          <CourseCard :course="course" />
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>

@@ -4,7 +4,7 @@
       <CourseMySidebarNavigation class="w-full" />
     </div>
 
-    <div class="basis-4/5 rounded bg-white">
+    <div class="basis-4/5 rounded bg-white overflow-y-auto flex">
       <NuxtPage :page-key="$route.fullPath"></NuxtPage>
     </div>
   </div>
