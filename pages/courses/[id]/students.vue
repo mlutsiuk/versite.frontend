@@ -3,13 +3,10 @@
     <div class="flex flex-row items-center justify-between">
       <h2 class="text-xl font-medium">Студенти</h2>
 
-      <div
-        class="flex cursor-pointer select-none flex-row rounded bg-gray-100 px-2 py-1 transition-colors hover:bg-gray-200"
-      >
-        <Icon class="mr-1" name="mdi:plus" size="24px" />
-
-        Створити
-      </div>
+      <CourseStudentsCreateDialog
+        :course-id="route.params.id"
+        @create="refresh"
+      />
     </div>
 
     <hr />
@@ -27,7 +24,7 @@ import { students } from '~/api/repositories';
 
 const route = useRoute('courses-id-students');
 
-const { data, error, execute, pending } =
+const { data, error, execute, refresh, pending } =
   await students.allFromCourse.asyncData({
     immediate: false,
     routeParams: {
