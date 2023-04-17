@@ -44,7 +44,7 @@
 
 .fade-transition {
   &-enter-active, &-leave-active {
-    @apply transition ease-out duration-200 transform;
+    @apply transition-opacity ease-out duration-200 transform;
   }
 
   &-enter-from, &-leave-to {
