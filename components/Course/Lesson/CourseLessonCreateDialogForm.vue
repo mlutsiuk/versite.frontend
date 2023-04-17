@@ -26,7 +26,7 @@
       <MdButton
         :disabled="loading"
         :loading="loading"
-        class="mr-2 text-gray-600"
+        class="text-gray-600"
         size="large"
         variant="outline"
         @click="create"
