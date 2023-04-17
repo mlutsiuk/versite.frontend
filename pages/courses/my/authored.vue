@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-2.5 overflow-auto px-5 py-2.5">
+  <div class="grow space-y-2.5 overflow-auto px-5 py-2.5">
     <div class="flex flex-row items-center">
       <h2 class="text-xl font-medium leading-8">Авторські курси</h2>
     </div>
