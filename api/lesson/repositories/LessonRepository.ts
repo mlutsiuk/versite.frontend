@@ -12,6 +12,11 @@ const all = new Endpoint<ResourceArray<Lesson>>({
   url: 'v1/lessons'
 });
 
+const calendar = new Endpoint<ResourceArray<Lesson>>({
+  method: 'GET',
+  url: 'v1/lessons/calendar'
+});
+
 const allFromCourse = new Endpoint<
   ResourceArray<Lesson>,
   undefined,
@@ -65,6 +70,7 @@ const deleteLesson = new Endpoint<undefined, undefined, { id: string }>({
 
 export const lessons = {
   all,
+  calendar,
   allFromCourse,
   find,
   create,
