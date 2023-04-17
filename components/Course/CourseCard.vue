@@ -63,6 +63,6 @@ const nextLesson = computed(() => {
 });
 // Format date to 22.03.2023 15:30
 const nextLessonDate = computed(() => {
-  return dayjs.unix(nextLesson.value!.date).format('DD.MM.YYYY HH:mm');
+  return dayjs(nextLesson.value!.date).format('DD.MM.YYYY HH:mm');
 });
 </script>
