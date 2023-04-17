@@ -5,6 +5,7 @@
         :date="date"
         @click-previous="changeMounth('previous')"
         @click-next="changeMounth('next')"
+        :loading="pending"
       />
 
       <CourseCalendarDaysHeader class="border border-gray-200" />
@@ -21,6 +22,7 @@
               previousMonthDaysCount - firstDayOfMounth + day
             )
           "
+          :lessons="groupedLessons"
           inactive
         />
 
@@ -28,12 +30,14 @@
           v-for="day in currentMounthDaysCount"
           :key="day"
           :date="date.set('date', day)"
+          :lessons="groupedLessons"
         />
 
         <CourseCalendarDay
           v-for="day in 7 - 1 - lastDayOfMounth"
           :key="day"
           :date="nextMounth.set('date', day)"
+          :lessons="groupedLessons"
           inactive
         />
       </div>
@@ -44,6 +48,8 @@
 <script lang="ts" setup>
 import dayjs from 'dayjs';
 import weekday from 'dayjs/plugin/weekday';
+import { Lesson } from '~/api/models';
+import { lessons } from '~/api/repositories';
 
 dayjs.extend(weekday);
 
@@ -74,4 +80,60 @@ const firstDayOfMounth = computed(() => {
 const lastDayOfMounth = computed(() => {
   return date.value.endOf('month').weekday();
 });
+
+const daysRange = computed(() => {
+  let from, to;
+
+  if (firstDayOfMounth.value === 0) {
+    from = date.value.set('date', 1);
+  } else {
+    from = previousMounth.value.set(
+      'date',
+      previousMonthDaysCount.value - firstDayOfMounth.value + 1
+    );
+  }
+
+  if (lastDayOfMounth.value === 6) {
+    to = date.value.set('date', currentMounthDaysCount.value);
+  } else {
+    to = nextMounth.value.set('date', 7 - 1 - lastDayOfMounth.value);
+  }
+
+  return {
+    from: from.format('YYYY-MM-DD'),
+    to: to.format('YYYY-MM-DD')
+  };
+});
+
+const queryParams = computed(() => {
+  return {
+    ...daysRange.value,
+    include: 'course'
+  };
+});
+
+const { data, execute, pending } = await lessons.calendar.fetch({
+  immediate: false,
+  query: queryParams
+});
+
+const groupedLessons = computed<Record<string, Lesson[]>>(() => {
+  if (!data.value?.data) {
+    return {};
+  }
+
+  return data.value.data.reduce((acc, lesson) => {
+    const date = dayjs(lesson.date).format('YYYY-MM-DD');
+
+    if (!acc[date]) {
+      acc[date] = [];
+    }
+
+    acc[date].push(lesson);
+
+    return acc;
+  }, {} as Record<string, Lesson[]>);
+});
+
+onMounted(execute);
 </script>

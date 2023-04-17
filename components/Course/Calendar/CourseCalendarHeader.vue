@@ -4,11 +4,14 @@
       <button class="month-change-button" @click="emit('click-previous')">
         <Icon name="mdi:chevron-left" size="36px" />
       </button>
+
       <button class="month-change-button" @click="emit('click-next')">
         <Icon name="mdi:chevron-right" size="36px" />
       </button>
     </div>
     <h2 class="ml-2 text-xl font-bold leading-none">{{ formatted }}</h2>
+
+    <MdProgressCircular v-if="props.loading" class="ml-2" />
   </div>
 </template>
 
@@ -18,6 +21,7 @@ import { capitalize } from 'lodash-es';
 
 const props = defineProps<{
   date: Dayjs;
+  loading: boolean;
 }>();
 const emit = defineEmits<{
   (event: 'click-previous'): void;
