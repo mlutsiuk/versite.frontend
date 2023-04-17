@@ -36,6 +36,6 @@ const props = defineProps<{
 }>();
 
 const date = computed(() => {
-  return dayjs.unix(props.lesson.date).format('DD.MM.YYYY HH:mm');
+  return dayjs(props.lesson.date).format('DD.MM.YYYY HH:mm');
 });
 </script>
