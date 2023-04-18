@@ -30,8 +30,15 @@
       </div>
     </div>
 
-    <div class="h-[30rem] basis-1/4 rounded bg-white shadow">
-      <h2 class="p-4 text-2xl">Завдання</h2>
+    <div class="basis-1/4 space-y-2.5 rounded bg-white px-4 py-2.5 shadow">
+      <h2 class="text-2xl">Завдання</h2>
+      <hr />
+
+      <LessonAssignmentsListSkeleton v-if="pending" />
+      <LessonAssignmentsList
+        v-else-if="lesson?.data.assignments"
+        :assignments="lesson?.data.assignments.data"
+      />
     </div>
   </div>
 </template>
@@ -52,7 +59,7 @@ const {
     id: route.params.id
   },
   query: {
-    include: 'material'
+    include: 'material,assignments'
   }
 });
 

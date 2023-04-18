@@ -2,7 +2,8 @@
   <div>
     <div
       ref="trigger"
-      class="flex flex-shrink-0 cursor-pointer items-center rounded-sm px-1 py-0.5 text-sm hover:bg-gray-200"
+      :class="[isOpen ? 'bg-gray-200' : 'hover:bg-gray-100']"
+      class="flex flex-shrink-0 cursor-pointer items-center rounded-sm px-1 py-0.5 text-sm"
       @click="toggle"
     >
       <div
@@ -31,11 +32,40 @@
             <Icon class="text-gray-600" name="mdi:calendar" />
             <span v-text="dayjs(lesson.date).format('DD.MM.YYYY')" />
           </div>
+
           <div
             class="flex flex-row items-center space-x-2 rounded text-gray-600"
           >
             <Icon class="text-gray-600" name="mdi:clock-outline" />
             <span v-text="dayjs(lesson.date).format('HH:mm')" />
+          </div>
+
+          <div
+            v-if="lesson.assignments?.data.length"
+            class="text-sm font-medium"
+          >
+            <div class="text-gray-400">Завдання</div>
+
+            <ul class="pl-2">
+              <li
+                v-for="assignment in lesson.assignments.data"
+                :key="assignment.id"
+                class="list-inside list-disc"
+              >
+                {{ assignment.title }}*
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-2 flex flex-row justify-end">
+            <MdButton
+              :to="`/lessons/${lesson.id}`"
+              class="text-gray-600"
+              size="default"
+              variant="outline"
+            >
+              Переглянути
+            </MdButton>
           </div>
         </div>
       </Transition>
@@ -62,6 +92,12 @@ const { isOpen, toggle, close } = usePopper(trigger, popover, {
       name: 'offset',
       options: {
         offset: [0, 8]
+      }
+    },
+    {
+      name: 'preventOverflow',
+      options: {
+        padding: 32
       }
     }
   ]

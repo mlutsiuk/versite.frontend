@@ -3,7 +3,7 @@ import { Course, Invitation, User } from '~/api/models';
 
 export type Student = {
   object: 'Student';
-  id: number;
+  id: string;
   name: string | null;
   course_id: string;
   user_id: number | null;

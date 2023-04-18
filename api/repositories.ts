@@ -1,4 +1,5 @@
 export * from './auth/repositories';
+export * from './assignment/repositories';
 export * from './courses/repositories';
 export * from './invitation/repositories';
 export * from './lesson/repositories';

@@ -37,12 +37,19 @@
         <span v-text="nextLessonDate" />
       </div>
 
-      <div class="text-sm font-medium">
+      <div
+        v-if="nextLesson.assignments?.data.length"
+        class="text-sm font-medium"
+      >
         <div class="text-gray-400">Завдання</div>
 
         <ul class="pl-2">
-          <li class="list-inside list-disc">
-            Create a simple login screen for a mobile app.
+          <li
+            v-for="assignment in nextLesson.assignments.data"
+            :key="assignment.id"
+            class="list-inside list-disc"
+          >
+            {{ assignment.title }}*
           </li>
         </ul>
       </div>

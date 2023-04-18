@@ -32,6 +32,9 @@ const {
   immediate: false,
   routeParams: {
     id: route.params.id
+  },
+  query: {
+    include: 'assignments'
   }
 });
 
