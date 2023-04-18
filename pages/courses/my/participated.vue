@@ -36,7 +36,7 @@ import { courses } from '~/api/repositories';
 const { data, error, pending, execute } = await courses.participated.asyncData({
   immediate: false,
   params: {
-    include: 'author,lessons,next_lesson'
+    include: 'author,lessons,next_lesson.assignments'
   }
 });
 
