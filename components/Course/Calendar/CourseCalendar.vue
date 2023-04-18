@@ -47,11 +47,8 @@
 
 <script lang="ts" setup>
 import dayjs from 'dayjs';
-import weekday from 'dayjs/plugin/weekday';
 import { Lesson } from '~/api/models';
 import { lessons } from '~/api/repositories';
-
-dayjs.extend(weekday);
 
 const date = ref(dayjs());
 
@@ -108,7 +105,7 @@ const daysRange = computed(() => {
 const queryParams = computed(() => {
   return {
     ...daysRange.value,
-    include: 'course'
+    include: 'course,assignments'
   };
 });
 
