@@ -13,7 +13,11 @@
 
     <div>
       <CourseStudentsListSkeleton v-if="pending" />
-      <CourseStudentsList v-else-if="data" :students="data.data" />
+      <CourseStudentsList
+        v-else-if="data"
+        :students="data.data"
+        @create="refresh"
+      />
       <div v-else v-text="error" />
     </div>
   </div>

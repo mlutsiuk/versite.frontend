@@ -23,12 +23,11 @@
               }`
             "
           />
-          <div
+          <CourseStudentsInviteDialog
             v-else
-            class="w-min cursor-pointer select-none whitespace-nowrap rounded bg-gray-200 px-2 text-gray-600 transition-colors hover:bg-gray-300"
-          >
-            Відправити запрошення
-          </div>
+            :student-id="props.student.id"
+            @create="emit('create')"
+          />
         </div>
       </div>
     </div>
@@ -40,6 +39,9 @@ import { Student } from '~/api/models';
 
 const props = defineProps<{
   student: Student;
+}>();
+const emit = defineEmits<{
+  (e: 'create'): void;
 }>();
 
 const user = computed(() => props.student.user?.data);

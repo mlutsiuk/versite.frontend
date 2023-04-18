@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col space-y-2.5">
     <CourseStudentsListItem
+      @create="$emit('create')"
       v-for="student in props.students"
       :key="student.id"
       :student="student"
@@ -13,5 +14,8 @@ import { Student } from '~/api/models';
 
 const props = defineProps<{
   students: Student[];
+}>();
+const emit = defineEmits<{
+  (e: 'create'): void;
 }>();
 </script>
