@@ -3,9 +3,9 @@ import { Student, User } from '~/api/models';
 
 export type Invitation = {
   object: 'Invitation';
-  id: number;
-  student_id: number;
-  receiver_id: number | null;
+  id: string;
+  student_id: string;
+  receiver_id: string | null;
   email: string | null;
   is_hidden: boolean;
 
