@@ -6,7 +6,8 @@
       </NuxtLink>
 
       <div class="flex items-center">
-        <HeaderChatsButton class="mr-3" />
+        <HeaderCalendarButton class="mr-2" />
+        <HeaderChatsButton class="mr-2" />
         <HeaderNotifications class="mr-6" />
 
         <HeaderDropdown />
