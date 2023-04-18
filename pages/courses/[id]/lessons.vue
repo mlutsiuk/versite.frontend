@@ -9,10 +9,22 @@
     <hr />
 
     <div>
-      <h2 class="mb-1 text-xl">Майбутні</h2>
+      <div v-if="pending">
+        <SkeletonBone class="mb-2 h-4 w-32 rounded-full" />
 
-      <CourseLessonListSkeleton v-if="pending" />
-      <CourseLessonList v-else-if="lessons" :lessons="lessons.data" />
+        <CourseLessonListSkeleton />
+      </div>
+      <div v-else-if="lessons" class="space-y-4">
+        <div v-if="futureLessons.length">
+          <h2 class="mb-1 text-xl">Майбутні</h2>
+          <CourseLessonList :lessons="futureLessons" />
+        </div>
+
+        <div v-if="pastLessons.length">
+          <h2 class="mb-1 text-xl">Минулі</h2>
+          <CourseLessonList :lessons="pastLessons" />
+        </div>
+      </div>
       <div v-else v-text="error" />
     </div>
   </div>
@@ -20,6 +32,7 @@
 
 <script setup lang="ts">
 import { lessons as lessonRepository } from '~/api/repositories';
+import dayjs from 'dayjs';
 
 const route = useRoute('courses-id-lessons');
 
@@ -36,6 +49,35 @@ const {
   query: {
     include: 'assignments'
   }
+});
+
+const futureLessons = computed(() => {
+  if (!lessons.value?.data) {
+    return [];
+  }
+
+  return lessons.value.data
+    .filter(lesson => {
+      return dayjs(lesson.date).isAfter(dayjs());
+    })
+    .sort((a, b) => {
+      return dayjs(a.date).isAfter(dayjs(b.date)) ? 1 : -1;
+    });
+});
+
+const pastLessons = computed(() => {
+  if (!lessons.value?.data) {
+    return [];
+  }
+
+  // sort descending
+  return lessons.value.data
+    .filter(lesson => {
+      return dayjs(lesson.date).isBefore(dayjs());
+    })
+    .sort((a, b) => {
+      return dayjs(a.date).isAfter(dayjs(b.date)) ? -1 : 1;
+    });
 });
 
 onMounted(() => {
