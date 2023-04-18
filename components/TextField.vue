@@ -50,7 +50,7 @@ const props = withDefaults(
     hideDetails?: boolean;
     placeholder?: string;
     label?: string;
-    type: 'text' | 'password' | 'date' | 'datetime-local';
+    type?: 'text' | 'password' | 'date' | 'datetime-local';
 
     name: string;
 
