@@ -1,4 +1,4 @@
-import { RelationItem } from '~/api';
+import { RelationCollection, RelationItem } from '~/api';
 import { Assignment, Course, LessonMaterial } from '~/api/models';
 
 export type Lesson = {
@@ -8,7 +8,7 @@ export type Lesson = {
   date: string;
   course_id: string;
 
-  assignments?: RelationItem<Assignment>[];
+  assignments?: RelationCollection<Assignment>;
   course?: RelationItem<Course>;
   material?: RelationItem<LessonMaterial>;
 };
