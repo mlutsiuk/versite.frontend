@@ -4,8 +4,11 @@
       <LessonEditor :lesson-id="route.params.id" class="w-full" />
     </div>
 
-    <div class="h-[30rem] basis-1/4 rounded bg-white shadow">
-      <h2 class="p-4 text-2xl">Завдання</h2>
+    <div class="basis-1/4 space-y-2.5 rounded bg-white px-4 py-2.5 shadow">
+      <h2 class="text-2xl">Завдання</h2>
+      <hr />
+
+      <LessonAssignmentsEditorList :lesson-id="route.params.id" />
     </div>
   </div>
 </template>

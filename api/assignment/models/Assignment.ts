@@ -7,8 +7,8 @@ export type Assignment = {
   title: string;
   description?: string;
   max_mark?: number;
-  deadline?: number;
-  lesson_id: number;
+  deadline?: string;
+  lesson_id: string;
 
   lesson?: RelationItem<Lesson>;
   // TODO: Add assignment_submissions relation

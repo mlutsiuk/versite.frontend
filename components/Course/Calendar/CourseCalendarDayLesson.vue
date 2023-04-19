@@ -52,7 +52,7 @@
                 :key="assignment.id"
                 class="list-inside list-disc"
               >
-                {{ assignment.title }}*
+                {{ assignment.title }}
               </li>
             </ul>
           </div>
