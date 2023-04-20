@@ -7,6 +7,11 @@ const all = new Endpoint<ResourceArray<Invitation>>({
   url: 'v1/invitations'
 });
 
+const my = new Endpoint<ResourceArray<Invitation>>({
+  method: 'GET',
+  url: 'v1/invitations/my'
+});
+
 const find = new Endpoint<
   ResourceSingle<Invitation>,
   undefined,
@@ -31,6 +36,7 @@ const deleteInvitation = new Endpoint<undefined, undefined, { id: string }>({
 
 export const invitations = {
   all,
+  my,
   find,
   create,
   delete: deleteInvitation
