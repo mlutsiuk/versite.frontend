@@ -12,7 +12,7 @@
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
-    content?: string;
+    content?: string | number;
     color?: string;
   }>(),
   {
