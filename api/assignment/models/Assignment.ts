@@ -1,9 +1,9 @@
 import { RelationItem } from '~/api';
-import { Lesson } from '~/api/models';
+import { AssignmentSubmission, Lesson } from '~/api/models';
 
 export type Assignment = {
   object: 'Assignment';
-  id: number;
+  id: string;
   title: string;
   description?: string;
   max_mark?: number;
@@ -11,5 +11,5 @@ export type Assignment = {
   lesson_id: string;
 
   lesson?: RelationItem<Lesson>;
-  // TODO: Add assignment_submissions relation
+  my_submission?: RelationItem<AssignmentSubmission>;
 };
