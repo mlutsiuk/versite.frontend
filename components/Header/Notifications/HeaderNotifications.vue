@@ -9,13 +9,13 @@
         class="absolute -right-16 z-10 mt-6 w-[30rem] rounded-md bg-white shadow-lg"
       >
         <div class="space-y-2 py-3">
-          <HeaderNotificationsInvitationsHeading />
+          <template v-if="invitationStore.count">
+            <HeaderNotificationsInvitationsHeading />
+            <hr />
 
-          <hr />
-
-          <HeaderNotificationsInvitationsList />
-
-          <hr />
+            <HeaderNotificationsInvitationsList />
+            <hr />
+          </template>
 
           <HeaderNotificationsList />
           <!--          <div class="flex justify-center items-center">-->
@@ -31,4 +31,7 @@
 
 <script lang="ts" setup>
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
+import { useInvitationStore } from '~/store/invitation';
+
+const invitationStore = useInvitationStore();
 </script>
