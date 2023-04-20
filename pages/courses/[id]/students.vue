@@ -1,9 +1,10 @@
 <template>
   <div class="space-y-2.5 px-5 py-2.5">
     <div class="flex flex-row items-center justify-between">
-      <h2 class="text-xl font-medium">Студенти</h2>
+      <h2 class="text-xl font-medium leading-8">Студенти</h2>
 
       <CourseStudentsCreateDialog
+        v-if="props.canEdit"
         :course-id="route.params.id"
         @create="refresh"
       />
@@ -25,6 +26,10 @@
 
 <script lang="ts" setup>
 import { students } from '~/api/repositories';
+
+const props = defineProps<{
+  canEdit: boolean;
+}>();
 
 const route = useRoute('courses-id-students');
 

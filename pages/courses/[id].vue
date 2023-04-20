@@ -9,7 +9,7 @@
     </div>
 
     <div class="grow basis-8/12 overflow-auto rounded bg-white">
-      <NuxtPage :page-key="route.fullPath"></NuxtPage>
+      <NuxtPage :can-edit="isAuthor" :page-key="route.fullPath"></NuxtPage>
     </div>
 
     <div class="h-min basis-3/12 space-y-2.5 rounded bg-white p-2.5">
@@ -41,6 +41,7 @@
 
 <script lang="ts" setup>
 import { courses } from '~/api/repositories';
+import { useAuthStore } from '~/store/auth';
 
 const route = useRoute('courses-id-lessons');
 
@@ -49,6 +50,12 @@ const { data: course, execute } = await courses.find.asyncData({
   routeParams: {
     id: route.params.id
   }
+});
+
+const auth = useAuthStore();
+
+const isAuthor = computed(() => {
+  return course.value?.data.author_id == auth.user?.id;
 });
 
 onMounted(() => {
