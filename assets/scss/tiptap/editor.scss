@@ -4,7 +4,11 @@
 
 .Tiptap-LessonMaterial {
   p {
-    @apply my-4;
+    @apply my-2.5;
+  }
+
+  a {
+    @apply text-blue-600 cursor-pointer underline;
   }
 
   blockquote {
