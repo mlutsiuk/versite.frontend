@@ -54,6 +54,7 @@ const {
   pending,
   execute
 } = await assignmentRepository.find.asyncData({
+  immediate: false,
   routeParams: {
     id: props.assignmnentId
   }

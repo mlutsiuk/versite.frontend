@@ -31,7 +31,7 @@
     <Transition name="fade-transition">
       <div v-show="isOpen" ref="popover">
         <LessonAssignmentsEditorPopover
-          :assignmnent-id="assignment.id.toString()"
+          :assignmnent-id="assignment.id"
           @save="emit('save')"
         />
       </div>
