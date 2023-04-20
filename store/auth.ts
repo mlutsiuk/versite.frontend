@@ -27,12 +27,16 @@ export const useAuthStore = defineStore('auth', {
 
       useCookie('token').value = null;
       useSnackbar().clear();
+
+      useMitt().emit('auth:logout');
     },
     async fetchUser() {
       const { data } = await auth.getAuthenticatedUser.asyncData();
 
       if (data.value) {
         this.user = data.value.data;
+
+        useMitt().emit('auth:user-fetched');
       }
     }
   }
