@@ -1,11 +1,15 @@
 import { RelationItem } from '~/api';
-import { Lesson } from '~/api/models';
+import { Assignment, Student } from '~/api/models';
 
 export type AssignmentSubmission = {
   object: 'AssignmentSubmission';
-  id: number;
+  id: string;
+  assignment_id: string;
+  student_id: number;
   content: string;
-  lesson_id: number;
+  mark: number;
+  is_checked: boolean;
 
-  lesson?: RelationItem<Lesson>;
+  student?: RelationItem<Student>;
+  assignment?: RelationItem<Assignment>;
 };
