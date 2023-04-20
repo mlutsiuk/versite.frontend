@@ -5,6 +5,7 @@
     :class="{
       'Button--filled': props.variant == 'filled',
       'Button--outline': props.variant == 'outline',
+      'Button--tonal': props.variant == 'tonal',
       'Button--disabled': props.disabled,
       'Button--loading': props.loading,
 
@@ -47,7 +48,7 @@ const props = withDefaults(
   defineProps<{
     prependIcon?: string;
     appendIcon?: string;
-    variant?: 'filled' | 'outline';
+    variant?: 'filled' | 'outline' | 'tonal';
     size?: 'small' | 'default' | 'large' | 'x-large';
     block?: boolean;
     disabled?: boolean;
@@ -65,7 +66,7 @@ const props = withDefaults(
 );
 </script>
 
-<style lang="postcss" scoped>
+<style lang="scss" scoped>
 .Button {
   @apply relative box-border inline-flex cursor-pointer
   select-none items-center justify-center
@@ -82,6 +83,19 @@ const props = withDefaults(
 
   .Button_Highlighter {
     @apply text-white;
+  }
+}
+
+.Button--tonal {
+  @apply bg-current;
+
+  .Button_Content,
+  .Button_Loader {
+    @apply text-gray-700;
+  }
+
+  .Button_Highlighter {
+    @apply text-gray-700;
   }
 }
 
@@ -121,7 +135,7 @@ const props = withDefaults(
 
 .Button--size-default {
   @apply h-[36px] min-w-[64px] px-4
-  text-sm;
+  text-base;
 }
 
 .Button--size-large {
@@ -135,7 +149,7 @@ const props = withDefaults(
 }
 
 .Button:hover .Button_Highlighter {
-  @apply bg-current opacity-5;
+  @apply bg-current opacity-10;
 }
 
 .Button_Highlighter {
