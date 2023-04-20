@@ -37,6 +37,7 @@
       <LessonAssignmentsListSkeleton v-if="pending" />
       <LessonAssignmentsList
         v-else-if="lesson?.data.assignments"
+        @reload="refresh"
         :assignments="lesson?.data.assignments.data"
       />
     </div>
@@ -52,14 +53,15 @@ const {
   data: lesson,
   pending,
   error,
-  execute
+  execute,
+  refresh
 } = await lessons.find.asyncData({
   immediate: false,
   routeParams: {
     id: route.params.id
   },
   query: {
-    include: 'material,assignments'
+    include: 'material,assignments.my_submission'
   }
 });
 

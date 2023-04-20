@@ -1,7 +1,8 @@
 <template>
   <div class="space-y-2.5">
     <LessonAssignmentsListItem
-      v-for="assignment in assignments"
+      v-for="assignment in props.assignments"
+      @create:submission="emit('reload')"
       :key="assignment.id"
       :assignment="assignment"
     />
@@ -13,5 +14,8 @@ import { Assignment } from '~/api/models';
 
 const props = defineProps<{
   assignments: Assignment[];
+}>();
+const emit = defineEmits<{
+  (e: 'reload'): void;
 }>();
 </script>
