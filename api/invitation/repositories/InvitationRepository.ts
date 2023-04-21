@@ -21,6 +21,11 @@ const find = new Endpoint<
   url: ({ id }) => `v1/invitations/${id}`
 });
 
+const accept = new Endpoint<undefined, undefined, { id: string }>({
+  method: 'POST',
+  url: ({ id }) => `v1/invitations/${id}/accept`
+});
+
 const create = new Endpoint<
   ResourceSingle<Invitation>,
   CreateInvitationRequest
@@ -38,6 +43,7 @@ export const invitations = {
   all,
   my,
   find,
+  accept,
   create,
   delete: deleteInvitation
 };

@@ -11,50 +11,90 @@
       <CourseCover class="w-full opacity-90" />
     </div>
 
-    <div class="h-screen w-7/12 overflow-auto py-12 pr-16">
-      <div class="text-lg">#дизайн #uiux #figma</div>
-      <h1 class="text-7xl">Як стартувати кар’єру ui/ux дизайнером</h1>
+    <div
+      v-if="course"
+      class="h-screen w-7/12 overflow-auto pb-12 pl-8 pr-16 pt-28"
+    >
+      <div class="mb-32 text-center text-2xl">
+        <span class="font-bold">{{ course?.author?.data?.name }}</span> запрошує
+        вас на курс
+      </div>
+
+      <h1 class="text-6xl">{{ course?.title }}</h1>
 
       <div class="mt-8 text-xl">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut
+        {{ course?.description }}
       </div>
 
-      <div class="mx-auto mt-12 flex h-36 w-[50%] flex-row divide-x">
-        <div class="flex basis-1/3 items-center justify-center">
-          <div class="text-center">
-            3.5<br />
-            місяців
-          </div>
-        </div>
-        <div class="flex basis-1/3 items-center justify-center">
-          <div class="text-center">
-            88<br />
-            уроків
-          </div>
-        </div>
-        <div class="flex basis-1/3 items-center justify-center">
-          <div class="text-center">
-            88<br />
-            уроків
-          </div>
-        </div>
+      <div class="mx-auto mt-16 w-3/5">
+        <MdButton
+          :disabled="accepting"
+          :loading="accepting"
+          block
+          class="text-[#3A84AD]"
+          size="x-large"
+          variant="filled"
+          @click="accept"
+        >
+          Прийняти
+        </MdButton>
       </div>
 
-      <button
-        class="mx-auto my-12 block h-[60px] w-2/3 rounded-md bg-indigo-500 px-4 font-normal"
-      >
-        <span class="text-white">Зареєструватися</span>
-      </button>
+      <div class="mt-2 flex flex-row justify-center">
+        <NuxtLink
+          :to="{
+            name: 'index'
+          }"
+          class="cursor-pointer text-neutral-400 underline transition-all hover:text-neutral-700"
+        >
+          Пізніше
+        </NuxtLink>
+        <div class=""></div>
+      </div>
 
-      <UserMinicard />
+      <UserMinicard :user="(course.author!.data as User)" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { User } from '~/api/models';
+import { invitations } from '~/api/repositories';
+
 definePageMeta({
   layout: 'clear'
 });
+
+const route = useRoute('invitations-id');
+
+const { data } = await invitations.find.fetch({
+  routeParams: {
+    id: route.params.id
+  },
+  query: {
+    include: 'student.course.author'
+  }
+});
+const course = computed(() => data.value?.data.student?.data?.course?.data);
+
+const accepting = ref(false);
+
+async function accept() {
+  accepting.value = true;
+
+  await invitations.accept.asyncData({
+    routeParams: {
+      id: route.params.id
+    }
+  });
+
+  accepting.value = false;
+
+  navigateTo({
+    name: 'courses-id-lessons',
+    params: {
+      id: course.value?.id
+    }
+  });
+}
 </script>
