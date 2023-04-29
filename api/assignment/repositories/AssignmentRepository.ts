@@ -1,10 +1,19 @@
+import { CreateAssignmentRequest, UpdateAssignmentRequest } from '../requests';
 import { Endpoint, ResourceArray, ResourceSingle } from '~/api';
 import { Assignment } from '~/api/models';
-import { CreateAssignmentRequest, UpdateAssignmentRequest } from '../requests';
 
 const all = new Endpoint<ResourceArray<Assignment>>({
   method: 'GET',
   url: 'v1/assignments'
+});
+
+const allFromCourse = new Endpoint<
+  ResourceArray<Assignment>,
+  undefined,
+  { id: string }
+>({
+  method: 'GET',
+  url: ({ id }) => `v1/courses/${id}/assignments`
 });
 
 const allFromLesson = new Endpoint<
@@ -49,6 +58,7 @@ const deleteAssignment = new Endpoint<undefined, undefined, { id: string }>({
 
 export const assignments = {
   all,
+  allFromCourse,
   allFromLesson,
   find,
   create,

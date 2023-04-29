@@ -1,6 +1,6 @@
 <template>
-  <div class="flex w-full flex-row space-x-5">
-    <div class="basis-3/12">
+  <div class="flex w-full grow flex-row space-x-5">
+    <div class="basis-1/5">
       <CourseSidebarNavigation
         :course-id="route.params.id"
         :course-title="course?.data.title"
@@ -8,11 +8,11 @@
       />
     </div>
 
-    <div class="grow basis-8/12 overflow-auto rounded bg-white">
+    <div class="grow basis-3/5 overflow-auto rounded bg-white">
       <NuxtPage :can-edit="isAuthor" :page-key="route.fullPath"></NuxtPage>
     </div>
 
-    <div class="h-min basis-3/12 space-y-2.5 rounded bg-white p-2.5">
+    <div class="h-min basis-1/5 space-y-2.5 rounded bg-white p-2.5">
       <h2 class="text-2xl font-medium">Необхідно виконати</h2>
 
       <hr />
@@ -55,7 +55,7 @@ const { data: course, execute } = await courses.find.asyncData({
 const auth = useAuthStore();
 
 const isAuthor = computed(() => {
-  return course.value?.data.author_id == auth.user?.id;
+  return course.value?.data.author_id === auth.user?.id;
 });
 
 onMounted(() => {

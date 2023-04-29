@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full flex-row space-x-5 overflow-y-hidden">
+  <div class="flex w-full grow flex-row space-x-5 overflow-y-hidden">
     <div
       class="flex basis-3/4 flex-col space-y-2.5 rounded bg-white px-5 py-2.5"
     >
@@ -37,8 +37,8 @@
       <LessonAssignmentsListSkeleton v-if="pending" />
       <LessonAssignmentsList
         v-else-if="lesson?.data.assignments"
-        @reload="refresh"
         :assignments="lesson?.data.assignments.data"
+        @reload="refresh"
       />
     </div>
   </div>

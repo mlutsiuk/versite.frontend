@@ -51,7 +51,7 @@
 
     <NuxtLink
       :to="{
-        name: 'courses-id-unckecked-assignments',
+        name: 'courses-id-assignments',
         params: { id: props.courseId }
       }"
       active-class="active"
