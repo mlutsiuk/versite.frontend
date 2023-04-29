@@ -1,1 +1,1 @@
-export * from './CourseRepository'
+export * from './CourseRepository';

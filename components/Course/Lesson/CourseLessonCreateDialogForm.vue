@@ -38,10 +38,10 @@
 </template>
 
 <script lang="ts" setup>
-import { CreateLessonRequest } from '~/api/lesson';
-import { lessons } from '~/api/repositories';
 import { object, string } from 'zod';
 import dayjs from 'dayjs';
+import { CreateLessonRequest } from '~/api/lesson';
+import { lessons } from '~/api/repositories';
 
 const props = defineProps<{
   courseId: string;

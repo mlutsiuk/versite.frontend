@@ -26,7 +26,8 @@
     "nuxt-icon": "^0.3.2",
     "nuxt-typed-router": "^3.0.7",
     "pinia": "^2.0.23",
-    "sass": "^1.55.0"
+    "sass": "^1.55.0",
+    "typescript": "^5.0.4"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.4",

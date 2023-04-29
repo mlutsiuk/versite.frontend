@@ -40,12 +40,12 @@ export class Endpoint<
       AsyncDataOptions<ResT, ReqT, RouteParamsT>
     >
   ) {
-    let url =
+    const url =
       this.url instanceof Function
         ? this.url(options!.routeParams as RouteParamsT)
         : this.url;
 
-    let key = `${this.method}-${url}`;
+    const key = `${this.method}-${url}`;
 
     return useApiAsyncData<ResT>(
       url,
@@ -63,7 +63,7 @@ export class Endpoint<
       AsyncDataOptions<ResT, ReqT, RouteParamsT>
     >
   ) {
-    let url =
+    const url =
       this.url instanceof Function
         ? this.url(options!.routeParams as RouteParamsT)
         : this.url;

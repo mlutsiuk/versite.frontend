@@ -1,6 +1,6 @@
+import { CreateInvitationRequest } from '../requests';
 import { Endpoint, ResourceArray, ResourceSingle } from '~/api';
 import { Invitation } from '~/api/models';
-import { CreateInvitationRequest } from '../requests';
 
 const all = new Endpoint<ResourceArray<Invitation>>({
   method: 'GET',

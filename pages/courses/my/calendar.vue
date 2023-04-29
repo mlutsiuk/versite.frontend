@@ -1,9 +1,7 @@
 <template>
-  <div class="grow flex p-4">
+  <div class="flex grow p-4">
     <CourseCalendar />
   </div>
 </template>
 
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>

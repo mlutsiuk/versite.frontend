@@ -58,8 +58,8 @@
 </template>
 
 <script lang="ts" setup>
-import { Course } from '~/api/courses';
 import dayjs from 'dayjs';
+import { Course } from '~/api/courses';
 
 const props = defineProps<{
   course: Course;

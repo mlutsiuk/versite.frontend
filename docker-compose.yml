@@ -6,4 +6,4 @@ services:
       context: .
     container_name: nuxt
     ports:
-      - "3000:3000"
+      - '3000:3000'

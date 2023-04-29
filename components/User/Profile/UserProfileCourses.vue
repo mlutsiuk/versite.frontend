@@ -9,8 +9,8 @@
         custom
       >
         <div
-          @click="navigate"
           class="flex cursor-pointer select-none flex-row items-start rounded border py-2 pl-6 pr-2"
+          @click="navigate"
         >
           <div class="flex flex-col justify-between">
             <div class="font-semibold">Advanced UI/UX Design in Figma</div>

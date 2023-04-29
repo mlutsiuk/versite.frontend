@@ -32,8 +32,8 @@
 </template>
 
 <script lang="ts" setup>
-import { students } from '~/api/repositories';
 import { object, string } from 'zod';
+import { students } from '~/api/repositories';
 import { CreateStudentRequest } from '~/api/student';
 
 const props = defineProps<{

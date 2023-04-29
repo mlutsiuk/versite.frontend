@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col space-y-2.5">
     <CourseStudentsListItem
-      @create="$emit('create')"
       v-for="student in props.students"
       :key="student.id"
       :student="student"
+      @create="emit('create')"
     />
   </div>
 </template>

@@ -20,13 +20,13 @@
     <h1 class="text-2xl">Button disabled/loading states</h1>
     <div class="flex h-24 flex-wrap items-center justify-center bg-white p-4">
       <MdButton
-        @click="testClick('disable/enable')"
         class="text-[#3A84AD]"
         size="x-large"
         prepend-icon="mdi:google"
         append-icon="mdi:google"
         :disabled="buttonDisabled"
         :loading="buttonLoading"
+        @click="testClick('disable/enable')"
       >
         Target button
       </MdButton>

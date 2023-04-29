@@ -8,22 +8,22 @@
   >
     <label
       v-if="props.label"
-      v-text="props.label"
       :for="id"
       class="TextField_Label"
+      v-text="props.label"
     />
     <div class="TextField_Field">
       <input
-        v-on="validationHandlers"
-        v-model="inputValue"
-        @blur="blur"
-        @focus="focus"
         :id="id"
+        v-model="inputValue"
         :name="props.name"
         :placeholder="props.placeholder"
         :disabled="disabled"
         :type="props.type"
         class="TextField_Input"
+        @blur="blur"
+        @focus="focus"
+        v-on="validationHandlers"
       />
       <div class="TextField_Outline"></div>
     </div>

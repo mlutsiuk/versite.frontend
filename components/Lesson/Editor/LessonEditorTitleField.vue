@@ -1,9 +1,9 @@
 <template>
   <input
+    ref="input"
     v-model="content"
     v-autowidth="{ comfortZone: '6px' }"
     placeholder="Без назви"
-    ref="input"
     type="text"
   />
 </template>

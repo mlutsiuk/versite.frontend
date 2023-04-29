@@ -1,4 +1,4 @@
 export type EmailVerificationRequest = {
-  id: string,
-  hash: string
-}
+  id: string;
+  hash: string;
+};

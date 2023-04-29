@@ -4,7 +4,6 @@
 
     <div class="mt-4 grid grid-cols-3 gap-4">
       <div
-        v-for="id in 1"
         class="flex cursor-default rounded border-2 border-transparent bg-gray-50 p-2 transition-all hover:border-amber-200"
       >
         <!-- <div class="bg-violet-100 h-16 w-16 rounded">{{ id }}</div> -->

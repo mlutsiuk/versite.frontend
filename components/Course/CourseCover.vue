@@ -15,8 +15,8 @@ const colorPalettes = [
   ['#DBE5EC', '#336B87', '#2A3132', '#E94D35', '#EFAC55']
 ];
 let queueNumber = [0, 1, 2, 3, 4];
-let size = 5000;
-let num = 8;
+const size = 5000;
+const num = 8;
 let colorThemeIndex = 2;
 let currentPalette, tileLen;
 
@@ -28,7 +28,7 @@ function getContext() {
 }
 
 function fill(color: string) {
-  let context = getContext();
+  const context = getContext();
   if (!context) {
     return;
   }
@@ -44,7 +44,7 @@ function triangle(
   x3: number,
   y3: number
 ) {
-  let context = getContext();
+  const context = getContext();
   if (!context) {
     return;
   }
@@ -56,7 +56,7 @@ function triangle(
 }
 
 function rect(x: number, y: number, width: number, height: number) {
-  let context = getContext();
+  const context = getContext();
   if (!context) {
     return;
   }
@@ -66,7 +66,7 @@ function rect(x: number, y: number, width: number, height: number) {
 }
 
 function clear() {
-  let context = getContext();
+  const context = getContext();
   if (!context) return;
 
   context.clearRect(0, 0, context.canvas.width, context.canvas.height);

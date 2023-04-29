@@ -13,11 +13,11 @@
     />
 
     <MdButton
-      @click="passwordLogin"
       class="text-[#3A84AD]"
       size="x-large"
       :loading="isLoading"
       block
+      @click="passwordLogin"
     >
       Увійти
     </MdButton>
@@ -29,10 +29,10 @@
 </template>
 
 <script setup lang="ts">
+import { object, string } from 'zod';
 import { useAuthStore } from '~~/store/auth';
 import { PasswordLoginRequest } from '~/api/auth';
 import { auth } from '~/api/repositories';
-import { object, string } from 'zod';
 
 definePageMeta({
   layout: 'auth'

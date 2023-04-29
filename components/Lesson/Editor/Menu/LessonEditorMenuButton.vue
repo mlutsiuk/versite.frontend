@@ -1,12 +1,12 @@
 <template>
   <Icon
-    @click="emit('click')"
     :class="{
       active: props.active
     }"
     class="button"
     :name="icon"
     size="2em"
+    @click="emit('click')"
   />
 </template>
 

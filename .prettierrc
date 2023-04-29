@@ -5,7 +5,5 @@
   "singleQuote": true,
   "arrowParens": "avoid",
   "bracketSameLine": false,
-  "plugins": [
-    "prettier-plugin-tailwindcss"
-  ]
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

@@ -3,12 +3,7 @@ import { Message } from '~/types/snackbar';
 const { emit } = useMitt();
 
 function add(message: Partial<Message>) {
-  let {
-    title,
-    text,
-    duration,
-    dismissible,
-  } = message;
+  const { title, text, duration, dismissible } = message;
 
   emit('snackbar:show', {
     title,

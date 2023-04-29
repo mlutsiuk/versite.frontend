@@ -4,7 +4,7 @@
     :class="[meta.valid ? 'bg-green-500' : 'bg-red-500']"
     class="select-none rounded px-1 text-white"
   >
-    {{ meta.valid ? 'valid' : 'invalid' }}
+    {{ props.meta.valid ? 'valid' : 'invalid' }}
   </span>
 </template>
 

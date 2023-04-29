@@ -3,9 +3,9 @@
     <div class="flex flex-grow flex-col">
       <CourseCalendarHeader
         :date="date"
+        :loading="pending"
         @click-previous="changeMounth('previous')"
         @click-next="changeMounth('next')"
-        :loading="pending"
       />
 
       <CourseCalendarDaysHeader class="border border-gray-200" />

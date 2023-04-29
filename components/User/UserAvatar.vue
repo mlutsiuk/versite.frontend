@@ -52,7 +52,6 @@ const avatarColor = computed(() => {
   for (let i = 0; i < props.user.nickname.length; i++) {
     hash = props.user.nickname.charCodeAt(i) + ((hash << 5) - hash);
   }
-  console.info(hash);
 
   const h = hash % 360;
   const s = 40;

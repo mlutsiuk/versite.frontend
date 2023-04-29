@@ -8,16 +8,17 @@
   }
 
   a {
-    @apply text-blue-600 cursor-pointer underline;
+    @apply cursor-pointer text-blue-600 underline;
   }
 
   blockquote {
-    @apply italic
-      m-0 pl-4
-      border-l-4 border-l-gray-200;
+    @apply m-0
+      border-l-4 border-l-gray-200
+      pl-4 italic;
   }
 
-  ul, ol {
+  ul,
+  ol {
     @apply list-inside;
   }
   ul {
@@ -27,26 +28,28 @@
     @apply list-decimal;
   }
 
-  li>p:first-child {
+  li > p:first-child {
     display: inline;
   }
 
   code {
-    @apply text-gray-500 bg-gray-500 bg-opacity-10 rounded p-1;
+    @apply rounded bg-gray-500 bg-opacity-10 p-1 text-gray-500;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     @apply font-extrabold;
   }
 
   h1 {
-    @apply text-3xl mt-0;
+    @apply mt-0 text-3xl;
   }
   h2 {
-    @apply text-2xl mt-3;
+    @apply mt-3 text-2xl;
   }
   h3 {
-    @apply text-xl mt-2;
+    @apply mt-2 text-xl;
   }
 
   hr {

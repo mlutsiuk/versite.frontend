@@ -1,5 +1,5 @@
 <template>
-  <Popover v-slot="{ open }" class="relative">
+  <Popover v-slot="{}" class="relative">
     <PopoverButton as="div">
       <HeaderAvatar />
     </PopoverButton>

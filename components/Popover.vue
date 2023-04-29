@@ -1,6 +1,6 @@
 <template>
   <div ref="trigger" class="cursor-pointer" @click="toggle">
-    <slot :isOpen="isOpen" name="activatior" />
+    <slot :is-open="isOpen" name="activatior" />
   </div>
 
   <Teleport to="body">
@@ -24,6 +24,7 @@ const props = withDefaults(
   }>(),
   {
     placement: 'left',
+    offset: null,
     padding: 32
   }
 );

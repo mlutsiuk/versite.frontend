@@ -1,26 +1,27 @@
 .snackbar-transition {
   &-enter-from {
     opacity: 0;
-    transform: translateY(50%)
+    transform: translateY(50%);
   }
 
   &-enter-active {
-    transition: transform .3s, opacity .3s
+    transition: transform 0.3s, opacity 0.3s;
   }
 
   &-leave-from {
-    max-height: 1000px
+    max-height: 1000px;
   }
 
   &-leave-active {
-    transition: max-height .45s cubic-bezier(0, 1, 0, 1), opacity .3s, margin-bottom .3s
+    transition: max-height 0.45s cubic-bezier(0, 1, 0, 1), opacity 0.3s,
+      margin-bottom 0.3s;
   }
 
   &-leave-to {
     max-height: 0;
     opacity: 0;
     margin-bottom: 0;
-    overflow: hidden
+    overflow: hidden;
   }
 }
 
@@ -33,25 +34,30 @@
     @apply transition duration-150 ease-in;
   }
 
-  &-enter-from, &-leave-to {
+  &-enter-from,
+  &-leave-to {
     @apply translate-y-1 opacity-0;
   }
 
-  &-enter-to, &-leave-from {
+  &-enter-to,
+  &-leave-from {
     @apply translate-y-0 opacity-100;
   }
 }
 
 .fade-transition {
-  &-enter-active, &-leave-active {
-    @apply transition-opacity ease-out duration-200 transform;
+  &-enter-active,
+  &-leave-active {
+    @apply transform transition-opacity duration-200 ease-out;
   }
 
-  &-enter-from, &-leave-to {
+  &-enter-from,
+  &-leave-to {
     @apply opacity-0;
   }
 
-  &-enter-to, &-leave-from {
+  &-enter-to,
+  &-leave-from {
     @apply opacity-100;
   }
 }

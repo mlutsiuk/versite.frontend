@@ -20,11 +20,11 @@
     />
 
     <MdButton
-      @click="passwordRegistration"
       class="text-[#3A84AD]"
       size="x-large"
       :loading="isLoading"
       block
+      @click="passwordRegistration"
     >
       Зареєструватися
     </MdButton>

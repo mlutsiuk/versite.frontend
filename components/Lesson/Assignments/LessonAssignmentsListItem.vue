@@ -84,8 +84,8 @@
 </template>
 
 <script lang="ts" setup>
-import { Assignment } from '~/api/models';
 import dayjs from 'dayjs';
+import { Assignment } from '~/api/models';
 import { submissions } from '~/api/repositories';
 
 const props = defineProps<{

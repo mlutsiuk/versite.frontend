@@ -15,9 +15,9 @@
 </template>
 
 <script lang="ts" setup>
+import { object, string } from 'zod';
 import { UpdateCourseRequest } from '~/api/courses';
 import { courses } from '~/api/courses/repositories';
-import { object, string } from 'zod';
 
 const form = useForm<UpdateCourseRequest>({
   validationSchema: object({
@@ -35,7 +35,7 @@ async function loadCourse() {
   });
 
   if (data.value && !error.value) {
-    let course = data.value.data;
+    const course = data.value.data;
     form.setValues({
       title: course.title,
       description: course.description

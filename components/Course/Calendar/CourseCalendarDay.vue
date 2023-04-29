@@ -54,7 +54,7 @@ const isCurrentDay = computed(() => {
 });
 
 const todayLessons = computed(() => {
-  let todayLessons = props.lessons[props.date.format('YYYY-MM-DD')] || [];
+  const todayLessons = props.lessons[props.date.format('YYYY-MM-DD')] || [];
 
   todayLessons.sort((a, b) => {
     return dayjs(a.date).isBefore(dayjs(b.date)) ? -1 : 1;

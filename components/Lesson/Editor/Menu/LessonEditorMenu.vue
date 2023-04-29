@@ -2,93 +2,93 @@
   <div class="flex min-h-[2.5rem] flex-row space-x-1 bg-white px-4 py-1">
     <template v-if="editor">
       <LessonEditorMenuButton
-        @click="toggleHeading(1)"
         :active="editor.isActive('heading', { level: 1 })"
         icon="mdi:number-1-box-outline"
+        @click="toggleHeading(1)"
       />
       <LessonEditorMenuButton
-        @click="toggleHeading(2)"
         :active="editor.isActive('heading', { level: 2 })"
         icon="mdi:number-2-box-outline"
+        @click="toggleHeading(2)"
       />
       <LessonEditorMenuButton
-        @click="toggleHeading(3)"
         :active="editor.isActive('heading', { level: 3 })"
         icon="mdi:number-3-box-outline"
+        @click="toggleHeading(3)"
       />
 
       <div class="border-r-2"></div>
 
       <LessonEditorMenuButton
-        @click="toggleBold"
         :active="editor.isActive('bold')"
         icon="mdi:format-bold"
+        @click="toggleBold"
       />
       <LessonEditorMenuButton
-        @click="toggleItalic"
         :active="editor.isActive('italic')"
         icon="mdi:format-italic"
+        @click="toggleItalic"
       />
       <LessonEditorMenuButton
-        @click="toggleUnderline"
         :active="editor.isActive('underline')"
         icon="mdi:format-underline"
+        @click="toggleUnderline"
       />
       <LessonEditorMenuButton
-        @click="toggleStrike"
         :active="editor.isActive('strike')"
         icon="mdi:format-strikethrough-variant"
+        @click="toggleStrike"
       />
 
       <div class="mx-2 border-r-2"></div>
 
       <LessonEditorMenuButton
-        @click="setTextAlign('left')"
         :active="editor.isActive({ textAlign: 'left' })"
         icon="mdi:format-align-left"
+        @click="setTextAlign('left')"
       />
       <LessonEditorMenuButton
-        @click="setTextAlign('center')"
         :active="editor.isActive({ textAlign: 'center' })"
         icon="mdi:format-align-center"
+        @click="setTextAlign('center')"
       />
       <LessonEditorMenuButton
-        @click="setTextAlign('right')"
         :active="editor.isActive({ textAlign: 'right' })"
         icon="mdi:format-align-right"
+        @click="setTextAlign('right')"
       />
       <LessonEditorMenuButton
-        @click="setTextAlign('justify')"
         :active="editor.isActive({ textAlign: 'justify' })"
         icon="mdi:format-align-justify"
+        @click="setTextAlign('justify')"
       />
 
       <div class="border-r-2"></div>
 
       <LessonEditorMenuButton
-        @click="toggleBulletedList"
         :active="editor.isActive('bulletList')"
         icon="mdi:format-list-bulleted"
+        @click="toggleBulletedList"
       />
       <LessonEditorMenuButton
-        @click="toggleOrderedList"
         :active="editor.isActive('orderedList')"
         icon="mdi:format-list-numbered"
+        @click="toggleOrderedList"
       />
 
       <LessonEditorMenuButton
-        @click="toggleCode"
         :active="editor.isActive('code')"
         icon="mdi:code-tags"
+        @click="toggleCode"
       />
       <LessonEditorMenuButton
-        @click="setHorizontalLine"
         icon="mdi:horizontal-line"
+        @click="setHorizontalLine"
       />
       <LessonEditorMenuButton
-        @click="toggleBlockquote"
         :active="editor.isActive('blockquote')"
         icon="mdi:format-quote-open"
+        @click="toggleBlockquote"
       />
     </template>
   </div>

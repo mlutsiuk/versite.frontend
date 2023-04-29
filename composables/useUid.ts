@@ -1,5 +1,5 @@
 let id = 0;
-export default function() {
+export default function () {
   return {
     next: () => id++
   };

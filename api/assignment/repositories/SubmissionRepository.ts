@@ -1,6 +1,6 @@
+import { CreateSubmissionRequest } from '../requests';
 import { Endpoint, ResourceSingle } from '~/api';
 import { AssignmentSubmission } from '~/api/models';
-import { CreateSubmissionRequest } from '../requests';
 
 const addMy = new Endpoint<
   ResourceSingle<AssignmentSubmission>,

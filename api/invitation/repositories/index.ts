@@ -1,1 +1,1 @@
-export * from './InvitationRepository'
+export * from './InvitationRepository';

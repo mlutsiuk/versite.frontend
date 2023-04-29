@@ -6,22 +6,24 @@
     @click="toggle"
   >
     <DevOnly>
-      <DevDataId :id="assignment.id" />
+      <DevDataId :id="props.assignment.id" />
     </DevOnly>
 
     <div class="text-xl font-medium leading-snug">
-      {{ assignment.title }}
+      {{ props.assignment.title }}
     </div>
 
     <div class="text-base font-medium text-gray-600">
-      {{ assignment.description }}
+      {{ props.assignment.description }}
     </div>
 
-    <div v-if="assignment.deadline" class="leading-tight">
+    <div v-if="props.assignment.deadline" class="leading-tight">
       <div class="flex flex-row items-center space-x-2 rounded text-gray-600">
-        <span v-text="dayjs(assignment.deadline).format('DD.MM.YYYY HH:mm')" />
+        <span
+          v-text="dayjs(props.assignment.deadline).format('DD.MM.YYYY HH:mm')"
+        />
         <span class="text-gray-400"
-          >({{ dayjs(assignment.deadline).fromNow() }})</span
+          >({{ dayjs(props.assignment.deadline).fromNow() }})</span
         >
       </div>
     </div>
@@ -31,7 +33,7 @@
     <Transition name="fade-transition">
       <div v-show="isOpen" ref="popover">
         <LessonAssignmentsEditorPopover
-          :assignmnent-id="assignment.id"
+          :assignmnent-id="props.assignment.id"
           @save="emit('save')"
         />
       </div>
@@ -40,9 +42,9 @@
 </template>
 
 <script lang="ts" setup>
-import { Assignment } from '~/api/models';
 import dayjs from 'dayjs';
 import { onClickOutside } from '@vueuse/core';
+import { Assignment } from '~/api/models';
 
 const props = defineProps<{
   assignment: Assignment;

@@ -8,11 +8,11 @@
     >
       <div
         class="font-light leading-none"
-        v-text="dayjs(lesson.date).format('HH:mm')"
+        v-text="dayjs(props.lesson.date).format('HH:mm')"
       />
       <div
         class="ml-2 truncate font-medium leading-none"
-        v-text="lesson.title"
+        v-text="props.lesson.title"
       />
     </div>
 
@@ -23,32 +23,32 @@
           ref="popover"
           class="flex w-[24rem] flex-col rounded border bg-white p-2.5 shadow-lg"
         >
-          <div class="text-sm" v-text="lesson.course?.data?.title" />
-          <div class="mb-2 text-lg font-medium" v-text="lesson.title" />
+          <div class="text-sm" v-text="props.lesson.course?.data?.title" />
+          <div class="mb-2 text-lg font-medium" v-text="props.lesson.title" />
 
           <div
             class="flex flex-row items-center space-x-2 rounded text-gray-600"
           >
             <Icon class="text-gray-600" name="mdi:calendar" />
-            <span v-text="dayjs(lesson.date).format('DD.MM.YYYY')" />
+            <span v-text="dayjs(props.lesson.date).format('DD.MM.YYYY')" />
           </div>
 
           <div
             class="flex flex-row items-center space-x-2 rounded text-gray-600"
           >
             <Icon class="text-gray-600" name="mdi:clock-outline" />
-            <span v-text="dayjs(lesson.date).format('HH:mm')" />
+            <span v-text="dayjs(props.lesson.date).format('HH:mm')" />
           </div>
 
           <div
-            v-if="lesson.assignments?.data.length"
+            v-if="props.lesson.assignments?.data.length"
             class="text-sm font-medium"
           >
             <div class="text-gray-400">Завдання</div>
 
             <ul class="pl-2">
               <li
-                v-for="assignment in lesson.assignments.data"
+                v-for="assignment in props.lesson.assignments.data"
                 :key="assignment.id"
                 class="list-inside list-disc"
               >
@@ -59,7 +59,7 @@
 
           <div class="mt-2 flex flex-row justify-end">
             <MdButton
-              :to="`/lessons/${lesson.id}`"
+              :to="`/lessons/${props.lesson.id}`"
               class="text-gray-600"
               size="default"
               variant="outline"
@@ -75,8 +75,8 @@
 
 <script lang="ts" setup>
 import dayjs from 'dayjs';
-import { Lesson } from '~/api/models';
 import { onClickOutside } from '@vueuse/core';
+import { Lesson } from '~/api/models';
 
 const props = defineProps<{
   lesson: Lesson;

@@ -1,5 +1,5 @@
 <template>
-  <Popover v-slot="{ open }">
+  <Popover v-slot="{}">
     <PopoverButton
       class="flex cursor-pointer flex-row items-center space-x-2 rounded border-transparent px-1 text-gray-600 hover:border-gray-200 hover:bg-gray-100"
       as="div"

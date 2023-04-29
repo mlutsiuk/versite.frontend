@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <div class="basis-1/2 flex justify-center items-center">
+    <div class="flex basis-1/2 items-center justify-center">
       <slot />
     </div>
 

@@ -1,19 +1,19 @@
 <template>
   <MdButton
-    @click="login"
     prepend-icon="mdi:google"
     class="text-[#6F5274]"
     size="x-large"
     :loading="fetchingUrl"
     block
+    @click="login"
   >
     Google
   </MdButton>
 </template>
 
 <script setup lang="ts">
-import { useAuthStore } from '~~/store/auth';
 import { useEventListener } from '@vueuse/core';
+import { useAuthStore } from '~~/store/auth';
 import { auth } from '~/api/auth/repositories';
 
 const authStore = useAuthStore();
@@ -33,7 +33,7 @@ async function login() {
 
 // TODO: Create composable
 function openWindow(url: string, title: string) {
-  let options: Record<string, any> = {
+  const options: Record<string, any> = {
     url,
     title,
     width: window.screen.width / 2,
@@ -45,7 +45,7 @@ function openWindow(url: string, title: string) {
     return `${acc}${key}=${options[key]},`;
   }, '');
   optionsStr.slice(0, -1); // Removing last comma
-  let loginWindow = window.open(url, title, optionsStr);
+  const loginWindow = window.open(url, title, optionsStr);
 
   if (loginWindow?.focus) {
     loginWindow.focus();

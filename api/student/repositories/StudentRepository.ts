@@ -1,6 +1,6 @@
+import { CreateStudentRequest, UpdateStudentRequest } from '../requests';
 import { Endpoint, ResourceArray, ResourceSingle } from '~/api';
 import { Student } from '~/api/models';
-import { CreateStudentRequest, UpdateStudentRequest } from '../requests';
 
 const all = new Endpoint<ResourceArray<Student>>({
   method: 'GET',

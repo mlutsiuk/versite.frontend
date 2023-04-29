@@ -24,7 +24,6 @@ const props = defineProps<{
 
 const {
   data: assignments,
-  error,
   pending,
   refresh,
   execute

@@ -2,9 +2,9 @@
   <div class="space-y-2.5">
     <LessonAssignmentsListItem
       v-for="assignment in props.assignments"
-      @create:submission="emit('reload')"
       :key="assignment.id"
       :assignment="assignment"
+      @create:submission="emit('reload')"
     />
   </div>
 </template>

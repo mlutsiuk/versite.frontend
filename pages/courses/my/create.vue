@@ -16,9 +16,9 @@
 </template>
 
 <script lang="ts" setup>
+import { object, string } from 'zod';
 import { CreateCourseRequest } from '~/api/courses';
 import { courses } from '~/api/repositories';
-import { object, string } from 'zod';
 
 const form = useForm<CreateCourseRequest>({
   validationSchema: object({

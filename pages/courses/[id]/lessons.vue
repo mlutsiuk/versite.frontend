@@ -31,8 +31,8 @@
 </template>
 
 <script setup lang="ts">
-import { lessons as lessonRepository } from '~/api/repositories';
 import dayjs from 'dayjs';
+import { lessons as lessonRepository } from '~/api/repositories';
 
 const props = defineProps<{
   canEdit: boolean;

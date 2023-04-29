@@ -63,7 +63,6 @@ onMounted(async () => {
   await execute();
 
   if (!assignment.value) {
-    console.warn('Assignment not found');
     return;
   }
 

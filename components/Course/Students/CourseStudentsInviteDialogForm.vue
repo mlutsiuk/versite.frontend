@@ -32,8 +32,8 @@
 </template>
 
 <script lang="ts" setup>
-import { invitations } from '~/api/repositories';
 import { object, string } from 'zod';
+import { invitations } from '~/api/repositories';
 import { CreateInvitationRequest } from '~/api/invitation';
 
 const props = defineProps<{
