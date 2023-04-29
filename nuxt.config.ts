@@ -4,27 +4,26 @@ export default defineNuxtConfig({
     transpile: ['@headlessui/vue']
   },
   modules: [
-    'nuxt-typed-router',
-    '@nuxt/devtools',
     [
       '@nuxtjs/google-fonts',
       {
         families: {
-          Montserrat: [ 100, 200, 300, 400, 500, 600, 700, 800, 900 ]
+          Montserrat: [100, 200, 300, 400, 500, 600, 700, 800, 900]
         }
       }
     ],
     'nuxt-icon',
     '@nuxtjs/tailwindcss',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+
+    '@nuxt/devtools',
+    'nuxt-typed-router'
   ],
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' },
+    // pageTransition: { name: 'page', mode: 'out-in' },
     // layoutTransition: { name: 'layout', mode: 'out-in' }
   },
-  css: [
-    '@/assets/scss/index.scss'
-  ],
+  css: ['@/assets/scss/index.scss'],
   components: [
     '~/components',
     {
@@ -38,7 +37,7 @@ export default defineNuxtConfig({
     }
   },
 
-  ssr: false,
+  ssr: false
   // typescript: {
   //   strict: true
   // }

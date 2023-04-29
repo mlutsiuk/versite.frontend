@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+/* @eslintigbore */
+/** @type { import('tailwindcss').Config } */
 module.exports = {
   content: [],
   presets: [],
