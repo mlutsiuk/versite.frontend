@@ -14,7 +14,7 @@ import { useInvitationStore } from '~/store/invitation';
 const invitationStore = useInvitationStore();
 
 const badgeNumber = computed(() => {
-  const notificationsCount = 2; // Static number of notifications
+  const notificationsCount = 1; // Static number of notifications
 
   return invitationStore.count + notificationsCount;
 });
