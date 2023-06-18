@@ -11,6 +11,14 @@
         <SkeletonBone class="mb-2 h-4 w-32 rounded-full" />
       </div>
       <div v-else-if="data" class="space-y-4">
+        <div
+          v-if="data.data.length == 0"
+          class="rounded border border-gray-200 bg-neutral-50 p-4 text-lg"
+        >
+          <Icon class="mr-2" name="mdi:account-question-outline" size="24px" />
+          Ви ще не додавали студентів
+        </div>
+
         <NuxtLink
           v-for="assignment in data.data"
           :key="assignment.id"

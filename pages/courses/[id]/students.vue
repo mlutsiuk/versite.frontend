@@ -14,11 +14,16 @@
 
     <div>
       <CourseStudentsListSkeleton v-if="pending" />
-      <CourseStudentsList
-        v-else-if="data"
-        :students="data.data"
-        @create="refresh"
-      />
+      <template v-else-if="data">
+        <div
+          v-if="data.data.length == 0"
+          class="rounded border border-gray-200 bg-neutral-50 p-4 text-lg"
+        >
+          <Icon class="mr-2" name="mdi:account-question-outline" size="24px" />
+          Ви ще не додавали студентів
+        </div>
+        <CourseStudentsList v-else :students="data.data" @create="refresh" />
+      </template>
       <div v-else v-text="error" />
     </div>
   </div>

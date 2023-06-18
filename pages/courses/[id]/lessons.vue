@@ -15,6 +15,14 @@
         <CourseLessonListSkeleton />
       </div>
       <div v-else-if="lessons" class="space-y-4">
+        <div
+          v-if="lessons.data.length == 0"
+          class="rounded border border-gray-200 bg-neutral-50 p-4 text-lg"
+        >
+          <Icon class="mr-2" name="mdi:folder-question-outline" size="24px" />
+          Уроків ще немає, створіть перший натиснувши кнопку
+        </div>
+
         <div v-if="futureLessons.length">
           <h2 class="mb-1 text-xl">Майбутні</h2>
           <CourseLessonList :lessons="futureLessons" />
