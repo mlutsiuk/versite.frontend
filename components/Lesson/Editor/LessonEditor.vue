@@ -59,7 +59,7 @@ const updateLessonMaterial = useDebounceFn(async (editor: Editor) => {
   });
 }, 700);
 
-const title = ref('Auto-layout - Beginning');
+const title = ref('');
 const editor = useEditor({
   extensions: [
     Blockquote,
@@ -96,7 +96,23 @@ const { data, execute } = await lessons.findMaterial.asyncData({
   }
 });
 
+const { data: lesson, execute: loadLesson } = await lessons.find.asyncData({
+  immediate: false,
+  routeParams: {
+    id: props.lessonId
+  }
+});
+
+if (lesson.value?.data) {
+  title.value = lesson.value.data.title;
+}
+
 onMounted(async () => {
+  loadLesson().then(() => {
+    if (lesson.value?.data) {
+      title.value = lesson.value.data.title;
+    }
+  });
   await execute();
 
   if (data.value?.data) {
