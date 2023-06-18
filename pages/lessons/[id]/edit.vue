@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full flex-row space-x-5 overflow-y-hidden">
+  <div class="flex h-full w-full flex-row space-x-5 overflow-y-hidden">
     <div class="flex grow basis-8/12 flex-col">
       <LessonEditor :lesson-id="route.params.id" class="w-full" />
     </div>
